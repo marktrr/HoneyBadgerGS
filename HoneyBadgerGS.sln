@@ -1,0 +1,16 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HoneyBadgerGS", "HoneyBadgerGS\HoneyBadgerGS.csproj", "{110B3346-A86E-4B1A-9D70-12C22BB6252E}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{110B3346-A86E-4B1A-9D70-12C22BB6252E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{110B3346-A86E-4B1A-9D70-12C22BB6252E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{110B3346-A86E-4B1A-9D70-12C22BB6252E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{110B3346-A86E-4B1A-9D70-12C22BB6252E}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+EndGlobal
