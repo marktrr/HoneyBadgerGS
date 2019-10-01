@@ -3,5 +3,10 @@
 ################################################################################
 
 /.vs
-/.idea/.idea.HoneyBadgers_3.0/.idea/
-/.idea/.idea.HoneyBadgers_3.0/riderModule.iml
+.idea/.idea.HoneyBadgers_3.0/.idea/vcs.xml
+.idea/.idea.HoneyBadgers_3.0/riderModule.iml
+.idea/.idea.HoneyBadgers_3.0/.idea/.name
+.idea/.idea.HoneyBadgers_3.0/.idea/contentModel.xml
+.idea/.idea.HoneyBadgers_3.0/.idea/indexLayout.xml
+.idea/.idea.HoneyBadgers_3.0/.idea/modules.xml
+.idea/.idea.HoneyBadgers_3.0/.idea/projectSettingsUpdater.xml
