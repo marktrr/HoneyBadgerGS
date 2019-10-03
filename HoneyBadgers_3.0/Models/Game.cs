@@ -19,10 +19,11 @@ namespace HoneyBadgers_3._0.Models
         public string Publisher { get; set; }
         public string Developer { get; set; }
         public string Genre { get; set; }
-        public string Flatform { get; set; }
+        public string Platform { get; set; }
         public string GameDescription { get; set; }
         public string SystemReq { get; set; }
         public DateTime? ReleaseDate { get; set; }
+        public string GameArtUrl { get; set; }
 
         public virtual Wishlist Wishlist { get; set; }
         public virtual ICollection<Cart> Cart { get; set; }
