@@ -16,17 +16,33 @@ namespace HoneyBadgers_3._0.Models
         }
 
         public virtual DbSet<Account> Account { get; set; }
+        public virtual DbSet<AspNetRoleClaims> AspNetRoleClaims { get; set; }
+        public virtual DbSet<AspNetRoles> AspNetRoles { get; set; }
+        public virtual DbSet<AspNetUserClaims> AspNetUserClaims { get; set; }
+        public virtual DbSet<AspNetUserLogins> AspNetUserLogins { get; set; }
+        public virtual DbSet<AspNetUserRoles> AspNetUserRoles { get; set; }
+        public virtual DbSet<AspNetUserTokens> AspNetUserTokens { get; set; }
+        public virtual DbSet<AspNetUsers> AspNetUsers { get; set; }
         public virtual DbSet<Cart> Cart { get; set; }
+        public virtual DbSet<DeviceCodes> DeviceCodes { get; set; }
         public virtual DbSet<Event> Event { get; set; }
         public virtual DbSet<FriendList> FriendList { get; set; }
         public virtual DbSet<Game> Game { get; set; }
+        public virtual DbSet<PersistedGrants> PersistedGrants { get; set; }
         public virtual DbSet<Profile> Profile { get; set; }
         public virtual DbSet<Rating> Rating { get; set; }
         public virtual DbSet<Review> Review { get; set; }
         public virtual DbSet<Sales> Sales { get; set; }
         public virtual DbSet<Wishlist> Wishlist { get; set; }
 
-     
+        protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
+        {
+            if (!optionsBuilder.IsConfigured)
+            {
+#warning To protect potentially sensitive information in your connection string, you should move it out of source code. See http://go.microsoft.com/fwlink/?LinkId=723263 for guidance on storing connection strings.
+                optionsBuilder.UseSqlServer("Server=(localdb)\\mssqllocaldb;Database=HoneyBadgerDB;Trusted_Connection=True;");
+            }
+        }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
@@ -56,6 +72,104 @@ namespace HoneyBadgers_3._0.Models
                     .HasConstraintName("FK_Account_profileID");
             });
 
+            modelBuilder.Entity<AspNetRoleClaims>(entity =>
+            {
+                entity.HasIndex(e => e.RoleId);
+
+                entity.Property(e => e.RoleId).IsRequired();
+
+                entity.HasOne(d => d.Role)
+                    .WithMany(p => p.AspNetRoleClaims)
+                    .HasForeignKey(d => d.RoleId);
+            });
+
+            modelBuilder.Entity<AspNetRoles>(entity =>
+            {
+                entity.HasIndex(e => e.NormalizedName)
+                    .HasName("RoleNameIndex")
+                    .IsUnique()
+                    .HasFilter("([NormalizedName] IS NOT NULL)");
+
+                entity.Property(e => e.Name).HasMaxLength(256);
+
+                entity.Property(e => e.NormalizedName).HasMaxLength(256);
+            });
+
+            modelBuilder.Entity<AspNetUserClaims>(entity =>
+            {
+                entity.HasIndex(e => e.UserId);
+
+                entity.Property(e => e.UserId).IsRequired();
+
+                entity.HasOne(d => d.User)
+                    .WithMany(p => p.AspNetUserClaims)
+                    .HasForeignKey(d => d.UserId);
+            });
+
+            modelBuilder.Entity<AspNetUserLogins>(entity =>
+            {
+                entity.HasKey(e => new { e.LoginProvider, e.ProviderKey });
+
+                entity.HasIndex(e => e.UserId);
+
+                entity.Property(e => e.LoginProvider).HasMaxLength(128);
+
+                entity.Property(e => e.ProviderKey).HasMaxLength(128);
+
+                entity.Property(e => e.UserId).IsRequired();
+
+                entity.HasOne(d => d.User)
+                    .WithMany(p => p.AspNetUserLogins)
+                    .HasForeignKey(d => d.UserId);
+            });
+
+            modelBuilder.Entity<AspNetUserRoles>(entity =>
+            {
+                entity.HasKey(e => new { e.UserId, e.RoleId });
+
+                entity.HasIndex(e => e.RoleId);
+
+                entity.HasOne(d => d.Role)
+                    .WithMany(p => p.AspNetUserRoles)
+                    .HasForeignKey(d => d.RoleId);
+
+                entity.HasOne(d => d.User)
+                    .WithMany(p => p.AspNetUserRoles)
+                    .HasForeignKey(d => d.UserId);
+            });
+
+            modelBuilder.Entity<AspNetUserTokens>(entity =>
+            {
+                entity.HasKey(e => new { e.UserId, e.LoginProvider, e.Name });
+
+                entity.Property(e => e.LoginProvider).HasMaxLength(128);
+
+                entity.Property(e => e.Name).HasMaxLength(128);
+
+                entity.HasOne(d => d.User)
+                    .WithMany(p => p.AspNetUserTokens)
+                    .HasForeignKey(d => d.UserId);
+            });
+
+            modelBuilder.Entity<AspNetUsers>(entity =>
+            {
+                entity.HasIndex(e => e.NormalizedEmail)
+                    .HasName("EmailIndex");
+
+                entity.HasIndex(e => e.NormalizedUserName)
+                    .HasName("UserNameIndex")
+                    .IsUnique()
+                    .HasFilter("([NormalizedUserName] IS NOT NULL)");
+
+                entity.Property(e => e.Email).HasMaxLength(256);
+
+                entity.Property(e => e.NormalizedEmail).HasMaxLength(256);
+
+                entity.Property(e => e.NormalizedUserName).HasMaxLength(256);
+
+                entity.Property(e => e.UserName).HasMaxLength(256);
+            });
+
             modelBuilder.Entity<Cart>(entity =>
             {
                 entity.Property(e => e.CartId)
@@ -81,6 +195,30 @@ namespace HoneyBadgers_3._0.Models
                     .WithMany(p => p.Cart)
                     .HasForeignKey(d => d.GameId)
                     .HasConstraintName("FK_Cart_gameID");
+            });
+
+            modelBuilder.Entity<DeviceCodes>(entity =>
+            {
+                entity.HasKey(e => e.UserCode);
+
+                entity.HasIndex(e => e.DeviceCode)
+                    .IsUnique();
+
+                entity.HasIndex(e => e.Expiration);
+
+                entity.Property(e => e.UserCode).HasMaxLength(200);
+
+                entity.Property(e => e.ClientId)
+                    .IsRequired()
+                    .HasMaxLength(200);
+
+                entity.Property(e => e.Data).IsRequired();
+
+                entity.Property(e => e.DeviceCode)
+                    .IsRequired()
+                    .HasMaxLength(200);
+
+                entity.Property(e => e.SubjectId).HasMaxLength(200);
             });
 
             modelBuilder.Entity<Event>(entity =>
@@ -134,9 +272,9 @@ namespace HoneyBadgers_3._0.Models
                     .HasMaxLength(50)
                     .IsUnicode(false);
 
-                entity.Property(e => e.Flatform)
-                    .HasColumnName("flatform")
-                    .HasMaxLength(20)
+                entity.Property(e => e.GameArtUrl)
+                    .HasColumnName("gameArtUrl")
+                    .HasMaxLength(100)
                     .IsUnicode(false);
 
                 entity.Property(e => e.GameDescription)
@@ -150,6 +288,11 @@ namespace HoneyBadgers_3._0.Models
 
                 entity.Property(e => e.Genre)
                     .HasColumnName("genre")
+                    .HasMaxLength(20)
+                    .IsUnicode(false);
+
+                entity.Property(e => e.Platform)
+                    .HasColumnName("platform")
                     .HasMaxLength(20)
                     .IsUnicode(false);
 
@@ -172,6 +315,29 @@ namespace HoneyBadgers_3._0.Models
                     .WithMany(p => p.Game)
                     .HasForeignKey(d => d.WishlistId)
                     .HasConstraintName("game_FK_wishlistID");
+            });
+
+            modelBuilder.Entity<PersistedGrants>(entity =>
+            {
+                entity.HasKey(e => e.Key);
+
+                entity.HasIndex(e => e.Expiration);
+
+                entity.HasIndex(e => new { e.SubjectId, e.ClientId, e.Type });
+
+                entity.Property(e => e.Key).HasMaxLength(200);
+
+                entity.Property(e => e.ClientId)
+                    .IsRequired()
+                    .HasMaxLength(200);
+
+                entity.Property(e => e.Data).IsRequired();
+
+                entity.Property(e => e.SubjectId).HasMaxLength(200);
+
+                entity.Property(e => e.Type)
+                    .IsRequired()
+                    .HasMaxLength(50);
             });
 
             modelBuilder.Entity<Profile>(entity =>
