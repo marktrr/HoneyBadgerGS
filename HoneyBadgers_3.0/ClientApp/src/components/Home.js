@@ -11,10 +11,12 @@ export class Home extends Component {
         };
     }
 
+    //talks to the api in order to get the games from the database.
     componentDidMount() {
-        fetch('https://jsonplaceholder.typicode.com/users')
+        fetch("https://localhost:5001/api/games/getgame")
             .then(response => response.json())
-            .then(users => this.setState({ games: users }))
+            .then(data => this.setState({ games: data }))
+            console.log(this.state.games);
     }
 
 
