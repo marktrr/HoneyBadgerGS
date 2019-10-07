@@ -12,6 +12,8 @@ namespace HoneyBadgers_3._0.DataLayers
         {
             return _context.Game.ToList();
         }
+        
+        //TODO: ADD rest of functions based on https://dzone.com/articles/aspnet-core-crud-with-reactjs-and-entity-framework
             
     }
 }

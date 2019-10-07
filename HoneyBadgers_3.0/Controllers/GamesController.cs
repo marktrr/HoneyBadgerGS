@@ -25,7 +25,9 @@ namespace HoneyBadgerGameStore.Controllers
         {
             return obj.GetAllGames();
         }
-
+        
+        //TODO: Convert everything below this comment and remove DB context.
+        
         // GET: api/Games/5
         [HttpGet("{id}")]
         public async Task<ActionResult<Game>> GetGame(int id)
