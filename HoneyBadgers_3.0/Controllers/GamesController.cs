@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using HoneyBadgers_3._0.DAL;
+using HoneyBadgers_3._0.DataLayers;
 using HoneyBadgers_3._0.Models;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
@@ -12,9 +12,8 @@ namespace HoneyBadgerGameStore.Controllers
     [ApiController]
     public class GamesController : ControllerBase
     {
-        private readonly HoneyBadgerDBContext _context;
-		FetchGame fetchGames = new FetchGame();
-
+        private HoneyBadgerDBContext _context;
+        private GamesDAL obj = new GamesDAL();
         public GamesController(HoneyBadgerDBContext context)
         {
             _context = context;
@@ -22,11 +21,9 @@ namespace HoneyBadgerGameStore.Controllers
 
         // GET: api/Games
         [HttpGet("getgame")]
-        public async Task<IEnumerable<Game>> GetGame()
+        public IEnumerable<Game> GetGame()
         {
-            //DAL 
-            //return fetchGames.getAllGames();
-            return await _context.Game.ToListAsync();//	Also works
+            return obj.GetAllGames();
         }
 
         // GET: api/Games/5
