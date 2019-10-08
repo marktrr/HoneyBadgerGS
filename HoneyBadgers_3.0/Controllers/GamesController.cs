@@ -12,34 +12,31 @@ namespace HoneyBadgerGameStore.Controllers
     [ApiController]
     public class GamesController : ControllerBase
     {
-        private HoneyBadgerDBContext _context;
+        private HoneyBadgerDBContext _context; //to be removed
         private GamesDAL obj = new GamesDAL();
         public GamesController(HoneyBadgerDBContext context)
         {
+            //to be removed
             _context = context;
         }
 
         // GET: api/Games
-        [HttpGet("getgame")]
-        public IEnumerable<Game> GetGame()
+        [HttpGet]
+        [Route("api/Games")]
+        public IEnumerable<Game> GetAllGames()
         {
             return obj.GetAllGames();
         }
         
         //TODO: Convert everything below this comment and remove DB context.
         
+        //Add Single Game to Record
         // GET: api/Games/5
-        [HttpGet("{id}")]
-        public async Task<ActionResult<Game>> GetGame(int id)
+        [HttpGet]
+        [Route("api/Games/{id}")]
+        public int Add(Game game)
         {
-            var game = await _context.Game.FindAsync(id);
-
-            if (game == null)
-            {
-                return NotFound();
-            }
-
-            return game;
+            return obj.AddGame(game);
         }
 
         // PUT: api/Games/5
@@ -93,7 +90,7 @@ namespace HoneyBadgerGameStore.Controllers
                 }
             }
 
-            return CreatedAtAction("GetGame", new { id = game.GameId }, game);
+            return CreatedAtAction("GetAllGames", new { id = game.GameId }, game);
         }
 
         // DELETE: api/Games/5
