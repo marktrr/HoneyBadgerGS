@@ -6,7 +6,7 @@ using HoneyBadgers_3._0.Models;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 
-namespace HoneyBadgerGameStore.Controllers
+namespace HoneyBadgers_3._0.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
@@ -20,7 +20,6 @@ namespace HoneyBadgerGameStore.Controllers
             _context = context;
         }
 
-        // GET: api/Games
         [HttpGet]
         [Route("api/Games")]
         public IEnumerable<Game> GetAllGames()
@@ -31,7 +30,6 @@ namespace HoneyBadgerGameStore.Controllers
         //TODO: Convert everything below this comment and remove DB context.
         
         //Add Single Game to Record
-        // GET: api/Games/5
         [HttpGet]
         [Route("api/Games/{id}")]
         public int Add(Game game)
@@ -39,34 +37,12 @@ namespace HoneyBadgerGameStore.Controllers
             return obj.AddGame(game);
         }
 
-        // PUT: api/Games/5
-        [HttpPut("{id}")]
-        public async Task<IActionResult> PutGame(int id, Game game)
+        //Updates Games in record
+        [HttpPut]
+        [Route("api/Games/{id}")]
+        public int Edit(Game game)
         {
-            if (id != game.GameId)
-            {
-                return BadRequest();
-            }
-
-            _context.Entry(game).State = EntityState.Modified;
-
-            try
-            {
-                await _context.SaveChangesAsync();
-            }
-            catch (DbUpdateConcurrencyException)
-            {
-                if (!GameExists(id))
-                {
-                    return NotFound();
-                }
-                else
-                {
-                    throw;
-                }
-            }
-
-            return NoContent();
+            return obj.UpdateGame(game);
         }
 
         // POST: api/Games
