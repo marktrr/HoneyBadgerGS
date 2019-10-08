@@ -31,7 +31,7 @@ namespace HoneyBadgers_3._0.Controllers
         
         //Add Single Game to Record
         [HttpGet]
-        [Route("api/Games/{id}")]
+        [Route("api/Games/Add")]
         public int Add(Game game)
         {
             return obj.AddGame(game);
@@ -39,55 +39,22 @@ namespace HoneyBadgers_3._0.Controllers
 
         //Updates Games in record
         [HttpPut]
-        [Route("api/Games/{id}")]
-        public int Edit(Game game)
+        [Route("api/Games/Update")]
+        public int Update(Game game)
         {
             return obj.UpdateGame(game);
         }
-
-        // POST: api/Games
-        [HttpPost]
-        public async Task<ActionResult<Game>> PostGame(Game game)
+        [HttpGet]
+        [Route("api/Games/Details/{id}")]
+        public Game Details(int id)
         {
-            _context.Game.Add(game);
-            try
-            {
-                await _context.SaveChangesAsync();
-            }
-            catch (DbUpdateException)
-            {
-                if (GameExists(game.GameId))
-                {
-                    return Conflict();
-                }
-                else
-                {
-                    throw;
-                }
-            }
-
-            return CreatedAtAction("GetAllGames", new { id = game.GameId }, game);
+            return obj.GetGameData(id);
         }
-
-        // DELETE: api/Games/5
-        [HttpDelete("{id}")]
-        public async Task<ActionResult<Game>> DeleteGame(int id)
+        [HttpDelete]
+        [Route("api/Games/Delete")]
+        public int Delete(int id)
         {
-            var game = await _context.Game.FindAsync(id);
-            if (game == null)
-            {
-                return NotFound();
-            }
-
-            _context.Game.Remove(game);
-            await _context.SaveChangesAsync();
-
-            return game;
-        }
-
-        private bool GameExists(int id)
-        {
-            return _context.Game.Any(e => e.GameId == id);
+            return obj.DeleteGame(id);
         }
     }
 }
