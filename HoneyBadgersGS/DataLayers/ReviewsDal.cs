@@ -6,7 +6,7 @@ namespace HoneyBadgers._0.DataLayers
 {
     public class ReviewsDal
     {
-        private readonly HoneyBadgerDBContext _db;
+        private HoneyBadgerDBContext _db;
 
         public ReviewsDal(HoneyBadgerDBContext db)
         {

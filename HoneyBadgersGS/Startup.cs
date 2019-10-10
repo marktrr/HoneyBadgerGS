@@ -44,6 +44,8 @@ namespace HoneyBadgers._0
 
 			services.AddTransient<IGamesDal, GamesDal>();
 			services.AddTransient<IGamesLogic, GamesLogic>();
+            services.AddTransient<IProfileDal, ProfileDal>();
+            services.AddTransient<IProfileLogic, ProfileLogic>();
 			
 			services.AddControllersWithViews();
 			services.AddRazorPages();
