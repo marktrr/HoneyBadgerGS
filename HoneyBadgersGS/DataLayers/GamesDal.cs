@@ -14,7 +14,7 @@ namespace HoneyBadgers._0.DataLayers
         {
             _db = db;
         }
-
+        
         public IEnumerable<Game> GetAll()
         {
             return _db.Game.ToList();
