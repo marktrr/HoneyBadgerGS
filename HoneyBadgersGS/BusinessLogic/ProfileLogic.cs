@@ -6,7 +6,7 @@ namespace HoneyBadgers._0.BusinessLogic
 {
     public class ProfileLogic : IProfileLogic
     {
-        private readonly IProfileDal _profileDal;
+        private IProfileDal _profileDal;
 
         public ProfileLogic(IProfileDal profileDal)
         {
