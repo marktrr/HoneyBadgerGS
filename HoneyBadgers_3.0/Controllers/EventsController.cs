@@ -5,7 +5,7 @@ using HoneyBadgers_3._0.Models;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 
-namespace HoneyBadgerGameStore.Controllers
+namespace HoneyBadgers_3._0.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]

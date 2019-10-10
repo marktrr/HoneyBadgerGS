@@ -1,14 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using Microsoft.AspNetCore.Http;
+using HoneyBadgers_3._0.Models;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
-using HoneyBadgers_3._0.Models;
 
-
-namespace HoneyBadgerGameStore
+namespace HoneyBadgers_3._0.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]

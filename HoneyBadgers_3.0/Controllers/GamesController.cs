@@ -1,10 +1,7 @@
 ﻿using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 using HoneyBadgers_3._0.DataLayers;
 using HoneyBadgers_3._0.Models;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.EntityFrameworkCore;
 
 namespace HoneyBadgers_3._0.Controllers
 {
