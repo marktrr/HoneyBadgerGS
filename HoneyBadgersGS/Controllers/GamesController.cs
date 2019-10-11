@@ -16,7 +16,6 @@ namespace HoneyBadgers._0.Controllers
             _gamesLogic = gamesLogic;
         }
 
-
         [HttpGet]
         [Route("api/Games")]
         public IEnumerable<Game> GetAllGames()
