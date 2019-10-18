@@ -8,13 +8,13 @@ namespace HoneyBadgers._0.DataLayers
 {
     public class GamesDal : IGamesDal
     {
-        private readonly HoneyBadgerDBContext _db;
+        private HoneyBadgerDBContext _db;
 
         public GamesDal(HoneyBadgerDBContext db)
         {
             _db = db;
         }
-
+        
         public IEnumerable<Game> GetAll()
         {
             return _db.Game.ToList();

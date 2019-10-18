@@ -9,14 +9,14 @@ namespace HoneyBadgers._0.Controllers
     [ApiController]
     public class GamesController : ControllerBase
     {
-        private readonly GamesLogic _gamesLogic;
+        private IGamesLogic _gamesLogic;
 
-        public GamesController( GamesLogic gamesLogic)
+        public GamesController(IGamesLogic gamesLogic)
         {
             _gamesLogic = gamesLogic;
         }
 
-        [HttpGet]
+        [HttpGet("getgames")]
         [Route("api/Games")]
         public IEnumerable<Game> GetAllGames()
         {

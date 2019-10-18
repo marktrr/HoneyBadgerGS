@@ -8,7 +8,7 @@ namespace HoneyBadgers._0.DataLayers
 {
     public class ProfileDal : IProfileDal
     {
-        private readonly HoneyBadgerDBContext _db;
+        private HoneyBadgerDBContext _db;
 
         public ProfileDal(HoneyBadgerDBContext db)
         {

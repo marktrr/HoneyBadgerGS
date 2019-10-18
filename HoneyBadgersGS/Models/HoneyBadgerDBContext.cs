@@ -4,10 +4,6 @@ namespace HoneyBadgers._0.Models
 {
     public partial class HoneyBadgerDBContext : DbContext
     {
-        public HoneyBadgerDBContext()
-        {
-        }
-
         public HoneyBadgerDBContext(DbContextOptions<HoneyBadgerDBContext> options)
             : base(options)
         {

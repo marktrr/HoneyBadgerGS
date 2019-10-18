@@ -6,7 +6,7 @@ namespace HoneyBadgers._0.BusinessLogic
 {
     public class GamesLogic : IGamesLogic
     {
-        private readonly IGamesDal _gamesDal;
+        private IGamesDal _gamesDal;
 
         public GamesLogic(IGamesDal gamesDal)
         {
