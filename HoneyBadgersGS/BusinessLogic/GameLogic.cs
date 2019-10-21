@@ -4,37 +4,37 @@ using HoneyBadgers._0.Models;
 
 namespace HoneyBadgers._0.BusinessLogic
 {
-    public class GamesLogic : IGamesLogic
+    public class GameLogic : IGameLogic
     {
-        private IGamesDal _gamesDal;
+        private IGameDal _gameDal;
 
-        public GamesLogic(IGamesDal gamesDal)
+        public GameLogic(IGameDal gamesDal)
         {
-            _gamesDal = gamesDal;
+            _gameDal = gamesDal;
         }
         
         public IEnumerable<Game> GetAll()
         {
-            return _gamesDal.GetAll();
+            return _gameDal.GetAll();
         }
 
         public int Add(Game game)
         {
-            return _gamesDal.Add(game);
+            return _gameDal.Add(game);
         }
 
         public int Update(Game game)
         {
-            return _gamesDal.Update(game);
+            return _gameDal.Update(game);
         }
 
         public Game Details(int id)
         {
-            return _gamesDal.GetData(id);
+            return _gameDal.GetData(id);
         }
         public int Delete(int id)
         {
-            return _gamesDal.Delete(id);
+            return _gameDal.Delete(id);
         }
     }
 }

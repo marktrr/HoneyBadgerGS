@@ -3,7 +3,7 @@ using HoneyBadgers._0.Models;
 
 namespace HoneyBadgers._0.BusinessLogic
 {
-    public interface IGamesLogic
+    public interface IGameLogic
     {
         IEnumerable<Game> GetAll();
         int Add(Game game);

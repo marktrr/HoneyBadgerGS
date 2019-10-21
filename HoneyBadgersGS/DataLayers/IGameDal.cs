@@ -3,7 +3,7 @@ using HoneyBadgers._0.Models;
 
 namespace HoneyBadgers._0.DataLayers
 {
-    public interface IGamesDal
+    public interface IGameDal
     {
          IEnumerable<Game> GetAll();
          int Add(Game game);

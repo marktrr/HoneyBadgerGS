@@ -9,9 +9,9 @@ namespace HoneyBadgers._0.Controllers
     [ApiController]
     public class GamesController : ControllerBase
     {
-        private IGamesLogic _gamesLogic;
+        private IGameLogic _gamesLogic;
 
-        public GamesController(IGamesLogic gamesLogic)
+        public GamesController(IGameLogic gamesLogic)
         {
             _gamesLogic = gamesLogic;
         }

@@ -6,11 +6,11 @@ using Microsoft.EntityFrameworkCore;
 
 namespace HoneyBadgers._0.DataLayers
 {
-    public class GamesDal : IGamesDal
+    public class GameDal : IGameDal
     {
         private HoneyBadgerDBContext _db;
 
-        public GamesDal(HoneyBadgerDBContext db)
+        public GameDal(HoneyBadgerDBContext db)
         {
             _db = db;
         }
