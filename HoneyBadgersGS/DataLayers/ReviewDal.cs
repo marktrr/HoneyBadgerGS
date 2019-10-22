@@ -29,17 +29,23 @@ namespace HoneyBadgers._0.DataLayers
 
         public int Update(Review review)
         {
-            throw new NotImplementedException();
+            _db.Review.Update(review);
+            _db.SaveChangesAsync();
+            return 1;
         }
 
         public Review GetData(int id)
         {
-            throw new NotImplementedException();
+            Review review = _db.Review.Find(id);
+            return review;
         }
 
         public int Delete(int id)
         {
-            throw new NotImplementedException();
+            Review review = _db.Review.Find(id);
+            _db.Review.Remove(review);
+            _db.SaveChangesAsync();
+            return 1;
         }
     }
 }

@@ -8,9 +8,9 @@ namespace HoneyBadgers._0.BusinessLogic
     {
         private IGameDal _gameDal;
 
-        public GameLogic(IGameDal gamesDal)
+        public GameLogic(IGameDal gameDal)
         {
-            _gameDal = gamesDal;
+            _gameDal = gameDal;
         }
         
         public IEnumerable<Game> GetAll()
