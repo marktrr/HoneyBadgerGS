@@ -40,7 +40,7 @@ namespace HoneyBadgers._0.Controllers
         {
             return _gamesLogic.Update(game);
         }
-        [HttpGet]
+        [HttpGet("getgames/{id}")]
         [Route("api/Games/Details/{id}")]
         public Game Details(int id)
         {
