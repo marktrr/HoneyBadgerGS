@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using HoneyBadgers._0.BusinessLogic;
 using HoneyBadgers._0.Models;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
@@ -12,106 +13,51 @@ namespace HoneyBadgers._0.Controllers
     public class ProfilesController : ControllerBase
     {
         private readonly HoneyBadgerDBContext _context;
+        private IProfileLogic _profileLogic;
 
-        public ProfilesController(HoneyBadgerDBContext context)
+        public ProfilesController(IProfileLogic profileLogic)
         {
-            _context = context;
+            _profileLogic = profileLogic;
         }
 
         // GET: api/Profiles
+        [HttpGet("getprofiles")]
+        [Route("api/Profiles")]
+        public IEnumerable<Profile> GetAllProfiles()
+        {
+            return _profileLogic.GetAll();
+        }
+
+        //Add Single Profile to records
         [HttpGet]
-        public async Task<ActionResult<IEnumerable<Profile>>> GetProfile()
+        [Route("api/Profiles/Add")]
+        public int Add(Profile profile)
         {
-            return await _context.Profile.ToListAsync();
+            return _profileLogic.Add(profile);
         }
 
-        // GET: api/Profiles/5
-        [HttpGet("{id}")]
-        public async Task<ActionResult<Profile>> GetProfile(int id)
+        //Update Profiles in records
+        [HttpPut]
+        [Route("api/Profiles/Update")]
+        public int Update(Profile profile)
         {
-            var profile = await _context.Profile.FindAsync(id);
-
-            if (profile == null)
-            {
-                return NotFound();
-            }
-
-            return profile;
+            return _profileLogic.Update(profile);
         }
 
-        // PUT: api/Profiles/5
-        [HttpPut("{id}")]
-        public async Task<IActionResult> PutProfile(int id, Profile profile)
+        //Get single profile details
+        [HttpGet("getprofiles/{id}")]
+        [Route("api/Profiles/Details/{id}")]
+        public Profile Details(int id)
         {
-            if (id != profile.ProfileId)
-            {
-                return BadRequest();
-            }
-
-            _context.Entry(profile).State = EntityState.Modified;
-
-            try
-            {
-                await _context.SaveChangesAsync();
-            }
-            catch (DbUpdateConcurrencyException)
-            {
-                if (!ProfileExists(id))
-                {
-                    return NotFound();
-                }
-                else
-                {
-                    throw;
-                }
-            }
-
-            return NoContent();
+            return _profileLogic.Details(id);
         }
 
-        // POST: api/Profiles
-        [HttpPost]
-        public async Task<ActionResult<Profile>> PostProfile(Profile profile)
+        //Delete game from records
+        [HttpDelete]
+        [Route("api/Profiles/Delete")]
+        public int Delete(int id)
         {
-            _context.Profile.Add(profile);
-            try
-            {
-                await _context.SaveChangesAsync();
-            }
-            catch (DbUpdateException)
-            {
-                if (ProfileExists(profile.ProfileId))
-                {
-                    return Conflict();
-                }
-                else
-                {
-                    throw;
-                }
-            }
-
-            return CreatedAtAction("GetProfile", new { id = profile.ProfileId }, profile);
-        }
-
-        // DELETE: api/Profiles/5
-        [HttpDelete("{id}")]
-        public async Task<ActionResult<Profile>> DeleteProfile(int id)
-        {
-            var profile = await _context.Profile.FindAsync(id);
-            if (profile == null)
-            {
-                return NotFound();
-            }
-
-            _context.Profile.Remove(profile);
-            await _context.SaveChangesAsync();
-
-            return profile;
-        }
-
-        private bool ProfileExists(int id)
-        {
-            return _context.Profile.Any(e => e.ProfileId == id);
+            return _profileLogic.Delete(id);
         }
     }
 }

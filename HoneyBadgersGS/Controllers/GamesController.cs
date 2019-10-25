@@ -40,12 +40,16 @@ namespace HoneyBadgers._0.Controllers
         {
             return _gamesLogic.Update(game);
         }
+
+        //Get Single Game Details
         [HttpGet("getgames/{id}")]
         [Route("api/Games/Details/{id}")]
         public Game Details(int id)
         {
             return _gamesLogic.Details(id);
         }
+
+        //Delete game from records
         [HttpDelete]
         [Route("api/Games/Delete")]
         public int Delete(int id)
