@@ -12,7 +12,6 @@ namespace HoneyBadgers._0.Controllers
     [ApiController]
     public class ProfilesController : ControllerBase
     {
-        private readonly HoneyBadgerDBContext _context;
         private IProfileLogic _profileLogic;
 
         public ProfilesController(IProfileLogic profileLogic)
