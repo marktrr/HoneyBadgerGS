@@ -7,7 +7,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using HoneyBadgers._0.Models;
 
-namespace HoneyBadgersGS.Controllers
+namespace HoneyBadgers._0.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
