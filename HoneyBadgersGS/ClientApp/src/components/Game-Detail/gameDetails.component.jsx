@@ -18,7 +18,7 @@ export class GameDetails extends Component{
     componentDidMount() {
 
         let gameId = this.props.location.pathname.split('/').pop();
-        fetch("https://localhost:44307/api/games/getgames/" + gameId)
+        fetch("https://localhost:5001/api/games/getgames/" + gameId)
             .then(response => response.json())
             .then(data => this.setState({ gameDetails: data }));
         console.log(gameId);

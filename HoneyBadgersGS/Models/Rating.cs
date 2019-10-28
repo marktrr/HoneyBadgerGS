@@ -1,8 +1,11 @@
-﻿namespace HoneyBadgers._0.Models
+﻿using System;
+using System.Collections.Generic;
+
+namespace HoneyBadgers._0.Models
 {
     public partial class Rating
     {
-        public int RatingId { get; set; }
+        public string RatingId { get; set; }
         public int? GameId { get; set; }
         public int? Rating1 { get; set; }
 

@@ -41,7 +41,7 @@ namespace HoneyBadgers._0.Controllers
 
         // PUT: api/Accounts/5
         [HttpPut("{id}")]
-        public async Task<IActionResult> PutAccount(int id, Account account)
+        public async Task<IActionResult> PutAccount(string id, Account account)
         {
             if (id != account.AccountId)
             {
@@ -109,7 +109,7 @@ namespace HoneyBadgers._0.Controllers
             return account;
         }
 
-        private bool AccountExists(int id)
+        private bool AccountExists(string id)
         {
             return _context.Account.Any(e => e.AccountId == id);
         }

@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 
 namespace HoneyBadgers._0.Models
 {
@@ -14,10 +15,10 @@ namespace HoneyBadgers._0.Models
             Wishlist = new HashSet<Wishlist>();
         }
 
-        public int AccountId { get; set; }
+        public string AccountId { get; set; }
         public string UserName { get; set; }
         public string UserPassword { get; set; }
-        public int? ProfileId { get; set; }
+        public string ProfileId { get; set; }
         public int? LibraryId { get; set; }
 
         public virtual Profile Profile { get; set; }
