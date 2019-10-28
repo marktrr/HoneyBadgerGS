@@ -4,6 +4,7 @@ import { Link } from 'react-router-dom';
 import { LoginMenu } from './api-authorization/LoginMenu';
 import Logo from '../images/HBGS Logo.png';
 import './NavMenu.css';
+import Cart from './Cart.js'
 
 export class NavMenu extends Component {
   static displayName = NavMenu.name;
@@ -38,6 +39,9 @@ export class NavMenu extends Component {
                 <NavItem>
                   <NavLink tag={Link} className="text-light" to="/">Home</NavLink>
                 </NavItem>
+                <NavItem>
+                    <NavLink tag={Link} className="text-light" to='Cart'>Cart</NavLink>
+                </NavItem>          
                 <LoginMenu></LoginMenu>
                         </ul>
                         
