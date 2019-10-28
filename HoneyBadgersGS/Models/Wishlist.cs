@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 
 namespace HoneyBadgers._0.Models
 {
@@ -10,7 +11,7 @@ namespace HoneyBadgers._0.Models
         }
 
         public int WishlistId { get; set; }
-        public int? AccountId { get; set; }
+        public string? AccountId { get; set; }
 
         public virtual Account Account { get; set; }
         public virtual ICollection<Game> Game { get; set; }

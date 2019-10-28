@@ -8,7 +8,7 @@ namespace HoneyBadgers._0.BusinessLogic
         IEnumerable<Profile> GetAll();
         int Add(Profile profile);
         int Update(Profile profile);
-        Profile Details(int id);
-        int Delete(int id);
+        Profile Details(string id);
+        int Delete(string id);
     }
 }
