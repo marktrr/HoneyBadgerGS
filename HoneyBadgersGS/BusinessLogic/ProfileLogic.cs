@@ -29,11 +29,11 @@ namespace HoneyBadgers._0.BusinessLogic
             return _profileDal.Update(profile);
         }
 
-        public Profile Details(int id)
+        public Profile Details(string id)
         {
             return _profileDal.GetData(id);
         }
-        public int Delete(int id)
+        public int Delete(string id)
         {
             return _profileDal.Delete(id);
         }

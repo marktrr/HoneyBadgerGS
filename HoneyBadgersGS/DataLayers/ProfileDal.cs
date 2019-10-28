@@ -31,13 +31,13 @@ namespace HoneyBadgers._0.DataLayers
             _db.SaveChangesAsync();
             return 1;
         }
-        public Profile GetData(int id)
+        public Profile GetData(string id)
         {
             Profile profile = _db.Profile.Find(id);
             return profile;
         }
 
-        public int Delete(int id)
+        public int Delete(string id)
         {
             Profile profile = _db.Profile.Find(id);
             _db.Profile.Remove(profile);

@@ -41,7 +41,7 @@ namespace HoneyBadgers._0.Controllers
 
         // PUT: api/Ratings/5
         [HttpPut("{id}")]
-        public async Task<IActionResult> PutRating(int id, Rating rating)
+        public async Task<IActionResult> PutRating(string id, Rating rating)
         {
             if (id != rating.RatingId)
             {
@@ -109,7 +109,7 @@ namespace HoneyBadgers._0.Controllers
             return rating;
         }
 
-        private bool RatingExists(int id)
+        private bool RatingExists(string id)
         {
             return _context.Rating.Any(e => e.RatingId == id);
         }

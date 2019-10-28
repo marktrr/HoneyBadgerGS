@@ -43,7 +43,7 @@ namespace HoneyBadgers._0.Controllers
         //Get single profile details
         [HttpGet("getprofiles/{id}")]
         [Route("api/Profiles/Details/{id}")]
-        public Profile Details(int id)
+        public Profile Details(string id)
         {
             return _profileLogic.Details(id);
         }
@@ -51,7 +51,7 @@ namespace HoneyBadgers._0.Controllers
         //Delete game from records
         [HttpDelete]
         [Route("api/Profiles/Delete")]
-        public int Delete(int id)
+        public int Delete(string id)
         {
             return _profileLogic.Delete(id);
         }

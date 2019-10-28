@@ -3,6 +3,8 @@ import { NavItem, NavLink } from 'reactstrap';
 import { Link } from 'react-router-dom';
 import authService from './AuthorizeService';
 import { ApplicationPaths } from './ApiAuthorizationConstants';
+import { Profile } from '../Profile/profile.component';
+
 
 export class LoginMenu extends Component {
     constructor(props) {
@@ -10,7 +12,8 @@ export class LoginMenu extends Component {
 
         this.state = {
             isAuthenticated: false,
-            userName: null
+            userName: null,
+            userId: null
         };
     }
 
@@ -27,8 +30,19 @@ export class LoginMenu extends Component {
         const [isAuthenticated, user] = await Promise.all([authService.isAuthenticated(), authService.getUser()])
         this.setState({
             isAuthenticated,
-            userName: user && user.name
+            userName: user && user.name,
+            userId: user && user.sub
         });
+        console.log(user);
+        if (user !== null) {
+            var timer = new Date();
+            timer.setTime(timer.getTime() * 1 * 3600 * 1000);
+
+            document.cookie =
+                'userId=' + (this.state.userId + ',' + this.state.userName) +
+                '; expires=' + timer.toUTCString() +
+                '; path=/';
+        }
     }
 
     render() {
@@ -46,6 +60,9 @@ export class LoginMenu extends Component {
 
     authenticatedView(userName, profilePath, logoutPath) {
         return (<Fragment>
+            <NavItem>
+                <NavLink tag={Link} className="text-light" to={"/Profile"}>Profile</NavLink>
+            </NavItem>
             <NavItem>
                 <NavLink tag={Link} className="text-light" to={profilePath}>Hello {userName}</NavLink>
             </NavItem>
