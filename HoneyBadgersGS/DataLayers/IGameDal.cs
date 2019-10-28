@@ -10,6 +10,5 @@ namespace HoneyBadgers._0.DataLayers
          int Update(Game game);
          Game GetData(int id);
          int Delete(int id);
-         
     }
 }

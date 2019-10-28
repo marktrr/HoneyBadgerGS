@@ -1,10 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using Microsoft.AspNetCore.Http;
+﻿using System.Collections.Generic;
+using HoneyBadgers._0.BusinessLogic;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.EntityFrameworkCore;
 using HoneyBadgers._0.Models;
 
 namespace HoneyBadgers._0.Controllers
@@ -13,112 +9,50 @@ namespace HoneyBadgers._0.Controllers
     [ApiController]
     public class CartsController : ControllerBase
     {
-        private readonly HoneyBadgerDBContext _context;
+        private ICartLogic _cartLogic;
 
-        public CartsController(HoneyBadgerDBContext context)
+        public CartsController(ICartLogic cartLogic)
         {
-            _context = context;
+            _cartLogic = cartLogic;
         }
 
-        // GET: api/Carts
         [HttpGet("getcart")]
         [Route("api/Cart")]
-        public async Task<ActionResult<IEnumerable<Cart>>> GetCart()
+        public IEnumerable<Cart> GetCart()
         {
-            return await _context.Cart.ToListAsync();
+            return _cartLogic.GetAll();
         }
 
-        // GET: api/Carts/5
-        [HttpGet("{id}")]
-        public async Task<ActionResult<Cart>> GetCart(int id)
+        //Creates new cart instance
+        [HttpGet]
+        [Route("api/Cart/Add")]
+        public int Add(Cart cart)
         {
-            var cart = await _context.Cart.FindAsync(id);
-
-            if (cart == null)
-            {
-                return NotFound();
-            }
-
-            return cart;
+            return _cartLogic.Add(cart);
         }
 
-        // PUT: api/Carts/5
-        // To protect from overposting attacks, please enable the specific properties you want to bind to, for
-        // more details see https://aka.ms/RazorPagesCRUD.
-        [HttpPut("{id}")]
-        public async Task<IActionResult> PutCart(int id, Cart cart)
+        //Updates cart in record
+        [HttpPut]
+        [Route("api/Cart/Update")]
+        public int Update(Cart cart)
         {
-            if (id != cart.CartId)
-            {
-                return BadRequest();
-            }
-
-            _context.Entry(cart).State = EntityState.Modified;
-
-            try
-            {
-                await _context.SaveChangesAsync();
-            }
-            catch (DbUpdateConcurrencyException)
-            {
-                if (!CartExists(id))
-                {
-                    return NotFound();
-                }
-                else
-                {
-                    throw;
-                }
-            }
-
-            return NoContent();
+            return _cartLogic.Update(cart);
         }
 
-        // POST: api/Carts
-        // To protect from overposting attacks, please enable the specific properties you want to bind to, for
-        // more details see https://aka.ms/RazorPagesCRUD.
-        [HttpPost]
-        public async Task<ActionResult<Cart>> PostCart(Cart cart)
+        //Get Single Cart Details
+        [HttpGet("getcart/{id}")]
+        [Route("api/Cart/Details/{id}")]
+        public Cart Details(int id)
         {
-            _context.Cart.Add(cart);
-            try
-            {
-                await _context.SaveChangesAsync();
-            }
-            catch (DbUpdateException)
-            {
-                if (CartExists(cart.CartId))
-                {
-                    return Conflict();
-                }
-                else
-                {
-                    throw;
-                }
-            }
-
-            return CreatedAtAction("GetCart", new { id = cart.CartId }, cart);
+            return _cartLogic.Details(id);
         }
 
-        // DELETE: api/Carts/5
-        [HttpDelete("{id}")]
-        public async Task<ActionResult<Cart>> DeleteCart(int id)
+        //Delete Cart from records
+        [HttpDelete]
+        [Route("api/Cart/Delete")]
+        public int Delete(int id)
         {
-            var cart = await _context.Cart.FindAsync(id);
-            if (cart == null)
-            {
-                return NotFound();
-            }
-
-            _context.Cart.Remove(cart);
-            await _context.SaveChangesAsync();
-
-            return cart;
-        }
-
-        private bool CartExists(int id)
-        {
-            return _context.Cart.Any(e => e.CartId == id);
+            return _cartLogic.Delete(id);
         }
     }
 }

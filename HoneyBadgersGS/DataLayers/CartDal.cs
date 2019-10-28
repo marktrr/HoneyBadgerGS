@@ -5,44 +5,44 @@ using Microsoft.EntityFrameworkCore;
 
 namespace HoneyBadgers._0.DataLayers
 {
-    public class ReviewDal : IReviewDal
+    public class TransactionDal : ICartDal
     {
         private HoneyBadgerDBContext _db;
 
-        public ReviewDal(HoneyBadgerDBContext db)
+        public TransactionDal(HoneyBadgerDBContext db)
         {
             _db = db;
         }
 
-        public IEnumerable<Review> GetAll()
+        public IEnumerable<Cart> GetAll()
         {
-            return _db.Review.ToList();
+            return _db.Cart.ToList();
         }
 
-        public int Add(Review review)
+        public int Add(Cart cart)
         {
-            _db.Review.Add(review);
+            _db.Cart.Add(cart);
             _db.SaveChangesAsync();
             return 1;
         }
 
-        public int Update(Review review)
+        public int Update(Cart cart)
         {
-            _db.Entry(review).State = EntityState.Modified;
+            _db.Entry(cart).State = EntityState.Modified;
             _db.SaveChangesAsync();
             return 1;
         }
 
-        public Review GetData(int id)
+        public Cart GetData(int id)
         {
-            Review review = _db.Review.Find(id);
-            return review;
+            Cart cart = _db.Cart.Find(id);
+            return cart;
         }
 
         public int Delete(int id)
         {
-            Review review = _db.Review.Find(id);
-            _db.Review.Remove(review);
+            Cart cart = _db.Cart.Find(id);
+            _db.Cart.Remove(cart);
             _db.SaveChangesAsync();
             return 1;
         }
