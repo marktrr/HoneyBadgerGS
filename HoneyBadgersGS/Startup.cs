@@ -41,12 +41,16 @@ namespace HoneyBadgers._0
 
 			services.AddAuthentication()
 				.AddIdentityServerJwt();
-
+            //Transient Services
 			services.AddTransient<IGameDal, GameDal>();
 			services.AddTransient<IGameLogic, GameLogic>();
             services.AddTransient<IProfileDal, ProfileDal>();
             services.AddTransient<IProfileLogic, ProfileLogic>();
             services.AddTransient<IReviewDal, ReviewDal>();
+            services.AddTransient<IReviewLogic, ReviewLogic>();
+            services.AddTransient<ICartDal, CartDal>();
+            services.AddTransient<ICartLogic, CartLogic>();
+
 			
 			services.AddControllersWithViews();
 			services.AddRazorPages();

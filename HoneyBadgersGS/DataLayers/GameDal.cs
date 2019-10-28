@@ -27,7 +27,7 @@ namespace HoneyBadgers._0.DataLayers
 
         public int Update(Game game)
         {
-            _db.Entry(game).State = EntityState.Modified;
+            _db.Game.Update(game);
             _db.SaveChangesAsync();
             return 1;
         }

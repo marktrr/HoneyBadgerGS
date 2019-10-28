@@ -27,7 +27,7 @@ namespace HoneyBadgers._0.DataLayers
         }
         public int Update(Profile profile)
         {
-            _db.Entry(profile).State = EntityState.Modified;
+            _db.Profile.Update(profile);
             _db.SaveChangesAsync();
             return 1;
         }

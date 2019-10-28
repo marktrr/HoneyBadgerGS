@@ -5,11 +5,11 @@ using Microsoft.EntityFrameworkCore;
 
 namespace HoneyBadgers._0.DataLayers
 {
-    public class TransactionDal : ICartDal
+    public class CartDal : ICartDal
     {
         private HoneyBadgerDBContext _db;
 
-        public TransactionDal(HoneyBadgerDBContext db)
+        public CartDal(HoneyBadgerDBContext db)
         {
             _db = db;
         }
@@ -28,7 +28,7 @@ namespace HoneyBadgers._0.DataLayers
 
         public int Update(Cart cart)
         {
-            _db.Entry(cart).State = EntityState.Modified;
+            _db.Cart.Update(cart);
             _db.SaveChangesAsync();
             return 1;
         }
