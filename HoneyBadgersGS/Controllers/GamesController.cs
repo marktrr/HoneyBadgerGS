@@ -26,7 +26,7 @@ namespace HoneyBadgers._0.Controllers
         //TODO: Convert everything below this comment and remove DB context.
         
         //Add Single Game to Record
-        [HttpGet]
+        [HttpPost]
         [Route("api/Games/Add")]
         public int Add(Game game)
         {

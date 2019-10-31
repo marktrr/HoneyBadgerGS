@@ -24,7 +24,7 @@ namespace HoneyBadgers._0.Controllers
         }
 
         //Creates new cart instance
-        [HttpGet]
+        [HttpPost]
         [Route("api/Cart/Add")]
         public int Add(Cart cart)
         {

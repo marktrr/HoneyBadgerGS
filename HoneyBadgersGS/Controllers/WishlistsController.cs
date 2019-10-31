@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using HoneyBadgers._0.BusinessLogic;
 using HoneyBadgers._0.Models;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
@@ -11,107 +12,49 @@ namespace HoneyBadgers._0.Controllers
     [ApiController]
     public class WishlistsController : ControllerBase
     {
-        private readonly HoneyBadgerDBContext _context;
+        private IWishlistLogic _wishlistLogic;
 
-        public WishlistsController(HoneyBadgerDBContext context)
+        public WishlistsController(IWishlistLogic wishlistLogic)
         {
-            _context = context;
+            _wishlistLogic = wishlistLogic;
+        }
+        [HttpGet("getwishlist")]
+        [Route("api/Wishlist")]
+        public IEnumerable<Wishlist> GetWishlists()
+        {
+            return _wishlistLogic.GetAll();
         }
 
-        // GET: api/Wishlists
-        [HttpGet]
-        public async Task<ActionResult<IEnumerable<Wishlist>>> GetWishlist()
-        {
-            return await _context.Wishlist.ToListAsync();
-        }
-
-        // GET: api/Wishlists/5
-        [HttpGet("{id}")]
-        public async Task<ActionResult<Wishlist>> GetWishlist(int id)
-        {
-            var wishlist = await _context.Wishlist.FindAsync(id);
-
-            if (wishlist == null)
-            {
-                return NotFound();
-            }
-
-            return wishlist;
-        }
-
-        // PUT: api/Wishlists/5
-        [HttpPut("{id}")]
-        public async Task<IActionResult> PutWishlist(int id, Wishlist wishlist)
-        {
-            if (id != wishlist.WishlistId)
-            {
-                return BadRequest();
-            }
-
-            _context.Entry(wishlist).State = EntityState.Modified;
-
-            try
-            {
-                await _context.SaveChangesAsync();
-            }
-            catch (DbUpdateConcurrencyException)
-            {
-                if (!WishlistExists(id))
-                {
-                    return NotFound();
-                }
-                else
-                {
-                    throw;
-                }
-            }
-
-            return NoContent();
-        }
-
-        // POST: api/Wishlists
+        //Creates new cart instance
         [HttpPost]
-        public async Task<ActionResult<Wishlist>> PostWishlist(Wishlist wishlist)
+        [Route("api/Wishlist/Add")]
+        public int Add(Wishlist wishlist)
         {
-            _context.Wishlist.Add(wishlist);
-            try
-            {
-                await _context.SaveChangesAsync();
-            }
-            catch (DbUpdateException)
-            {
-                if (WishlistExists(wishlist.WishlistId))
-                {
-                    return Conflict();
-                }
-                else
-                {
-                    throw;
-                }
-            }
-
-            return CreatedAtAction("GetWishlist", new { id = wishlist.WishlistId }, wishlist);
+            return _wishlistLogic.Add(wishlist);
         }
 
-        // DELETE: api/Wishlists/5
-        [HttpDelete("{id}")]
-        public async Task<ActionResult<Wishlist>> DeleteWishlist(int id)
+        //Updates cart in record
+        [HttpPut]
+        [Route("api/Wishlist/Update")]
+        public int Update(Wishlist wishlist)
         {
-            var wishlist = await _context.Wishlist.FindAsync(id);
-            if (wishlist == null)
-            {
-                return NotFound();
-            }
-
-            _context.Wishlist.Remove(wishlist);
-            await _context.SaveChangesAsync();
-
-            return wishlist;
+            return _wishlistLogic.Update(wishlist);
         }
 
-        private bool WishlistExists(int id)
+        //Get Single Cart Details
+        [HttpGet("getcart/{id}")]
+        [Route("api/Wishlist/Details/{id}")]
+        public Wishlist Details(int id)
         {
-            return _context.Wishlist.Any(e => e.WishlistId == id);
+            return _wishlistLogic.Details(id);
+        }
+
+        //Delete Cart from records
+        [HttpDelete]
+        [Route("api/Wishlist/Delete")]
+        public int Delete(int id)
+        {
+            return _wishlistLogic.Delete(id);
         }
     }
 }
