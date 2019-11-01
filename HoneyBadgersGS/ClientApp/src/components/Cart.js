@@ -23,8 +23,8 @@ export class Cart extends Component {
         
         return (
             <div>
-                <h1>Shopping Cart</h1> <br/> <br/>
-                
+                <h1>Shopping Cart</h1> <br /> <br />
+
                 <div class="shopping-cart">
 
                     <div class="column-labels">

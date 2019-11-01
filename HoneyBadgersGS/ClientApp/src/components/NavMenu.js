@@ -4,7 +4,6 @@ import { Link } from 'react-router-dom';
 import { LoginMenu } from './api-authorization/LoginMenu';
 import Logo from '../images/HBGS Logo.png';
 import './NavMenu.css';
-import Cart from './Cart.js'
 
 export class NavMenu extends Component {
   static displayName = NavMenu.name;
