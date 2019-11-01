@@ -1,5 +1,5 @@
 ﻿import React, { Component } from 'react';
-import './Cart.scss';
+import './Cart.css';
 import CartDetail from './CartDetail';
 
 export class Cart extends Component {
@@ -32,7 +32,6 @@ export class Cart extends Component {
                         <label class="product-details">Product</label>
                         <label class="product-price">Price</label>
                         <label class="product-quantity">Quantity</label>
-                        <button class="product-removal">Remove</button>
                         <label class="product-line-price">Total</label>
                     </div>
 
