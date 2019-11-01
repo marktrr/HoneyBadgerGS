@@ -23,7 +23,7 @@ export class Cart extends Component {
         
         return (
             <div>
-                <h1>Shopping Cart</h1> <br /> <br />
+                <h1>Shopping Cart</h1><br/><br/>
 
                 <div class="shopping-cart">
 
@@ -32,6 +32,7 @@ export class Cart extends Component {
                         <label class="product-details">Product</label>
                         <label class="product-price">Price</label>
                         <label class="product-quantity">Quantity</label>
+                        <label class="product-removal">Remove</label>
                         <label class="product-line-price">Total</label>
                     </div>
 

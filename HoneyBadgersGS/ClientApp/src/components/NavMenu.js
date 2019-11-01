@@ -32,8 +32,8 @@ export class NavMenu extends Component {
                     <form inline>
                         <input className="storeSearch mr-sm-2" type="text" placeholder="Search"></input>
                     </form>
-            <NavbarToggler onClick={this.toggleNavbar} className="mr-2" />
-            <Collapse className="d-sm-inline-flex flex-sm-row-reverse" isOpen={!this.state.collapsed} navbar>
+            <NavbarToggler id="hamburger" onClick={this.toggleNavbar} className="mr-2"  />
+            <Collapse className="d-sm-inline-flex flex-sm-row-reverse" isOpen={!this.state.collapsed} navbar >
               <ul className="navbar-nav flex-grow">
                 <NavItem>
                   <NavLink tag={Link} className="text-light" to="/">Home</NavLink>
