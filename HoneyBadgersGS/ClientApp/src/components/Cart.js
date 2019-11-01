@@ -1,33 +1,26 @@
 ﻿import React, { Component } from 'react';
 import './Cart.scss';
-
-function Item(props) {
-    return (
-        <div class="product">
-            <div class="product-image">
-                <img src={props.itemImage}></img>
-            </div>
-            <div class="product-details">
-                <div class="product-title">{props.itemName}</div>
-            </div>
-            <div class="product-price">{props.price}</div>
-            <div class="product-quantity">
-                <input type="number" value="" min="1"></input>
-            </div>
-            <div class="product-removal">
-                <button class="remove-product">Remove</button>
-            </div>
-            <div class="product-line-price">line price</div>
-        </div>
-    );
-}
+import CartDetail from './CartDetail';
 
 export class Cart extends Component {
+    constructor() {
+        super();
+        this.state = {
+            cartItems: []
+        };
+    }
+    
+
+    componentDidMount() {
+        let items = sessionStorage.getItem("cart");
+        if (items) {
+            console.log(true);
+            items = JSON.parse(items);
+            this.setState({ cartItems: items });
+        } 
+    }
     render() {
-        let cartItems = sessionStorage.getItem("cart");
-        cartItems = JSON.parse(cartItems);
-        let cartComponent = cartItems.map(item => <Item itemID={item.itemID} itemImage={item.itemImage} itemName={item.itemName} price={item.price} />)
-     
+        
         return (
             <div>
                 <h1>Shopping Cart</h1> <br/> <br/>
@@ -39,14 +32,13 @@ export class Cart extends Component {
                         <label class="product-details">Product</label>
                         <label class="product-price">Price</label>
                         <label class="product-quantity">Quantity</label>
-                        <label class="product-removal">Remove</label>
+                        <button class="product-removal">Remove</button>
                         <label class="product-line-price">Total</label>
                     </div>
 
-                    <div class="product">
-                        {cartComponent}
-                    </div>    
-                    
+                    {this.state.cartItems && this.state.cartItems.map(item =>
+                        (<CartDetail key={item.itemID} itemID={item.itemID} itemImage={item.itemImage} itemName={item.itemName} price={item.price} />))}
+                   
                     <div class="totals">
                         <div class="totals-item">
                             <label>Subtotal</label>

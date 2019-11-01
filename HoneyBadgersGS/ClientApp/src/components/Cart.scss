@@ -99,7 +99,7 @@ label {
   
   .product-quantity {
     input {
-      width: 40px;
+      font-family: $font-default;
       
     }
   }
@@ -117,6 +117,10 @@ label {
   .remove-product:hover {
     background-color: #a44;
   }
+
+.EmptyCart {
+    font-family: $font-default;
+}
 
 /* Totals section */
 .totals {
