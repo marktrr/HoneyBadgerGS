@@ -19,12 +19,12 @@ namespace HoneyBadgers._0.BusinessLogic
             return _profileDal.GetAll();
         }
 
-        public int Add(Profile profile)
+        public int Add(string profile)
         {
             return _profileDal.Add(profile);
         }
 
-        public int Update(Profile profile)
+        public int Update(string profile)
         {
             return _profileDal.Update(profile);
         }
