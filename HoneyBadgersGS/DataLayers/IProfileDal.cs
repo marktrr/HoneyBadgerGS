@@ -6,7 +6,7 @@ namespace HoneyBadgers._0.DataLayers
     public interface IProfileDal
     {
         IEnumerable<Profile> GetAll();
-        int Add(Profile profile);
+        bool Add(Profile profile);
         int Update(Profile profile);
         Profile GetData(string id);
         int Delete(string id);

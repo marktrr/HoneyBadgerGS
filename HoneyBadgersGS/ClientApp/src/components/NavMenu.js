@@ -4,7 +4,6 @@ import { Link } from 'react-router-dom';
 import { LoginMenu } from './api-authorization/LoginMenu';
 import Logo from '../images/HBGS Logo.png';
 import './NavMenu.css';
-import Cart from './Cart.js'
 
 export class NavMenu extends Component {
   static displayName = NavMenu.name;
@@ -33,8 +32,8 @@ export class NavMenu extends Component {
                     <form inline>
                         <input className="storeSearch mr-sm-2" type="text" placeholder="Search"></input>
                     </form>
-            <NavbarToggler onClick={this.toggleNavbar} className="mr-2" />
-            <Collapse className="d-sm-inline-flex flex-sm-row-reverse" isOpen={!this.state.collapsed} navbar>
+            <NavbarToggler id="hamburger" onClick={this.toggleNavbar} className="mr-2"  />
+            <Collapse className="d-sm-inline-flex flex-sm-row-reverse" isOpen={!this.state.collapsed} navbar >
               <ul className="navbar-nav flex-grow">
                 <NavItem>
                   <NavLink tag={Link} className="text-light" to="/">Home</NavLink>

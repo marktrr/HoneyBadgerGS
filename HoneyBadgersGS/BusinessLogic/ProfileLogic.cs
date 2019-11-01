@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using HoneyBadgers._0.DataLayers;
 using HoneyBadgers._0.Models;
@@ -19,12 +20,25 @@ namespace HoneyBadgers._0.BusinessLogic
             return _profileDal.GetAll();
         }
 
-        public int Add(Profile profile)
-        {
-            return _profileDal.Add(profile);
-        }
+		public bool Add(string profile)
+		{
+			Guid _profId = new Guid();
+			if (string.IsNullOrWhiteSpace(profile))
+			{
+				throw new ArgumentNullException("profile id is empty");
+			}
+			if (!Guid.TryParse(profile, out _profId))
+			{
+				throw new Exception("profile id is invalid");
+			}
+			//create a new profile obj and provide the updated values from the body being sent.
+			Profile result = new Profile();
+			result.ProfileId = _profId.ToString();
 
-        public int Update(Profile profile)
+			return _profileDal.Add(result);
+		}
+
+		public int Update(Profile profile)
         {
             return _profileDal.Update(profile);
         }

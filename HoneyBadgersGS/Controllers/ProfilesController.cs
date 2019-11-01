@@ -25,9 +25,9 @@ namespace HoneyBadgers._0.Controllers
         }
 
         //Add Single Profile to records
-        [HttpPost]
+        [HttpPost("add/{profile}")]
         [Route("api/Profiles/Add")]
-        public int Add(Profile profile)
+        public bool Add(string profile)
         {
             return _profileLogic.Add(profile);
         }
