@@ -35,7 +35,7 @@ namespace HoneyBadgers._0.Controllers
         //Update Profiles in records
         [HttpPut]
         [Route("api/Profiles/Update")]
-        public int Update(Profile profile)
+        public int Update(string profile)
         {
             return _profileLogic.Update(profile);
         }
