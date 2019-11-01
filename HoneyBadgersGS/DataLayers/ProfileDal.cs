@@ -19,11 +19,11 @@ namespace HoneyBadgers._0.DataLayers
             return _db.Profile.ToList();
         }
 
-        public int Add(Profile profile)
+        public bool Add(Profile profile)
         {
             _db.Profile.Add(profile);
             _db.SaveChangesAsync();
-            return 1;
+            return true;
         }
         public int Update(Profile profile)
         {
