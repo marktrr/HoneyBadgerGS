@@ -1,5 +1,5 @@
 ﻿import React, { Component } from 'react';
-import './Cart.scss';
+import './Cart.css';
 
 function Item(props) {
     return (
@@ -12,26 +12,71 @@ function Item(props) {
             </div>
             <div class="product-price">{props.price}</div>
             <div class="product-quantity">
-                <input type="number" value="" min="1"></input>
+                <input id='quantity' type="number" value="1" min="1"></input>
             </div>
             <div class="product-removal">
                 <button class="remove-product">Remove</button>
             </div>
-            <div class="product-line-price">line price</div>
+            <div class="product-line-price">{props.price} </div>
         </div>
     );
 }
 
 export class Cart extends Component {
+
     render() {
-        let cartItems = sessionStorage.getItem("cart");
+        if (sessionStorage.getItem("cart") == null) {
+            return (
+                <div>
+                    <h1>Shopping Cart</h1> <br /> <br />
+
+                    <div class="shopping-cart">
+
+                        <div class="column-labels">
+                            <label class="product-image">Image</label>
+                            <label class="product-details">Product</label>
+                            <label class="product-price">Price</label>
+                            <label class="product-quantity">Quantity</label>
+                            <label class="product-removal">Remove</label>
+                            <label class="product-line-price">Total</label>
+                        </div>
+
+                        <div class="product">
+                            <h2>Cart is Empty</h2>
+                        </div>
+
+                        <div class="totals">
+                            <div class="totals-item">
+                                <label>Subtotal</label>
+                                <div class="totals-value" id="cart-subtotal">0</div>
+                            </div>
+                            <div class="totals-item">
+                                <label>Tax (5%)</label>
+                                <div class="totals-value" id="cart-tax">0</div>
+                            </div>
+                            <div class="totals-item totals-item-total">
+                                <label>Grand Total</label>
+                                <div class="totals-value" id="cart-total">0</div>
+                            </div>
+                        </div>
+                        <button class="checkout">Checkout</button>
+                    </div>
+                </div>
+            )
+        }
+        else
+        var cartItems = sessionStorage.getItem("cart");
         cartItems = JSON.parse(cartItems);
-        let cartComponent = cartItems.map(item => <Item itemID={item.itemID} itemImage={item.itemImage} itemName={item.itemName} price={item.price} />)
-     
+        let cartComponent =
+            cartItems.map(item =>
+                <Item itemID={item.itemID}
+                    itemImage={item.itemImage}
+                    itemName={item.itemName}
+                    price={item.price} />)
         return (
             <div>
-                <h1>Shopping Cart</h1> <br/> <br/>
-                
+                <h1>Shopping Cart</h1> <br /> <br />
+
                 <div class="shopping-cart">
 
                     <div class="column-labels">
@@ -45,8 +90,8 @@ export class Cart extends Component {
 
                     <div class="product">
                         {cartComponent}
-                    </div>    
-                    
+                    </div>
+
                     <div class="totals">
                         <div class="totals-item">
                             <label>Subtotal</label>
