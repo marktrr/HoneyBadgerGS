@@ -1,0 +1,63 @@
+﻿* {
+	box-sizing:border-box;
+}
+body{
+	color:white;
+}
+h2{
+	text-align:center;
+}
+
+.profile-form form {
+	margin: 3% 0 3% 10%;
+	width: 80%;
+}
+
+.checkbox-label{
+	display:inline-block;
+	padding-right:10px;
+	padding-left:22px;
+	text-indent:-20px;
+	vertical-align:middle;
+}
+
+.checkbox-input {
+	display:inline-block;
+	position:relative;
+	vertical-align: middle;
+	top: -25px;
+	left: 50%;
+}
+
+input{
+	border-radius:4px;
+	display: block;
+	padding: 5px;
+	width:100%;
+}
+input[type=submit] {
+	background: green;
+	border:none;
+	border:4px;
+	color:white;
+	font-weight:bold;
+	font-size:large;
+	font-variant-caps:small-caps;
+	font-stretch:ultra-expanded;
+	letter-spacing:5px;
+}
+input[type=submit]:hover {
+	color: orange;
+	box-shadow: 1px 2px 2px 2px #1e2f36;
+}
+#checkbox-items{
+	margin-top: 5px;
+}
+
+.profile-form {
+	background-color: #10191D;
+	border-radius: 8px;
+	border: 1px solid #1e2f36;
+	padding: 2em;
+	margin-top: 5%;
+}

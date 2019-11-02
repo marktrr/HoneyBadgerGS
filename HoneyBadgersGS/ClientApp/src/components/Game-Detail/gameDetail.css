@@ -1,0 +1,63 @@
+﻿
+h1{
+	color:white !important;
+	text-align:center;
+}
+
+.gameDescription {
+	color: white;
+}
+
+.gameDetails {
+	align-content: space-around;
+	align-items: stretch;
+	display: flex;
+	flex-direction: row;
+	height: 100%;
+	margin-top: 10%;
+}
+
+.addtoCart {
+	background-color: #10191D;
+	width: 35%;
+}
+
+.btn_AddCart {
+	background-color: green;
+	color: white;
+	border: none;
+	border-radius: 0.2em;
+	margin-bottom: 5%;
+	margin-left: 5%;
+	margin-right: 5%;
+	padding: 0.5em 3em;
+	width: 90%;
+}
+.btn_AddWish {
+	display: inline-block;
+	background-color: #2E3A3F;
+	border:none;
+	border-radius:0.2em;
+	color: lightgray;
+	margin-bottom: 5%;
+	margin-left: 5%;
+	margin-right: 5%;
+	padding: 0.5em 3em;
+	width: 90%;
+}
+.btn_AddWish:hover{
+	color:orange;
+}
+.btn_AddCart:hover {
+	background-color: #009d00;
+}
+
+.description {
+	order: -1;
+	margin-right: 5%;
+	width: 55%;
+}
+
+.card-img-top{
+    margin-bottom:5%;
+}
