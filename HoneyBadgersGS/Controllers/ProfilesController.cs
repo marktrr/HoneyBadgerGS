@@ -17,8 +17,8 @@ namespace HoneyBadgers._0.Controllers
         }
 
         // GET: api/Profiles
-        [HttpGet("getprofiles")]
-        [Route("api/Profiles")]
+        [HttpGet]
+        [Route("api/Profile")]
         public IEnumerable<Profile> GetAllProfiles()
         {
             return _profileLogic.GetAll();

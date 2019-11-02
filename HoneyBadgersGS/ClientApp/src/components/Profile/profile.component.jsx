@@ -24,7 +24,7 @@ export class Profile extends Component {
         this.setState({ profile: profile });
         this.setState({ profile_userName: profile[1] })
 
-        fetch("https://localhost:5001/api/profiles/getprofiles/" + profile[0])
+        fetch("https://localhost:5001/api/profile/" + profile[0])
             .then(response => response.json())
             .then(data => this.setState({ value: data })).then(res => console.log(this.state.value));
     }
