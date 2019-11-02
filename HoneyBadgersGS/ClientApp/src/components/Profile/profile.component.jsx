@@ -76,7 +76,7 @@ export class Profile extends Component {
                     <input type="date" name="birth date" value={this.state.value.dob} onChange={this.handleChange} ref={(dob) => this.dob = dob}></input>
                     <label for="email">Email:</label>
                     <input type="text" name="email" value={this.state.value.email} onChange={this.handleChange} ref={(email) => this.email = email}></input>
-                    <label for="credit-card">Credit Cart</label>
+                    <label for="credit-card">Credit Card</label>
                     <input type="number" name="credit-card" />
 
                     <div id='checkbox-items'>
@@ -96,7 +96,7 @@ export class Profile extends Component {
 //used to search for an id to update the database record, but currently don't know how to capture an object in the controller.
 export function createProfile(data, id) {
     //alert(id);
-    fetch("https://localhost:5001/api/profiles/add/" + id, {
+    fetch("https://localhost:5001/api/profile/add/" + id, {
         method: 'POST',
         header: { 'content-type': 'application/json' },
         body: JSON.stringify(data)
