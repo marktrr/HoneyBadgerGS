@@ -20,14 +20,14 @@ namespace HoneyBadgers._0.BusinessLogic
             return _profileDal.GetAll();
         }
 
-		public bool Add(string profile)
+		public bool Add(string id)
 		{
 			Guid _profId = new Guid();
-			if (string.IsNullOrWhiteSpace(profile))
+			if (string.IsNullOrWhiteSpace(id))
 			{
 				throw new ArgumentNullException("profile id is empty");
 			}
-			if (!Guid.TryParse(profile, out _profId))
+			if (!Guid.TryParse(id, out _profId))
 			{
 				throw new Exception("profile id is invalid");
 			}
