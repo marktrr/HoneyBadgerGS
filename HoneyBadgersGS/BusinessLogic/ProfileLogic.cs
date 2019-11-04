@@ -31,11 +31,13 @@ namespace HoneyBadgers._0.BusinessLogic
 			{
 				throw new Exception("profile id is invalid");
 			}
-			//create a new profile obj and provide the updated values from the body being sent.
-			Profile result = new Profile();
-			result.ProfileId = _profId.ToString();
+            //create a new profile obj and provide the updated values from the body being sent.
+            Profile result = new Profile
+            {
+                ProfileId = _profId.ToString()
+            };
 
-			return _profileDal.Add(result);
+            return _profileDal.Add(result);
 		}
 
 		public int Update(Profile profile)
