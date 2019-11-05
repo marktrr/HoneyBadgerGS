@@ -1,5 +1,5 @@
 import React from 'react';
-import './gameList.compnent.css';
+import './gameList.component.css';
 import {GameCard} from '../Game-Card/game-card.component';
 
 //creates the game list using card element
