@@ -1,4 +1,6 @@
 import React from 'react';
+import ReactDOM from 'react-dom';
+import './eventList.component.css';
 
 function EventList(props)
 {
@@ -9,4 +11,5 @@ function EventList(props)
     return (
         <ul>{eventItems}</ul>
     );
+    
 }
