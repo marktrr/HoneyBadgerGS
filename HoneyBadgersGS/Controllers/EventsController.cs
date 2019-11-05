@@ -20,8 +20,8 @@ namespace HoneyBadgers._0.Controllers
         }
 
 
-        [HttpGet("getevent")]
-        [Route("api/Event")]
+        [HttpGet("getevents")]
+        [Route("api/Events")]
         public IEnumerable<Event> GetEvent()
         {
             return _eventLogic.GetAll();
@@ -29,7 +29,7 @@ namespace HoneyBadgers._0.Controllers
 
         //Creates new event instance
         [HttpPost]
-        [Route("api/Event/Add")]
+        [Route("api/Events/Add")]
         public int Add(Event _event)
         {
             return _eventLogic.Add(_event);
@@ -37,15 +37,15 @@ namespace HoneyBadgers._0.Controllers
 
         //Updates event in record
         [HttpPut]
-        [Route("api/Event/Update")]
+        [Route("api/Events/Update")]
         public int Update(Event _event)
         {
             return _eventLogic.Update(_event);
         }
 
         //Get Single Event Details
-        [HttpGet("getevent/{id}")]
-        [Route("api/Event/Details/{id}")]
+        [HttpGet("getevents/{id}")]
+        [Route("api/Events/Details/{id}")]
         public Event Details(int id)
         {
             return _eventLogic.Details(id);
@@ -53,7 +53,7 @@ namespace HoneyBadgers._0.Controllers
 
         //Delete Event from records
         [HttpDelete]
-        [Route("api/Event/Delete")]
+        [Route("api/Events/Delete")]
         public int Delete(int id)
         {
             return _eventLogic.Delete(id);
