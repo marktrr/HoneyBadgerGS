@@ -12,7 +12,6 @@ namespace HoneyBadgers._0.Controllers
     [ApiController]
     public class EventsController : ControllerBase
     {
-        private readonly HoneyBadgerDBContext _context;
         private IEventLogic _eventLogic;
 
         public EventsController(IEventLogic eventLogic)
