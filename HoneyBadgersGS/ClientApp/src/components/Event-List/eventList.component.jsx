@@ -1,15 +1,11 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
 import './eventList.component.css';
-
-function EventList(props)
-{
-    const events = props.events;
-    const eventItems = events.map((events) =>
-    <li>{events}</li>
-    );
-    return (
-        <ul>{eventItems}</ul>
-    );
-    
-}
+import { EventCard } from '../Event-Card/event-card.component';
+//Exports event list from cards
+export const EventList = props =>(
+    <div className='card-list'>
+        {props.events.map(events=>(
+            <EventCard key={events.id} events={events}/>
+        ))}
+    </div>
+);
