@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using HoneyBadgers._0.BusinessLogic;
 using HoneyBadgers._0.Models;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
@@ -12,106 +13,51 @@ namespace HoneyBadgers._0.Controllers
     public class EventsController : ControllerBase
     {
         private readonly HoneyBadgerDBContext _context;
+        private IEventLogic _eventLogic;
 
-        public EventsController(HoneyBadgerDBContext context)
+        public EventsController(IEventLogic eventLogic)
         {
-            _context = context;
+            _eventLogic = eventLogic;
         }
 
-        // GET: api/Events
-        [HttpGet]
-        public async Task<ActionResult<IEnumerable<Event>>> GetEvent()
+
+        [HttpGet("getevent")]
+        [Route("api/Event")]
+        public IEnumerable<Event> GetEvent()
         {
-            return await _context.Event.ToListAsync();
+            return _eventLogic.GetAll();
         }
 
-        // GET: api/Events/5
-        [HttpGet("{id}")]
-        public async Task<ActionResult<Event>> GetEvent(int id)
-        {
-            var @event = await _context.Event.FindAsync(id);
-
-            if (@event == null)
-            {
-                return NotFound();
-            }
-
-            return @event;
-        }
-
-        // PUT: api/Events/5
-        [HttpPut("{id}")]
-        public async Task<IActionResult> PutEvent(int id, Event @event)
-        {
-            if (id != @event.EventId)
-            {
-                return BadRequest();
-            }
-
-            _context.Entry(@event).State = EntityState.Modified;
-
-            try
-            {
-                await _context.SaveChangesAsync();
-            }
-            catch (DbUpdateConcurrencyException)
-            {
-                if (!EventExists(id))
-                {
-                    return NotFound();
-                }
-                else
-                {
-                    throw;
-                }
-            }
-
-            return NoContent();
-        }
-
-        // POST: api/Events
+        //Creates new event instance
         [HttpPost]
-        public async Task<ActionResult<Event>> PostEvent(Event @event)
+        [Route("api/Event/Add")]
+        public int Add(Event _event)
         {
-            _context.Event.Add(@event);
-            try
-            {
-                await _context.SaveChangesAsync();
-            }
-            catch (DbUpdateException)
-            {
-                if (EventExists(@event.EventId))
-                {
-                    return Conflict();
-                }
-                else
-                {
-                    throw;
-                }
-            }
-
-            return CreatedAtAction("GetEvent", new { id = @event.EventId }, @event);
+            return _eventLogic.Add(_event);
         }
 
-        // DELETE: api/Events/5
-        [HttpDelete("{id}")]
-        public async Task<ActionResult<Event>> DeleteEvent(int id)
+        //Updates event in record
+        [HttpPut]
+        [Route("api/Event/Update")]
+        public int Update(Event _event)
         {
-            var @event = await _context.Event.FindAsync(id);
-            if (@event == null)
-            {
-                return NotFound();
-            }
-
-            _context.Event.Remove(@event);
-            await _context.SaveChangesAsync();
-
-            return @event;
+            return _eventLogic.Update(_event);
         }
 
-        private bool EventExists(int id)
+        //Get Single Event Details
+        [HttpGet("getevent/{id}")]
+        [Route("api/Event/Details/{id}")]
+        public Event Details(int id)
         {
-            return _context.Event.Any(e => e.EventId == id);
+            return _eventLogic.Details(id);
+        }
+
+        //Delete Event from records
+        [HttpDelete]
+        [Route("api/Event/Delete")]
+        public int Delete(int id)
+        {
+            return _eventLogic.Delete(id);
         }
     }
 }
