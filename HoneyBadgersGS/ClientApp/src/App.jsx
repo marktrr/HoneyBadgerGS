@@ -22,7 +22,7 @@ export default class App extends Component {
         <Route path='/cart' component={Cart} />
         <Route exact path='/Details/:id' component={GameDetails} />
         <Route exact path='/Profile' component={Profile} />
-        <Route exact path='/Events' component={Events}/>        
+        <Route exact path='/Events' component={Event}/>        
         <Route path={ApplicationPaths.ApiAuthorizationPrefix} component={ApiAuthorizationRoutes} />
       </Layout>
     );
