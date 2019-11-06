@@ -3,21 +3,23 @@ import './Cart.css';
 import CartDetail from './CartDetail';
 
 export class Cart extends Component {
-    constructor() {
-        super();
+    constructor(props) {
+        super(props);
         this.state = {
             cartItems: []
         };
+
     }
+
     
 
     componentDidMount() {
         let items = sessionStorage.getItem("cart");
         if (items) {
-            console.log(true);
             items = JSON.parse(items);
             this.setState({ cartItems: items });
-        } 
+        }
+       
     }
     render() {
         
@@ -37,7 +39,7 @@ export class Cart extends Component {
                     </div>
 
                     {this.state.cartItems && this.state.cartItems.map(item =>
-                        (<CartDetail key={item.itemID} itemID={item.itemID} itemImage={item.itemImage} itemName={item.itemName} price={item.price} />))}
+                        (<CartDetail key={item.itemID} itemID={item.itemID} itemImage={item.itemImage} itemName={item.itemName} price={item.price}/>))}
                    
                     <div class="totals">
                         <div class="totals-item">

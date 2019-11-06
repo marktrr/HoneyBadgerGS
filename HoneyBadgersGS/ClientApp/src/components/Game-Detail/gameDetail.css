@@ -61,3 +61,9 @@ h1{
 .card-img-top{
     margin-bottom:5%;
 }
+
+.game-price {
+    text-align: center;
+    color: skyblue;
+    font-weight: bold;
+}

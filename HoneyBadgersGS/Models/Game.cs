@@ -25,6 +25,8 @@ namespace HoneyBadgers._0.Models
         public DateTime? ReleaseDate { get; set; }
         public string GameArtUrl { get; set; }
 
+        public double price { get; set; }
+
         public virtual Wishlist Wishlist { get; set; }
         public virtual ICollection<Cart> Cart { get; set; }
         public virtual ICollection<Rating> Rating { get; set; }
