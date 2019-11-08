@@ -4,12 +4,13 @@ import { Layout } from './components/Layout';
 import { Home } from './components/Home';
 import { Profile } from './components/Profile/profile.component';
 import { GameDetails } from './components/Game-Detail/gameDetails.component';
-import { Cart } from './components/Cart';
+import { Cart } from './components/Cart/Cart';
 import { Events} from './components/Events';
 import AuthorizeRoute from './components/api-authorization/AuthorizeRoute';
 import ApiAuthorizationRoutes from './components/api-authorization/ApiAuthorizationRoutes';
 import { ApplicationPaths } from './components/api-authorization/ApiAuthorizationConstants';
 import './custom.css'
+import { Wishlist } from './components/Wishlist/WishList';
 
 export default class App extends Component {
   static displayName = App.name;
@@ -22,7 +23,8 @@ export default class App extends Component {
         <Route path='/cart' component={Cart} />
         <Route exact path='/Details/:id' component={GameDetails} />
         <Route exact path='/Profile' component={Profile} />
-        <Route exact path='/Events' component={Event}/>        
+        <Route exact path='/Events' component={Event} />
+        <Route exact path='/Wishlist' component={Wishlist}/>    
         <Route path={ApplicationPaths.ApiAuthorizationPrefix} component={ApiAuthorizationRoutes} />
       </Layout>
     );

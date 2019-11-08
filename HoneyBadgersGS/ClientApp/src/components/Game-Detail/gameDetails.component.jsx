@@ -32,7 +32,7 @@ export class GameDetails extends Component{
                     <img className='card-img-top' alt='game image' src={this.state.gameDetails.gameArtUrl}></img>
                     <p className="game-price">${this.state.gameDetails.price}</p>
                     <button className="btn_AddCart" onClick={() => { addElementToCart(this.state.gameDetails) }}>Add To Cart</button>
-                    <button className="btn_AddWish">Add To WishList</button>
+                    <button className="btn_AddWish" onClick={() => { addElementToWishlist(this.state.gameDetails) }}>Add To WishList</button>
                 </div>
 
                 <div className="description">  
@@ -67,5 +67,30 @@ function addElementToCart(stuff) {
     cartItems.push(item);
     //save the cart element to local storage where it can be extracted later
     sessionStorage.setItem("cart", JSON.stringify(cartItems));
+}
+
+function addElementToWishlist(stuff) {
+    //create the cart item 
+    let wishlist = [];
+    var item = {
+        itemID: stuff.gameId,
+        itemImage: stuff.gameArtUrl,
+        itemName: stuff.gameName,
+        price: stuff.price
+    };
+
+    if (sessionStorage.getItem('wishlist')) {
+        wishlist = JSON.parse(sessionStorage.getItem('wishlist'));
+
+        for (var i = 0; i < wishlist.length; i++) {
+            if (wishlist[i].itemID == stuff.gameId) {
+                alert("You already added this item on the list, please do modify your Wishlist!");
+            }
+        }
+    }
+    //add the current item onto the cart list.
+    wishlist.push(item);
+    //save the cart element to local storage where it can be extracted later
+    sessionStorage.setItem("wishlist", JSON.stringify(wishlist));
 }
 
