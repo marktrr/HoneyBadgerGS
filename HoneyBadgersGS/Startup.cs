@@ -63,7 +63,8 @@ namespace HoneyBadgers._0
 			//Friend List
 			services.AddTransient<IFriendListDal, FriendListDal>();
 			services.AddTransient<IFriendListLogic, FriendListLogic>();
-
+			//Account
+			//services.AddTransient<IAccountLogic, AccountLogic>();
 			
 			services.AddControllersWithViews();
 			services.AddRazorPages();

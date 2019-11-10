@@ -7,7 +7,7 @@ namespace HoneyBadgers._0.DataLayers
     {
         IEnumerable<Profile> GetAll();
         bool Add(Profile profile);
-        int Update(Profile profile);
+        bool Update(Profile profile);
         Profile GetData(string id);
         int Delete(string id);
     }

@@ -19,24 +19,22 @@ namespace HoneyBadgers._0.Controllers
 
 		// GET: api/Profiles
 		[HttpGet]
-		[Route("api/Profile")]
 		public IEnumerable<Profile> GetAllProfiles()
 		{
 			return _profileLogic.GetAll();
 		}
 
 		//[Bind("ProfileId, Gender, Email, Dob, ActualName, DisplayName")]
-		[HttpPost("Add")]
-		[Route("api/Profiles/Add")]
+		[HttpPost("add/")]
 		public bool Add([FromBody] Profile profile)
-        {
-            return _profileLogic.Add(profile);
-        }
+		{
+			return _profileLogic.Add(profile);
+			//return true;
+		}
 
-        //Update Profiles in records
-        [HttpPut]
-        [Route("api/Profile/Update")]
-        public int Update(Profile profile)
+		//Update Profiles in records
+		[HttpPut("update/")]
+        public bool Update([FromBody]Profile profile)
         {
             return _profileLogic.Update(profile);
         }

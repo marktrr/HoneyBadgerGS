@@ -1,5 +1,9 @@
 import React, { Component } from 'react';
+import { Redirect } from 'react-router-dom';
+import axios from 'axios';
+import moment from 'moment';
 import './profile.component.css';
+
 
 export class Profile extends Component {
     constructor() {
@@ -8,57 +12,111 @@ export class Profile extends Component {
             value: [],
             profile: [],
             profile_userName: '',
-            profile_dob: new Date(),
-            isOn: true
+            profile_dob: '',
+            profile_loaded: false,
+            checked_promo: true,
+            date: new Date()
         };
         //used to allow modification the form and to deal with form submissions
         this.handleSubmit = this.handleSubmit.bind(this);
         this.handleChange = this.handleChange.bind(this);
+        this.handleDob = this.handleDob.bind(this);
     }
+
     //load data if it exists
     componentDidMount() {
         let profile = document.cookie.match(new RegExp('(^| )' + 'userId' + '=([^;]+)'));
 
+        //splits the cookie to get the login id and the userName
         profile = profile[2].split(',');
         this.setState({ profile: profile });
-        this.setState({ profile_userName: profile[1] })
+        this.setState({ profile_userName: profile[1] });
 
+        //pulls in the data from the backend with the id
         fetch("https://localhost:5001/api/profiles/getprofiles/" + profile[0])
-            .then(response => response.json())
-            .then(data => this.setState({ value: data })).then(res => console.log(this.state.value));
+            .then(res => res.json())
+            .then(data => this.setState({ value: data })).then(res => console.log(res));
+        //if the value is not empty set the profile_loaded to true.
+        
+        if (this.state.value != null) {
+            this.setState({ profile_loaded: true });
+            //create the var hold the formatted date stored in the state : value.
+            //store the formatted date inside date state.
+            let birthDate = moment(this.state.value.dob).format('YYYY-MM-DD');
+            this.setState({ date: birthDate });
+
+            //set the state for the promo checkbox.
+            if (this.state.value.Promotion === 1) {
+                this.setState({ checked_promo: true });
+            }
+            else {
+                this.setState({ checked_promo: false });
+            }
+        }
+        else {
+            this.setState({ profile_loaded: false });
+        }
+
     }
+     
     //allow modifying the data
     handleChange(event) {
         this.setState({ value: event.target.value, profile_userName: event.target.value });
     }
+
+    //handles the changes made to the checkbox.
+    handleCheck = (e) => {
+        this.setState({ checked_promo: !this.state.checked_promo });
+    }
+
+    //hnadles the changes made to the date input.
+    handleDob(event) {
+        this.setState({
+            date: event.target.value
+        });
+    }
+
     //click handler submit the update
     handleSubmit(event) {
         //prevents the default event from happening 
         event.preventDefault();
 
-        var date = new Date(this.dob.value);
-        var promoValue = false;
+       
+        //creates the profiel object.
+        let profileObject = {
+            //id, display name, actual name, gender, dob, email, promo
+            ProfileId: this.state.profile[0],  
+            gender: this.gender.value,
+            email: this.email.value,
+            userAddress: this.user_Address.value,
+            dob: this.dob.value,
+            Promotion: this.state.checked_promo,
+            ActualName: this.actual_name.value,
+            DisplayName: this.display_name.value,   
+        };
+        //if the object is null... it will create an empty object.
+        if (profileObject === null) {
 
-        if (this.promo.value === 'on') {
-            promoValue = true;
+            let profileObject = {
+                //id, display name, actual name, gender, dob, email, promo
+                ProfileId: this.state.profile_id,
+                DisplayName: null,
+                ActualName: null,
+                gender: null,
+                dob: null,
+                Promotion: false,
+                email: null,
+            };
+        }
+        //if the profile was not loaded successfully, create a new profile object with the fields
+        if (this.state.profile_loaded != true) {
+            createProfile(profileObject);
         }
         else {
-            promoValue = false;
+            // use put to update the profile
+            updateProfile(profileObject);      
         }
-
-        const profileObject = {
-            //id, display name, actual name, gender, dob, email, promo
-            ProfileId: this.state.profile_id,
-            DisplayName: this.display_name.value,
-            ActualName: this.actual_name.value,
-            gender: this.gender.value,
-            dob: this.dob.value,
-            email: this.email.value,
-        };
-        var myObject = JSON.stringify(myObject);
-        createProfile(myObject);
-    }
-
+    }   
     render() {
         return (
             <div className="profile-form">
@@ -71,19 +129,23 @@ export class Profile extends Component {
                     <input type="text" name="actual name" value={this.state.value.actualName} onChange={this.handleChange} ref={(actual_name) => this.actual_name = actual_name}></input>
                     <label for="gender">Gender:</label>
                     <input type="text" name="gender" value={this.state.value.gender} onChange={this.handleChange} ref={(gender) => this.gender = gender}></input>
+                    <label for="Address">Address:</label>
+                    <input type="text" name="Address" value={this.state.value.userAddress} ref={(user_Address) => this.user_Address = user_Address} onChange={this.handleChange}></input>
+
                     <label for="birth date">Date of Birth:</label>
-                    <input type="date" name="birth date" value={this.state.value.dob} onChange={this.handleChange} ref={(dob) => this.dob = dob}></input>
+                    <input type="date" name="birth date" value={this.state.date} onChange={this.handleDob} ref={(dob) => this.dob = dob}></input>
+
                     <label for="email">Email:</label>
                     <input type="text" name="email" value={this.state.value.email} onChange={this.handleChange} ref={(email) => this.email = email}></input>
-                    <label for="credit-card">Credit Card</label>
-                    <input type="number" name="credit-card" />
+
+                    <label for="credit-card" hidden>Credit Card</label>
+                    <input type="number" name="credit-card" hidden />
 
                     <div id='checkbox-items'>
                         <label class="checkbox-label" for="promo">Receive Promotions from HBGS?
-                            <input class="checkbox-input" type="checkbox" name="promo" value={this.state.value.promo} onChange={this.handleChange} ref={(promo) => this.promo = promo}>
-                            </input>
-                        </label><br/>
-                        <label class="checkbox-label" for="physical-book">Physical Book<input class="checkbox-input" type="checkbox" name="physical-book" /></label>
+                            <input class="checkbox-input" type="checkbox" name="promo" DeafaultChecked={this.state.checked_promo} onChange={this.handleCheck} ref={(promo) => this.promo = promo}></input>
+                        </label><br />
+                        <label class="checkbox-label" for="physical-book"hidden>Physical Book<input class="checkbox-input" type="checkbox" name="physical-book" hidden /></label>
                     </div>
                     <input type="submit" value="submit" />
                 </form>
@@ -92,26 +154,31 @@ export class Profile extends Component {
     }
 }
 
-//used to search for an id to update the database record, but currently don't know how to capture an object in the controller.
+//used to add a new profile to the database(only used if an empty object is returned from the backend)
 export function createProfile(data) {
-    fetch("https://localhost:5001/api/Profiles/Add", {
-        method: 'POST',
-        header: {
-            'Accept': 'application/json',
-            'Content-Type': 'application/json; charset=utf-8'
-        },
-        body: data
+    const config = {
+        headers: {
+            'Content-Type': 'application/json'
+        }
+    };
+    axios.post("https://localhost:5001/api/profiles/add/", data, config).then(res => {
+        alert('Successfully added your profile');
     });
+    //redirects the view to display the games
+    return window.location.replace('/');
+}
+//function is used to update a profile if it exists in the database.
+export  function updateProfile(data) {
+
+    const config = {
+            headers: {
+                'Content-Type': 'application/json'
+            }
+        };
+    axios.put(`https://localhost:5001/api/profiles/update/`, data, config).then(res => {
+        alert('Successfully updated your profile');
+    });
+    return window.location.replace('/');
 }
 
 
-//export function createProfile(data) {
-//    var http = new XMLHttpRequest();
-//    http.open('POST', "https://localhost:5001/api/Profile/Add", true);
-//    http.setRequestHeader('Content-type', 'application/json');
-//    http.send(JSON.stringify(data));
-//    http.onload = function () {
-//        alert(http.requestText)
-//    }
-
-//}

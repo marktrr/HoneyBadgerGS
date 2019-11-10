@@ -25,7 +25,7 @@ namespace HoneyBadgers._0.BusinessLogic
 			return _profileDal.Add(profile);
 		}
 
-		public int Update(Profile profile)
+		public bool Update(Profile profile)
         {
             return _profileDal.Update(profile);
         }

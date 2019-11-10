@@ -19,7 +19,7 @@ export class GameDetails extends Component{
     componentDidMount() {
 
         let gameId = this.props.location.pathname.split('/').pop();
-        fetch("https://localhost:44307/api/games/getgames/" + gameId)
+        fetch("https://localhost:5001/api/games/getgames/" + gameId)
             .then(response => response.json())
             .then(data => this.setState({ gameDetails: data }));
         console.log(gameId);
@@ -68,6 +68,6 @@ function addElementToCart(stuff) {
     cartItems.push(item);
     //save the cart element to local storage where it can be extracted later
     sessionStorage.setItem("cart", JSON.stringify(cartItems));
-    return alert("Item as been added to the cart");
+    return alert("Item has been added to the cart");
 }
 
