@@ -1,4 +1,5 @@
 ﻿import React, { Component } from 'react';
+import { PopUp } from './addToCartPopUp';
 import './gameDetail.css';
 
 export class GameDetails extends Component{
@@ -67,5 +68,6 @@ function addElementToCart(stuff) {
     cartItems.push(item);
     //save the cart element to local storage where it can be extracted later
     sessionStorage.setItem("cart", JSON.stringify(cartItems));
+    return alert("Item as been added to the cart");
 }
 

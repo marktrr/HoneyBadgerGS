@@ -20,24 +20,9 @@ namespace HoneyBadgers._0.BusinessLogic
             return _profileDal.GetAll();
         }
 
-		public bool Add(string id)
+		public bool Add(Profile profile)
 		{
-			Guid _profId = new Guid();
-			if (string.IsNullOrWhiteSpace(id))
-			{
-				throw new ArgumentNullException("profile id is empty");
-			}
-			if (!Guid.TryParse(id, out _profId))
-			{
-				throw new Exception("profile id is invalid");
-			}
-            //create a new profile obj and provide the updated values from the body being sent.
-            Profile result = new Profile
-            {
-                ProfileId = _profId.ToString()
-            };
-
-            return _profileDal.Add(result);
+			return _profileDal.Add(profile);
 		}
 
 		public int Update(Profile profile)

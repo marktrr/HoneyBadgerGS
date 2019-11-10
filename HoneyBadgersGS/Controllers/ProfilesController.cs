@@ -1,35 +1,36 @@
 ﻿using System.Collections.Generic;
 using HoneyBadgers._0.BusinessLogic;
 using HoneyBadgers._0.Models;
+using Microsoft.AspNetCore.Cors;
 using Microsoft.AspNetCore.Mvc;
 
 namespace HoneyBadgers._0.Controllers
 {
-    [Route("api/[controller]")]
-    [ApiController]
-    public class ProfilesController : ControllerBase
-    {
-        private IProfileLogic _profileLogic;
+	[Route("api/[controller]")]
+	[ApiController]
+	public class ProfilesController : ControllerBase
+	{
+		private IProfileLogic _profileLogic;
 
-        public ProfilesController(IProfileLogic profileLogic)
-        {
-            _profileLogic = profileLogic;
-        }
+		public ProfilesController(IProfileLogic profileLogic)
+		{
+			_profileLogic = profileLogic;
+		}
 
-        // GET: api/Profiles
-        [HttpGet]
-        [Route("api/Profile")]
-        public IEnumerable<Profile> GetAllProfiles()
-        {
-            return _profileLogic.GetAll();
-        }
+		// GET: api/Profiles
+		[HttpGet]
+		[Route("api/Profile")]
+		public IEnumerable<Profile> GetAllProfiles()
+		{
+			return _profileLogic.GetAll();
+		}
 
-        //Add Single Profile to records
-        [HttpPost]
-        [Route("api/Profile/Add")]
-        public bool Add(string id)
+		//[Bind("ProfileId, Gender, Email, Dob, ActualName, DisplayName")]
+		[HttpPost("Add")]
+		[Route("api/Profiles/Add")]
+		public bool Add([FromBody] Profile profile)
         {
-            return _profileLogic.Add(id);
+            return _profileLogic.Add(profile);
         }
 
         //Update Profiles in records
@@ -39,7 +40,6 @@ namespace HoneyBadgers._0.Controllers
         {
             return _profileLogic.Update(profile);
         }
-
         //Get single profile details
         [HttpGet("getprofiles/{id}")]
         [Route("api/Profile/Details/{id}")]
@@ -47,7 +47,6 @@ namespace HoneyBadgers._0.Controllers
         {
             return _profileLogic.Details(id);
         }
-
         //Delete game from records
         [HttpDelete]
         [Route("api/Profile/Delete")]

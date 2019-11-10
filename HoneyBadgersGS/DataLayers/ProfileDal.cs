@@ -18,7 +18,6 @@ namespace HoneyBadgers._0.DataLayers
         {
             return _db.Profile.ToList();
         }
-
         public bool Add(Profile profile)
         {
             _db.Profile.Add(profile);

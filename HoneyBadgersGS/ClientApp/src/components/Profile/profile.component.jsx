@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import './profile.component.css';
-import { createRestTypeNode } from 'typescript';
 
 export class Profile extends Component {
     constructor() {
@@ -24,7 +23,7 @@ export class Profile extends Component {
         this.setState({ profile: profile });
         this.setState({ profile_userName: profile[1] })
 
-        fetch("https://localhost:5001/api/profile/" + profile[0])
+        fetch("https://localhost:5001/api/profiles/getprofiles/" + profile[0])
             .then(response => response.json())
             .then(data => this.setState({ value: data })).then(res => console.log(this.state.value));
     }
@@ -53,18 +52,18 @@ export class Profile extends Component {
             DisplayName: this.display_name.value,
             ActualName: this.actual_name.value,
             gender: this.gender.value,
-            //dob: dateCal,
+            dob: this.dob.value,
             email: this.email.value,
         };
-
-        createProfile(profileObject, this.state.profile[0]);
+        var myObject = JSON.stringify(myObject);
+        createProfile(myObject);
     }
 
     render() {
         return (
             <div className="profile-form">
                 <h2>User Profile</h2>
-                <form onSubmit={this.handleSubmit}>
+                <form method='POST' onSubmit={this.handleSubmit}>
                     <input type="text" name="id" value={this.state.value.displayid} ref={(display_id) => this.display_id = display_id} hidden></input>
                     <label for="display name">Display Name:</label>
                     <input type="text" name="display name" value={this.state.value.displayName} ref={(display_name) => this.display_name = display_name} onChange={this.handleChange}></input>
@@ -94,13 +93,25 @@ export class Profile extends Component {
 }
 
 //used to search for an id to update the database record, but currently don't know how to capture an object in the controller.
-export function createProfile(data, id) {
-    //alert(id);
-    fetch("https://localhost:5001/api/profile/add/" + id, {
+export function createProfile(data) {
+    fetch("https://localhost:5001/api/Profiles/Add", {
         method: 'POST',
-        header: { 'content-type': 'application/json' },
-        body: JSON.stringify(data)
-    }).then(function (response) {
-        return response.json();
+        header: {
+            'Accept': 'application/json',
+            'Content-Type': 'application/json; charset=utf-8'
+        },
+        body: data
     });
 }
+
+
+//export function createProfile(data) {
+//    var http = new XMLHttpRequest();
+//    http.open('POST', "https://localhost:5001/api/Profile/Add", true);
+//    http.setRequestHeader('Content-type', 'application/json');
+//    http.send(JSON.stringify(data));
+//    http.onload = function () {
+//        alert(http.requestText)
+//    }
+
+//}
