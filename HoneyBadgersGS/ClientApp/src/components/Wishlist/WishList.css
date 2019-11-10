@@ -1,0 +1,33 @@
+﻿.wishlist {
+    margin-bottom: 20px;
+    padding-bottom: 10px;
+    border-bottom: 1px solid #eee;
+    color: #aaa;
+}
+
+    .wishlist .item-title {
+        display: inline;
+        margin: 5px 20px 5px 100px;
+        font-family: 'HelveticaNeue-Medium', 'Helvetica Neue Medium';
+        font-weight: bold;
+    }
+
+    .wishlist .item-price {
+        display: inline;
+        font-family: 'HelveticaNeue-Medium', 'Helvetica Neue Medium';
+        font-weight: bold;
+    }
+
+    .wishlist .item-image {
+        text-align: left;
+        display: inline;
+    }
+
+        .wishlist .item-image img {
+            width: 300px;
+        }
+
+    .wishlist .remove-item {
+        float: right;
+        background-color: red;
+    }
