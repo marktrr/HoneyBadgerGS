@@ -1,5 +1,4 @@
 ﻿import React from 'react';
-import CartDetail from './CartDetail';
 import { Link } from 'react-router-dom';
 
 //create a stateless component to display the shopping cart items
