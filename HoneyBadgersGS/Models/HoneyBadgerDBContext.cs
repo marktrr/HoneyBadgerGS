@@ -431,9 +431,6 @@ namespace HoneyBadgers._0.Models
 
             modelBuilder.Entity<Wishlist>(entity =>
             {
-                entity.Property(e => e.WishlistId)
-                    .HasColumnName("wishlistID")
-                    .ValueGeneratedNever();
 
                 entity.Property(e => e.AccountId).HasColumnName("accountID");
 
