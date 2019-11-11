@@ -5,12 +5,13 @@ import { Home } from './components/Home';
 import { Profile } from './components/Profile/profile.component';
 import { FriendList } from './components/Friend-List/friendList-Component';
 import { GameDetails } from './components/Game-Detail/gameDetails.component';
-import { Cart } from './components/Cart';
+import { Cart } from './components/Cart/Cart';
 import AuthorizeRoute from './components/api-authorization/AuthorizeRoute';
 import ApiAuthorizationRoutes from './components/api-authorization/ApiAuthorizationRoutes';
 import { ApplicationPaths } from './components/api-authorization/ApiAuthorizationConstants';
 import './custom.css'
 import { Wishlist } from './components/Wishlist/WishList';
+import Checkout from './components/Cart/Checkout';
 
 export default class App extends Component {
   static displayName = App.name;
@@ -22,7 +23,9 @@ export default class App extends Component {
         <Route exact path='/gameDetail' component={GameDetails} />
         <Route path='/cart' component={Cart} />
         <Route exact path='/Details/:id' component={GameDetails} />
+        <Route exact path='/Checkout' component={Checkout} />
         <Route exact path='/Profile' component={Profile} />
+        <Route path='/Wishlist' component={Wishlist} />   
         <Route exact path='/FriendList' component={FriendList} />
         <Route path={ApplicationPaths.ApiAuthorizationPrefix} component={ApiAuthorizationRoutes} />
       </Layout>

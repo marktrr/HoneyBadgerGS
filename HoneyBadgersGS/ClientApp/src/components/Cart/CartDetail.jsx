@@ -8,8 +8,8 @@ export default class CartDetail extends Component {
             itemImage: this.props.itemImage,
             itemName: this.props.itemName,
             price: this.props.price,
-            quantity: 1,
-            total: this.props.price
+            quantity: this.props.quantity,
+            total: this.props.price * this.props.quantity
         }
 
         this.quantityCallBack = this.quantityCallBack.bind(this);
@@ -20,6 +20,22 @@ export default class CartDetail extends Component {
             quantity: changedQuantity,
             total: this.state.price * changedQuantity
         })
+        var updateItem = {
+            itemID: this.state.itemID,
+            itemImage: this.state.itemImage,
+            itemName: this.state.itemName,
+            price: this.state.price,
+            quantity: this.state.quantity,
+            total: this.state.total
+        }
+        let retrieveArray = JSON.parse(sessionStorage.getItem('cart'));
+        for (var i = 0; i < retrieveArray.length; i++) {
+            if (retrieveArray[i].itemID == updateItem.itemID) {
+                retrieveArray.splice(i, 1);
+            }
+        }
+        retrieveArray.push(updateItem);
+        sessionStorage.setItem('cart', JSON.stringify(retrieveArray));
     }
 
     render() {

@@ -1,33 +1,31 @@
 ﻿.wishlist {
-    margin-bottom: 20px;
-    padding-bottom: 10px;
-    border-bottom: 1px solid #eee;
-    color: #aaa;
+    display: inline-block;
+    width: 35%;
+    height: 100%;
+    background-color: #10191D;
+    margin: 0 5em 5em 0;
+    overflow: inherit;
 }
 
-    .wishlist .item-title {
-        display: inline;
-        margin: 5px 20px 5px 100px;
-        font-family: 'HelveticaNeue-Medium', 'Helvetica Neue Medium';
-        font-weight: bold;
-    }
+.item-image {
+    width: 390px;
+}
 
-    .wishlist .item-price {
-        display: inline;
-        font-family: 'HelveticaNeue-Medium', 'Helvetica Neue Medium';
-        font-weight: bold;
-    }
+.remove-item {
+    font-weight: bold;
+    background-color: red;
+    color: white;
+    border: none;
+    border-radius: 0.2em;
+    margin-bottom: 5%;
+    margin-left: 5%;
+    margin-right: 5%;
+    padding: 0.5em 3em;
+    width: 90%;
+}
 
-    .wishlist .item-image {
-        text-align: left;
-        display: inline;
-    }
-
-        .wishlist .item-image img {
-            width: 300px;
-        }
-
-    .wishlist .remove-item {
-        float: right;
-        background-color: red;
-    }
+.item-title, .item-price {
+    text-align: center;
+    color: darkorange;
+    font-weight: bold;
+}

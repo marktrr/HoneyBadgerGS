@@ -1,5 +1,4 @@
 ﻿import React, { Component } from 'react';
-import './WishList.css';
 import ListDetail from './ListDetail'
 
 export class Wishlist extends Component {

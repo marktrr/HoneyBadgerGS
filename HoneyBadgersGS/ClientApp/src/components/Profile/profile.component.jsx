@@ -29,6 +29,7 @@ export class Profile extends Component {
 
         //splits the cookie to get the login id and the userName
         profile = profile[2].split(',');
+        console.log(profile[0]);
         this.setState({ profile: profile });
         this.setState({ profile_userName: profile[1] });
 

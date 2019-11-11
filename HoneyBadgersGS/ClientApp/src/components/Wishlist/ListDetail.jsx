@@ -1,4 +1,6 @@
 ﻿import React, { Component } from 'react';
+import axios from 'axios';
+import './WishList.css';
 
 export default class ListDetail extends Component {
     constructor(props) {
@@ -13,15 +15,11 @@ export default class ListDetail extends Component {
 
     render() {
         return (
-            <div className="wishlist">
-                <div className="item-details">
-                    <div className="item-image">
-                        <img src={this.state.itemImage}></img>
-                    </div>
-                    <div className="item-title">{this.state.itemName}</div>
-                    <div className="item-price">Price: {this.state.price}</div>
-                    <button className="remove-item" onClick={() => { removeItem(this.state.itemID) }}>Remove</button>
-                </div>
+            <div className="wishlist">              
+                <img className="item-image" src={this.state.itemImage}></img>
+                <p className="item-title">{this.state.itemName}</p>
+                <p className="item-price">Price: {this.state.price}</p>
+                <button className="remove-item" onClick={() => { removeItem(this.state.itemID) }}>Remove</button>       
             </div>
         );
     }
@@ -32,10 +30,25 @@ function removeItem(gameId) {
 
     for (var i = 0; i < retrieveArray.length; i++) {
         if (retrieveArray[i].itemID == gameId) {
-            retrieveArray.splice(i, 1);
+            var id = parseInt(retrieveArray[i].wishlistId);
+            removeFromDB(id); // remove item from DB
+            retrieveArray.splice(i, 1); // remove item from sessionStorage
         }
     }
     sessionStorage.setItem('wishlist', JSON.stringify(retrieveArray));
-    //console.log(JSON.parse(sessionStorage.getItem('wishlist')).length);
+
+    //if wishlist empty, remove from sessionStorage.
+    if (JSON.parse(sessionStorage.getItem('wishlist')).length == 0) {
+        sessionStorage.removeItem('wishlist');
+    }
     window.location.reload();
+  
+}
+
+export function removeFromDB(id) {
+    //remove from db
+    axios.delete("https://localhost:5001/api/Wishlists/" + id).then(res => {
+        console.log(res);
+        console.log(res.data);
+    });
 }
