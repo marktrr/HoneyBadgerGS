@@ -29,21 +29,7 @@ export class Cart extends Component {
 
                     {this.state.cartItems && this.state.cartItems.map(item =>
                         (<CartDetail key={item.itemID} itemID={item.itemID} itemImage={item.itemImage} itemName={item.itemName} price={item.price} quantity={item.quantity} total={item.total}/>))}
-                   
-                    <div className="totals">
-                        <div className="totals-item">
-                            <label>Subtotal</label>
-                            <div className="totals-value" id="cart-subtotal"></div>
-                        </div>
-                        <div className="totals-item">
-                            <label>Tax (5%)</label>
-                            <div className="totals-value" id="cart-tax">tax here</div>
-                        </div>
-                        <div className="totals-item totals-item-total">
-                            <label>Grand Total</label>
-                            <div className="totals-value" id="cart-total">tatal here</div>
-                        </div>
-                    </div>
+      
                     <Link to="/Checkout">
                         <button className="checkout">Checkout</button>
                     </Link>
