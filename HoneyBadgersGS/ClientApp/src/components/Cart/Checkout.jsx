@@ -66,13 +66,24 @@ class Checkout extends React.Component {
                         <div className="totals-value" id="cart-total">{totalGrand}</div>
                     </div>
                     <Link to="/Shipment">
-                        <button className="shipment">Confirm Order</button>
+                        <button onClick={() => { saveState(subtotal, totalTax, totalGrand) }} className="shipment">Confirm Order</button>
                     </Link>
-                    <button onClick={() => { this.props.history.goBack() }} className="shipment">Back To Order</button>
+                    <button onClick={() => { this.props.history.goBack()}} className="shipment">Back To Order</button>
                 </div>
             </div>
         )
     }
+}
+
+function saveState(subtotal, tax, total) {
+    let totalList = [];
+    var newItem = {
+        subTotal: subtotal,
+        totalTax: tax,
+        totalGrand: total
+    }
+    totalList.push(newItem);
+    sessionStorage.setItem('cartTotal', JSON.stringify(totalList));
 }
 
 class CheckoutDetail extends React.Component {

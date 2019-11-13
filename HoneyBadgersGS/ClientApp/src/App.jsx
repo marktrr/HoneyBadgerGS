@@ -13,6 +13,7 @@ import './custom.css'
 import { Wishlist } from './components/Wishlist/WishList';
 import Checkout from './components/Cart/Checkout';
 import Shipment from './components/Cart/Shipment';
+import Order from './components/Cart/Orders';
 export default class App extends Component {
   static displayName = App.name;
 
@@ -24,6 +25,7 @@ export default class App extends Component {
         <Route path='/cart' component={Cart} />
         <Route exact path='/Details/:id' component={GameDetails} />
         <Route exact path='/Checkout' component={Checkout} />
+        <Route exact path='/OrderCompleted' component={Order} />
         <Route exact path='/Profile' component={Profile} />
         <Route path='/Wishlist' component={Wishlist} />
         <Route path='/Shipment' component={Shipment} />
