@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { GameList } from './Game-List/gameList.component';
-import './home.css';
+import './Home.css';
 
 export class Home extends Component {
 
