@@ -35,6 +35,8 @@ namespace HoneyBadgers._0.Models
         public virtual DbSet<Sales> Sales { get; set; }
         public virtual DbSet<Wishlist> Wishlist { get; set; }
 
+        public virtual DbSet<Order> Order { get; set; }
+
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
             if (!optionsBuilder.IsConfigured)
@@ -460,6 +462,15 @@ namespace HoneyBadgers._0.Models
                     .WithMany(p => p.Wishlist)
                     .HasForeignKey(d => d.AccountId)
                     .HasConstraintName("FK_wishlist_accountID");
+            });
+
+            modelBuilder.Entity<Order>(entity =>
+            {
+
+                entity.Property(e => e.orderID).HasColumnName("orderID");
+                entity.Property(e => e.customerInfo).HasColumnName("customerInfo").HasColumnType("text"); 
+                entity.Property(e => e.itemInfo).HasColumnName("itemInfo").HasColumnType("text"); 
+
             });
 
             OnModelCreatingPartial(modelBuilder);
