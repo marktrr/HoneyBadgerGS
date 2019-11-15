@@ -1,4 +1,5 @@
 ﻿import React from 'react';
+import axios from 'axios';
 
 export default class Order extends React.Component {
     constructor(props) {
@@ -7,6 +8,17 @@ export default class Order extends React.Component {
             itemInfo: JSON.parse(sessionStorage.getItem("cart")),
             totalInfo: JSON.parse(sessionStorage.getItem("cartTotal"))
         }
+    }
+
+    componentDidMount() {
+        const item = {
+            orderID: getRandomInt(100000),
+            customerInfo: sessionStorage.getItem("shipment"),
+            itemInfo: sessionStorage.getItem("cart")
+        }
+
+        addToDB(item);
+        sessionStorage.clear();
     }
 
     render() {
@@ -112,4 +124,17 @@ class Payment extends React.Component {
             
             )
     }
+}
+
+export function addToDB(data) {
+    //add to db
+    axios.post("https://localhost:5001/api/Orders/add/", data).then(res => {
+        console.log(res);
+        console.log(res.data);
+    });
+}
+
+//get random number
+function getRandomInt(max) {
+    return Math.floor(Math.random() * Math.floor(max));
 }
