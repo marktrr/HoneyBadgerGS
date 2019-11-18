@@ -1,5 +1,6 @@
 ﻿import React from 'react';
 import { Link } from 'react-router-dom';
+import './Checkout.css';
 
 //create a stateless component to display the shopping cart items
 class Checkout extends React.Component {
@@ -66,9 +67,9 @@ class Checkout extends React.Component {
                         <div className="totals-value" id="cart-total">{totalGrand}</div>
                     </div>
                     <Link to="/Shipment">
-                        <button onClick={() => { saveState(subtotal, totalTax, totalGrand) }} className="shipment">Confirm Order</button>
+                        <button onClick={() => { saveState(subtotal, totalTax, totalGrand) }} className="shipment">CONFIRM ORDER</button>
                     </Link>
-                    <button onClick={() => { this.props.history.goBack()}} className="shipment">Back To Order</button>
+                    <button onClick={() => { this.props.history.goBack()}} className="backOrder">Back To Order</button>
                 </div>
             </div>
         )
