@@ -11,9 +11,9 @@ namespace HoneyBadgers._0.Controllers
     [ApiController]
     public class SalesController : ControllerBase
     {
-        private readonly HoneyBadgerContext _context;
+        private readonly HoneyBadgerDBContext _context;
 
-        public SalesController(HoneyBadgerContext context)
+        public SalesController(HoneyBadgerDBContext context)
         {
             _context = context;
         }

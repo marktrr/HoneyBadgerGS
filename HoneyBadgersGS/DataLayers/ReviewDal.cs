@@ -7,9 +7,9 @@ namespace HoneyBadgers._0.DataLayers
 {
     public class ReviewDal : IReviewDal
     {
-        private HoneyBadgerContext _db;
+        private HoneyBadgerDBContext _db;
 
-        public ReviewDal(HoneyBadgerContext db)
+        public ReviewDal(HoneyBadgerDBContext db)
         {
             _db = db;
         }

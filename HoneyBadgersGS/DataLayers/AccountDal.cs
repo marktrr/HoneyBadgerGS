@@ -5,43 +5,43 @@ using Microsoft.EntityFrameworkCore;
 
 namespace HoneyBadgers._0.DataLayers
 {
-    public class OrderDal : IOrderDal
+    public class AccountDal : IAccountDal
     {
         private HoneyBadgerDBContext _db;
 
-        public OrderDal(HoneyBadgerDBContext db)
+        public AccountDal(HoneyBadgerDBContext db)
         {
             _db = db;
         }
 
-        public IEnumerable<Order> GetAll()
+        public IEnumerable<AspNetUsers> GetAll()
         {
-            return _db.Order.ToList();
+            return _db.AspNetUsers.ToList();
         }
-        public int Add(Order order)
+        public int Add(AspNetUsers account)
         {
-            _db.Order.Add(order);
+            _db.AspNetUsers.Add(account);
             _db.SaveChangesAsync();
             return 1;
         }
 
-        public int Update(Order order)
+        public int Update(AspNetUsers account)
         {
-            _db.Order.Update(order);
+            _db.AspNetUsers.Update(account);
             _db.SaveChangesAsync();
             return 1;
         }
 
-        public Order GetData(int id)
+        public AspNetUsers GetData(string id)
         {
-            Order order = _db.Order.Find(id);
-            return order;
+            AspNetUsers account = _db.AspNetUsers.Find(id);
+            return account;
         }
 
-        public int Delete(int id)
+        public int Delete(string id)
         {
-            Order order = _db.Order.Find(id);
-            _db.Order.Remove(order);
+            AspNetUsers account = _db.AspNetUsers.Find(id);
+            _db.AspNetUsers.Remove(account);
             _db.SaveChangesAsync();
             return 1;
         }

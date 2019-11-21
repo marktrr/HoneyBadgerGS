@@ -1,13 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
 
-
 namespace HoneyBadgers._0.Models
 {
     public partial class Profile
     {
-	
-		public string ProfileId { get; set; }
+        public string ProfileId { get; set; }
         public byte[] ProfileImage { get; set; }
         public string Gender { get; set; }
         public string Email { get; set; }

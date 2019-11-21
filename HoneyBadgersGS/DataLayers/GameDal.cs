@@ -7,9 +7,9 @@ namespace HoneyBadgers._0.DataLayers
 {
     public class GameDal : IGameDal
     {
-        private HoneyBadgerContext _db;
+        private HoneyBadgerDBContext _db;
 
-        public GameDal(HoneyBadgerContext db)
+        public GameDal(HoneyBadgerDBContext db)
         {
             _db = db;
         }

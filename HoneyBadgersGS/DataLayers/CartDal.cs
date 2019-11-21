@@ -6,9 +6,9 @@ namespace HoneyBadgers._0.DataLayers
 {
     public class CartDal : ICartDal
     {
-        private HoneyBadgerContext _db;
+        private HoneyBadgerDBContext _db;
 
-        public CartDal(HoneyBadgerContext db)
+        public CartDal(HoneyBadgerDBContext db)
         {
             _db = db;
         }

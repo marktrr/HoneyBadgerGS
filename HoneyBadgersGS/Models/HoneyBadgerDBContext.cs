@@ -25,8 +25,9 @@ namespace HoneyBadgers._0.Models
         public virtual DbSet<Cart> Cart { get; set; }
         public virtual DbSet<DeviceCodes> DeviceCodes { get; set; }
         public virtual DbSet<Event> Event { get; set; }
-        public virtual DbSet<FriendList> FriendList { get; set; }
+        public virtual DbSet<Friendship> Friendship { get; set; }
         public virtual DbSet<Game> Game { get; set; }
+        public virtual DbSet<Order> Order { get; set; }
         public virtual DbSet<PersistedGrants> PersistedGrants { get; set; }
         public virtual DbSet<Profile> Profile { get; set; }
         public virtual DbSet<Review> Review { get; set; }
@@ -189,13 +190,21 @@ namespace HoneyBadgers._0.Models
                     .HasColumnType("text");
             });
 
-            modelBuilder.Entity<FriendList>(entity =>
+            modelBuilder.Entity<Friendship>(entity =>
             {
-                entity.Property(e => e.FriendListId)
-                    .HasColumnName("friendListID")
+                entity.Property(e => e.FriendshipId)
+                    .HasColumnName("friendshipID")
                     .ValueGeneratedNever();
 
-                entity.Property(e => e.AccountId).HasColumnName("accountID");
+                entity.Property(e => e.AccountId1)
+                    .HasColumnName("accountID1")
+                    .HasMaxLength(450)
+                    .IsUnicode(false);
+
+                entity.Property(e => e.AccountId2)
+                    .HasColumnName("accountID2")
+                    .HasMaxLength(450)
+                    .IsUnicode(false);
             });
 
             modelBuilder.Entity<Game>(entity =>
@@ -256,6 +265,21 @@ namespace HoneyBadgers._0.Models
                     .HasConstraintName("FK_Game_Wishlist");
             });
 
+            modelBuilder.Entity<Order>(entity =>
+            {
+                entity.Property(e => e.OrderId)
+                    .HasColumnName("orderID")
+                    .ValueGeneratedNever();
+
+                entity.Property(e => e.CustomerInfo)
+                    .HasColumnName("customerInfo")
+                    .HasColumnType("text");
+
+                entity.Property(e => e.ItemInfo)
+                    .HasColumnName("itemInfo")
+                    .HasColumnType("text");
+            });
+
             modelBuilder.Entity<PersistedGrants>(entity =>
             {
                 entity.HasKey(e => e.Key);
@@ -277,7 +301,10 @@ namespace HoneyBadgers._0.Models
 
             modelBuilder.Entity<Profile>(entity =>
             {
-                entity.Property(e => e.ProfileId).HasColumnName("profileID");
+                entity.Property(e => e.ProfileId)
+                    .HasColumnName("profileID")
+                    .HasMaxLength(200)
+                    .IsUnicode(false);
 
                 entity.Property(e => e.ActualName)
                     .HasColumnName("actualName")

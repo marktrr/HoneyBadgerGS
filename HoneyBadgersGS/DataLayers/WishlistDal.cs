@@ -10,9 +10,9 @@ namespace HoneyBadgers._0.DataLayers
 {
     public class WishlistDal : IWishlistDal
     {
-        private HoneyBadgerContext _db;
+        private HoneyBadgerDBContext _db;
 
-        public WishlistDal(HoneyBadgerContext db)
+        public WishlistDal(HoneyBadgerDBContext db)
         {
             _db = db;
         }

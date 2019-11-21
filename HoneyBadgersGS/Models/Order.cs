@@ -1,21 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 
 namespace HoneyBadgers._0.Models
 {
     public partial class Order
     {
-        public Order()
-        {
-
-        }
-
-        public int orderID { get; set; }
-
-        public string customerInfo { get; set; }
-
-        public string itemInfo { get; set; }
+        public int OrderId { get; set; }
+        public string CustomerInfo { get; set; }
+        public string ItemInfo { get; set; }
     }
 }

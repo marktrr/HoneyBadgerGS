@@ -8,9 +8,9 @@ namespace HoneyBadgers._0.DataLayers
 {
     public class EventDal : IEventDal
     {
-        private HoneyBadgerContext _db;
+        private HoneyBadgerDBContext _db;
 
-        public EventDal(HoneyBadgerContext db)
+        public EventDal(HoneyBadgerDBContext db)
         {
             _db = db;
         }

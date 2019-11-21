@@ -1,13 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
-using System.ComponentModel.DataAnnotations.Schema;
 
 namespace HoneyBadgers._0.Models
 {
     public partial class Review
     {
-		[Key, Required, DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int ReviewId { get; set; }
         public string AccountId { get; set; }
         public int? GameId { get; set; }
