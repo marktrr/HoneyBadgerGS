@@ -23,7 +23,7 @@ export default class Order extends React.Component {
 
         this.setState({ orderID: id });
         addToDB(item);
-        //sessionStorage.clear();
+        sessionStorage.clear();
     }
 
     render() {
