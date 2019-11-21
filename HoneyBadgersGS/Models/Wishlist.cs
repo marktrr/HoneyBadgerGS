@@ -9,12 +9,11 @@ namespace HoneyBadgers._0.Models
         {
             Game = new HashSet<Game>();
         }
-        public int wishlistID { get; set; }
+
+        public int WishlistId { get; set; }
         public string AccountId { get; set; }
+        public string ItemInfo { get; set; }
 
-        public string itemInfo { get; set; }
-
-        public virtual Account Account { get; set; }
         public virtual ICollection<Game> Game { get; set; }
     }
 }

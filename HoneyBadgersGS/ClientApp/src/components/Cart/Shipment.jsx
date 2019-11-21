@@ -1,4 +1,5 @@
 ﻿import React from "react";
+import './Shipment.css'
 
 export default class Shipment extends React.Component {
     render() {
@@ -136,49 +137,56 @@ class ShipmentForm extends React.Component {
     render() {
         const { errors } = this.state;
         return (
-            <form action="/OrderCompleted" onSubmit={this.handleSubmit}>
-                <label id="recipientName">Customer Name:</label>
-                <input type="text" className="customerName" value={this.state.customerName} onChange={event => this.handleUserInput(event)} />
-                {errors.customerName.length > 0 && <span className='error'>{errors.customerName}</span>}<br />
+            <div className="formShipment">
+                <form action="/OrderCompleted" onSubmit={this.handleSubmit}>
+                    <fieldset className="cusInfo">
+                        <legend>Customer Information:</legend>
+                        <label id="recipientName">Customer Name:</label>
+                        <input type="text" className="customerName" value={this.state.customerName} onChange={event => this.handleUserInput(event)} />
+                        {errors.customerName.length > 0 && <span className='error'>{errors.customerName}</span>}<br />
 
-                <label>Address:</label>
-                <input type="text" className="address" value={this.state.address} onChange={event => this.handleUserInput(event)} />
-                {errors.address.length > 0 && <span className='error'>{errors.address}</span>}<br />
+                        <label>Address:</label>
+                        <input type="text" className="address" value={this.state.address} onChange={event => this.handleUserInput(event)} />
+                        {errors.address.length > 0 && <span className='error'>{errors.address}</span>}<br />
 
-                <label>City:</label>
-                <input type="text" className="city" value={this.state.city} onChange={event => this.handleUserInput(event)} />
-                {errors.city.length > 0 && <span className='error'>{errors.city}</span>}<br />
+                        <label>City:</label>
+                        <input type="text" className="city" value={this.state.city} onChange={event => this.handleUserInput(event)} />
+                        {errors.city.length > 0 && <span className='error'>{errors.city}</span>}<br />
 
-                <label>Province:</label>
-                <input type="text" className="provinceCode" value={this.state.provinceCode} onChange={event => this.handleUserInput(event)} />
-                {errors.provinceCode.length > 0 && <span className='error'>{errors.provinceCode}</span>}<br />
+                        <label>Province:</label>
+                        <input type="text" className="provinceCode" value={this.state.provinceCode} onChange={event => this.handleUserInput(event)} />
+                        {errors.provinceCode.length > 0 && <span className='error'>{errors.provinceCode}</span>}<br />
 
-                <label>Country:</label>
-                <input type="text" className="countryCode" value={this.state.countyCode} disabled />
+                        <label>Country:</label>
+                        <input type="text" className="countryCode" value={this.state.countyCode} disabled /><br />
 
-                <label>Postal Code:</label>
-                <input type="text" className="postalCode" value={this.state.postalCode} onChange={event => this.handleUserInput(event)} />
-                {errors.postalCode.length > 0 && <span className='error'>{errors.postalCode}</span>}<br />
+                        <label>Postal Code:</label>
+                        <input type="text" className="postalCode" value={this.state.postalCode} onChange={event => this.handleUserInput(event)} />
+                        {errors.postalCode.length > 0 && <span className='error'>{errors.postalCode}</span>}<br />
 
-                <label>Email:</label>
-                <input type="text" className="email" value={this.state.email} onChange={event => this.handleUserInput(event)} />
-                {errors.email.length > 0 && <span className='error'>{errors.email}</span>}<br />
+                        <label>Email:</label>
+                        <input type="text" className="email" value={this.state.email} onChange={event => this.handleUserInput(event)} />
+                        {errors.email.length > 0 && <span className='error'>{errors.email}</span>}<br />
 
-                <label>Phone:</label>
-                <input type="text" className="phoneNumber" value={this.state.phoneNumber} onChange={event => this.handleUserInput(event)} />
-                {errors.phoneNumber.length > 0 && <span className='error'>{errors.phoneNumber}</span>}<br /> <hr />
+                        <label>Phone:</label>
+                        <input type="text" className="phoneNumber" value={this.state.phoneNumber} onChange={event => this.handleUserInput(event)} />
+                        {errors.phoneNumber.length > 0 && <span className='error'>{errors.phoneNumber}</span>}<br /> <hr />
+                        </fieldset>
 
-                <h2>Payment information:</h2>
-                <label>Card Number</label>
-                <input type="number" className="cardNumber" value={this.state.cardNumber} onChange={event => this.handleUserInput(event)} />
-                {errors.cardNumber.length > 0 && <span className='error'>{errors.cardNumber}</span>}<br /> <hr />
+                    <fieldset className="payment">
+                        <legend>Payment information:</legend>
+                        <label>Card Number</label>
+                        <input type="number" className="cardNumber" value={this.state.cardNumber} onChange={event => this.handleUserInput(event)} />
+                        {errors.cardNumber.length > 0 && <span className='error'>{errors.cardNumber}</span>}<br /> <hr />
 
-                <label>Security Code</label>
-                <input type="number" className="cvv" value={this.state.cvv} onChange={event => this.handleUserInput(event)} />
-                {errors.cvv.length > 0 && <span className='error'>{errors.cvv}</span>}<br /> <hr />
-
-                <button className="btn-submit">Next</button>
-            </form>
+                        <label>Security Code</label>
+                        <input type="number" className="cvv" value={this.state.cvv} onChange={event => this.handleUserInput(event)} />
+                        {errors.cvv.length > 0 && <span className='error'>{errors.cvv}</span>}<br /> <hr />
+                    </fieldset>
+                    <button className="btn-submit">Next</button>
+                </form>
+            </div>
+           
         );
     }
 }

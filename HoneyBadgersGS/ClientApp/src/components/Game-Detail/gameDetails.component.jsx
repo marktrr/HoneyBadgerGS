@@ -1,6 +1,6 @@
 ﻿import React, { Component } from 'react';
 import axios from 'axios';
-import { PopUp } from './addToCartPopUp';
+import { ReviewForm } from '../Review/review_write';
 import './gameDetail.css';
 
 export class GameDetails extends Component{
@@ -27,19 +27,22 @@ export class GameDetails extends Component{
 
     render() {
         return (
-            <div className="gameDetails">
+            <div className="gameDetails_TopWrapper">
+                <div className="gameDetails">
 
-                <div className="addtoCart">
-                    <img className='card-img-top' alt='game image' src={this.state.gameDetails.gameArtUrl}></img>
-                    <p className="game-price">${this.state.gameDetails.price}</p>
-                    <button className="btn_AddCart" onClick={() => { addElementToCart(this.state.gameDetails) }}>Add To Cart</button>
-                    <button className="btn_AddWish" onClick={() => {addElementToWishlist(this.state.gameDetails)}}>Add To WishList</button>
-                </div>
+                    <div className="addtoCart">
+                        <img className='card-img-top' alt='game image' src={this.state.gameDetails.gameArtUrl}></img>
+                        <p className="game-price">${this.state.gameDetails.price}</p>
+                        <button className="btn_AddCart" onClick={() => { addElementToCart(this.state.gameDetails) }}>Add To Cart</button>
+                        <button className="btn_AddWish" onClick={() => { addElementToWishlist(this.state.gameDetails) }}>Add To WishList</button>
+                    </div>
 
-                <div className="description">  
-                    <h1>{this.state.gameDetails.gameName} Details</h1>
-                    <p className="gameDescription">{this.state.gameDetails.gameDescription}</p>                 
+                    <div className="description">
+                        <h1>{this.state.gameDetails.gameName} Details</h1>
+                        <p className="gameDescription">{this.state.gameDetails.gameDescription}</p>
+                    </div>
                 </div>
+                <ReviewForm game={this.state.gameDetails} />
             </div>
         );
     }

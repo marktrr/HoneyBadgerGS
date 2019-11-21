@@ -1,0 +1,34 @@
+﻿.orderNum {
+    background-color: #808080;
+    margin-top: 1em;
+    font-size: 20px;
+}
+
+.cusInfo h4 {
+    padding: initial;
+    height: 40px;
+    background-color: #808080;
+    margin-top: 1em;
+    font-size: 20px;
+    }
+
+.products {
+    background-color: #808080;
+    margin-top: 1em;
+    font-size: 20px;
+    padding: initial;
+    height: 40px;
+}
+
+.btnShopping {
+    background-color: green;
+    color: white;
+    border: none;
+    border-radius: 0.2em;
+    margin-bottom: 5%;
+    margin-left: 5%;
+    padding: 0.5em 3em;
+    width: 25%;
+    float: right;
+}
+

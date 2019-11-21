@@ -6,6 +6,9 @@ import { Profile } from './components/Profile/profile.component';
 import { FriendList } from './components/Friend-List/friendList-Component';
 import { GameDetails } from './components/Game-Detail/gameDetails.component';
 import { Cart } from './components/Cart/Cart';
+import { ReviewForm } from './components/Review/review_write';
+
+
 import AuthorizeRoute from './components/api-authorization/AuthorizeRoute';
 import ApiAuthorizationRoutes from './components/api-authorization/ApiAuthorizationRoutes';
 import { ApplicationPaths } from './components/api-authorization/ApiAuthorizationConstants';
@@ -14,6 +17,10 @@ import { Wishlist } from './components/Wishlist/WishList';
 import Checkout from './components/Cart/Checkout';
 import Shipment from './components/Cart/Shipment';
 import Order from './components/Cart/Orders';
+
+
+
+
 export default class App extends Component {
   static displayName = App.name;
 

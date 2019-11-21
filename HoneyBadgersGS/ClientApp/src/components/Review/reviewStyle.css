@@ -1,0 +1,65 @@
+﻿
+
+#rating-list-heading {
+	display: inline-flex;
+	flex-direction: row;
+	justify-content:space-between;
+}
+#rating-list-body{
+	margin-top:5px;
+}
+#review-title-average {
+	display: flex;
+	flex-direction: row;
+	justify-content: space-between;
+	
+}
+
+
+.review-list {
+	background-color: #10191D;
+	border: 1px solid #404040;
+	border-radius: 4px;
+	margin: 10px;
+	padding: 15px;
+	text-align: center;
+}
+
+#rating{
+	margin-left: 2em;
+}
+
+#rating_value {
+	text-align: center;
+}
+
+#Written_Review {
+	border-top: 1px solid grey;
+	border-bottom: 1px solid grey;
+	margin-top: 5%;
+	margin-bottom: 5%;
+	padding: 10px 0 10px 0;
+}
+	#Written_Review select {
+		background-color: #283033;
+		color:lightgray;
+		margin-left: 10%;
+		margin-top: 3%;
+		width: 30%;
+	}
+
+	#Written_Review input {
+		margin-left: 10%;
+		margin-right: 10%;
+		margin-bottom: 5%;
+		width: 80%;
+	}
+	#Written_Review textarea {
+		background-color: #303030;
+		color: lightgray;
+		display: inline-block;
+		margin-left: 10%;
+		margin-right: 10%;
+		margin-top: 2%;
+		width: 80%;
+	}

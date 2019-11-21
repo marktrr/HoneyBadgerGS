@@ -29,7 +29,7 @@ namespace HoneyBadgers._0
 				options.UseSqlServer(
 					Configuration.GetConnectionString("DefaultConnection")));
 			//add the context for the honeybadger database
-			services.AddDbContext<HoneyBadgerDBContext>(options =>
+			services.AddDbContext<HoneyBadgerContext>(options =>
 				options.UseSqlServer(
 					Configuration.GetConnectionString("HoneyBadgersDBConnection")));
 
@@ -63,10 +63,14 @@ namespace HoneyBadgers._0
 			//Friend List
 			services.AddTransient<IFriendListDal, FriendListDal>();
 			services.AddTransient<IFriendListLogic, FriendListLogic>();
-			//Account
-			//services.AddTransient<IAccountLogic, AccountLogic>();
-			
-			services.AddControllersWithViews();
+            //Account
+            //services.AddTransient<IAccountLogic, AccountLogic>();
+
+            //Order
+            services.AddTransient<IOrderDal, OrderDal>();
+            services.AddTransient<IOrderLogic, OrderLogic>();
+
+            services.AddControllersWithViews();
 			services.AddRazorPages();
 
 			// In production, the React files will be served from this directory
