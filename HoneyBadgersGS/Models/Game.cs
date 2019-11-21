@@ -8,7 +8,6 @@ namespace HoneyBadgers._0.Models
         public Game()
         {
             Cart = new HashSet<Cart>();
-            Rating = new HashSet<Rating>();
             Review = new HashSet<Review>();
             Sales = new HashSet<Sales>();
         }
@@ -24,10 +23,10 @@ namespace HoneyBadgers._0.Models
         public string SystemReq { get; set; }
         public DateTime? ReleaseDate { get; set; }
         public string GameArtUrl { get; set; }
-        public double price { get; set; }
+        public double? Price { get; set; }
+
         public virtual Wishlist Wishlist { get; set; }
         public virtual ICollection<Cart> Cart { get; set; }
-        public virtual ICollection<Rating> Rating { get; set; }
         public virtual ICollection<Review> Review { get; set; }
         public virtual ICollection<Sales> Sales { get; set; }
     }

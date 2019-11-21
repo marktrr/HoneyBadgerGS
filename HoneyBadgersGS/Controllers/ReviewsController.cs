@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using HoneyBadgers._0.BusinessLogic;
@@ -26,13 +27,11 @@ namespace HoneyBadgers._0.Controllers
         {
             return _reviewLogic.GetAll();
         }
-
         //Add Single Review to Record
-        [HttpGet]
-        [Route("api/Reviews/Add")]
-        public int Add(Review review)
+        [HttpPost]
+        public int Add([FromBody] Review review)
         {
-            return _reviewLogic.Add(review);
+				return _reviewLogic.Add(review);
         }
 
         //Updates Games in record

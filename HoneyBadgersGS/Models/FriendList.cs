@@ -5,10 +5,7 @@ namespace HoneyBadgers._0.Models
 {
     public partial class FriendList
     {
-        public string FriendListId { get; set; }
-        public string ? AccountId { get; set; }
-		public string UserName { get; set; }
-
-		public virtual Account Account { get; set; }
+        public int FriendListId { get; set; }
+        public int? AccountId { get; set; }
     }
 }

@@ -3,6 +3,7 @@ import { Redirect } from 'react-router-dom';
 import axios from 'axios';
 import moment from 'moment';
 import './profile.component.css';
+import { Alert } from 'reactstrap';
 
 
 export class Profile extends Component {
@@ -125,19 +126,19 @@ export class Profile extends Component {
                 <form method='POST' onSubmit={this.handleSubmit}>
                     <input type="text" name="id" value={this.state.value.displayid} ref={(display_id) => this.display_id = display_id} hidden></input>
                     <label for="display name">Display Name:</label>
-                    <input type="text" name="display name" value={this.state.value.displayName} ref={(display_name) => this.display_name = display_name} onChange={this.handleChange}></input>
+                    <input type="text" name="display name" value={this.state.value.displayName} ref={(display_name) => this.display_name = display_name} onChange={this.handleChange} required></input>
                     <label for="actual name">Actual Name:</label>
-                    <input type="text" name="actual name" value={this.state.value.actualName} onChange={this.handleChange} ref={(actual_name) => this.actual_name = actual_name}></input>
+                    <input type="text" name="actual name" value={this.state.value.actualName} onChange={this.handleChange} ref={(actual_name) => this.actual_name = actual_name} required></input>
                     <label for="gender">Gender:</label>
-                    <input type="text" name="gender" value={this.state.value.gender} onChange={this.handleChange} ref={(gender) => this.gender = gender}></input>
+                    <input type="text" name="gender" value={this.state.value.gender} onChange={this.handleChange} ref={(gender) => this.gender = gender} required></input>
                     <label for="Address">Address:</label>
-                    <input type="text" name="Address" value={this.state.value.userAddress} ref={(user_Address) => this.user_Address = user_Address} onChange={this.handleChange}></input>
+                    <input type="text" name="Address" value={this.state.value.userAddress} ref={(user_Address) => this.user_Address = user_Address} onChange={this.handleChange} required></input>
 
                     <label for="birth date">Date of Birth:</label>
-                    <input type="date" name="birth date" value={this.state.date} onChange={this.handleDob} ref={(dob) => this.dob = dob}></input>
+                    <input type="date" name="birth date" value={this.state.date} onChange={this.handleDob} ref={(dob) => this.dob = dob} max="2019-11-17"></input>
 
                     <label for="email">Email:</label>
-                    <input type="text" name="email" value={this.state.value.email} onChange={this.handleChange} ref={(email) => this.email = email}></input>
+                    <input type="email" name="email" value={this.state.value.email} onChange={this.handleChange} ref={(email) => this.email = email} required></input>
 
                     <label for="credit-card" hidden>Credit Card</label>
                     <input type="number" name="credit-card" hidden />
@@ -179,6 +180,9 @@ export  function updateProfile(data) {
     axios.put(`https://localhost:5001/api/profiles/update/`, data, config).then(res => {
         alert('Successfully updated your profile');
     });
+
+  
+
     return window.location.replace('/');
 }
 

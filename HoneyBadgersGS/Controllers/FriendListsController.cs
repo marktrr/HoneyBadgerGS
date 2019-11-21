@@ -41,7 +41,7 @@ namespace HoneyBadgers._0.Controllers
 
         // PUT: api/FriendLists/5
         [HttpPut("{id}")]
-        public async Task<IActionResult> PutFriendList(string id, FriendList friendList)
+        public async Task<IActionResult> PutFriendList(int id, FriendList friendList)
         {
             if (id != friendList.FriendListId)
             {
@@ -109,7 +109,7 @@ namespace HoneyBadgers._0.Controllers
             return friendList;
         }
 
-        private bool FriendListExists(string id)
+        private bool FriendListExists(int id)
         {
             return _context.FriendList.Any(e => e.FriendListId == id);
         }

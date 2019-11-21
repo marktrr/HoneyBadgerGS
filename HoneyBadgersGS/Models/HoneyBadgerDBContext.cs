@@ -1,15 +1,20 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using System;
+using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.Metadata;
 
 namespace HoneyBadgers._0.Models
 {
     public partial class HoneyBadgerDBContext : DbContext
     {
+        public HoneyBadgerDBContext()
+        {
+        }
+
         public HoneyBadgerDBContext(DbContextOptions<HoneyBadgerDBContext> options)
             : base(options)
         {
         }
 
-        public virtual DbSet<Account> Account { get; set; }
         public virtual DbSet<AspNetRoleClaims> AspNetRoleClaims { get; set; }
         public virtual DbSet<AspNetRoles> AspNetRoles { get; set; }
         public virtual DbSet<AspNetUserClaims> AspNetUserClaims { get; set; }
@@ -24,7 +29,6 @@ namespace HoneyBadgers._0.Models
         public virtual DbSet<Game> Game { get; set; }
         public virtual DbSet<PersistedGrants> PersistedGrants { get; set; }
         public virtual DbSet<Profile> Profile { get; set; }
-        public virtual DbSet<Rating> Rating { get; set; }
         public virtual DbSet<Review> Review { get; set; }
         public virtual DbSet<Sales> Sales { get; set; }
         public virtual DbSet<Wishlist> Wishlist { get; set; }
@@ -35,42 +39,18 @@ namespace HoneyBadgers._0.Models
         {
             if (!optionsBuilder.IsConfigured)
             {
+#warning To protect potentially sensitive information in your connection string, you should move it out of source code. See http://go.microsoft.com/fwlink/?LinkId=723263 for guidance on storing connection strings.
+                optionsBuilder.UseSqlServer("Server=(localdb)\\mssqllocaldb;Database=HoneyBadgerDB;Trusted_Connection=True;");
             }
         }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            modelBuilder.Entity<Account>(entity =>
-            {
-                entity.Property(e => e.AccountId)
-                    .HasColumnName("accountID")
-                    .ValueGeneratedNever();
-
-                entity.Property(e => e.LibraryId).HasColumnName("libraryID");
-
-                entity.Property(e => e.ProfileId).HasColumnName("profileID");
-
-                entity.Property(e => e.UserName)
-                    .HasColumnName("userName")
-                    .HasMaxLength(30)
-                    .IsUnicode(false);
-
-                entity.Property(e => e.UserPassword)
-                    .HasColumnName("userPassword")
-                    .HasMaxLength(30)
-                    .IsUnicode(false);
-
-                entity.HasOne(d => d.Profile)
-                    .WithMany(p => p.Account)
-                    .HasForeignKey(d => d.ProfileId)
-                    .HasConstraintName("FK_Account_profileID");
-            });
-
             modelBuilder.Entity<AspNetRoleClaims>(entity =>
             {
-                entity.HasIndex(e => e.RoleId);
-
-                entity.Property(e => e.RoleId).IsRequired();
+                entity.Property(e => e.RoleId)
+                    .IsRequired()
+                    .HasMaxLength(450);
 
                 entity.HasOne(d => d.Role)
                     .WithMany(p => p.AspNetRoleClaims)
@@ -79,11 +59,6 @@ namespace HoneyBadgers._0.Models
 
             modelBuilder.Entity<AspNetRoles>(entity =>
             {
-                entity.HasIndex(e => e.NormalizedName)
-                    .HasName("RoleNameIndex")
-                    .IsUnique()
-                    .HasFilter("([NormalizedName] IS NOT NULL)");
-
                 entity.Property(e => e.Name).HasMaxLength(256);
 
                 entity.Property(e => e.NormalizedName).HasMaxLength(256);
@@ -91,9 +66,9 @@ namespace HoneyBadgers._0.Models
 
             modelBuilder.Entity<AspNetUserClaims>(entity =>
             {
-                entity.HasIndex(e => e.UserId);
-
-                entity.Property(e => e.UserId).IsRequired();
+                entity.Property(e => e.UserId)
+                    .IsRequired()
+                    .HasMaxLength(450);
 
                 entity.HasOne(d => d.User)
                     .WithMany(p => p.AspNetUserClaims)
@@ -104,13 +79,13 @@ namespace HoneyBadgers._0.Models
             {
                 entity.HasKey(e => new { e.LoginProvider, e.ProviderKey });
 
-                entity.HasIndex(e => e.UserId);
-
                 entity.Property(e => e.LoginProvider).HasMaxLength(128);
 
                 entity.Property(e => e.ProviderKey).HasMaxLength(128);
 
-                entity.Property(e => e.UserId).IsRequired();
+                entity.Property(e => e.UserId)
+                    .IsRequired()
+                    .HasMaxLength(450);
 
                 entity.HasOne(d => d.User)
                     .WithMany(p => p.AspNetUserLogins)
@@ -120,8 +95,6 @@ namespace HoneyBadgers._0.Models
             modelBuilder.Entity<AspNetUserRoles>(entity =>
             {
                 entity.HasKey(e => new { e.UserId, e.RoleId });
-
-                entity.HasIndex(e => e.RoleId);
 
                 entity.HasOne(d => d.Role)
                     .WithMany(p => p.AspNetUserRoles)
@@ -147,14 +120,6 @@ namespace HoneyBadgers._0.Models
 
             modelBuilder.Entity<AspNetUsers>(entity =>
             {
-                entity.HasIndex(e => e.NormalizedEmail)
-                    .HasName("EmailIndex");
-
-                entity.HasIndex(e => e.NormalizedUserName)
-                    .HasName("UserNameIndex")
-                    .IsUnique()
-                    .HasFilter("([NormalizedUserName] IS NOT NULL)");
-
                 entity.Property(e => e.Email).HasMaxLength(256);
 
                 entity.Property(e => e.NormalizedEmail).HasMaxLength(256);
@@ -180,11 +145,6 @@ namespace HoneyBadgers._0.Models
 
                 entity.Property(e => e.TaxRate).HasColumnName("taxRate");
 
-                entity.HasOne(d => d.Account)
-                    .WithMany(p => p.Cart)
-                    .HasForeignKey(d => d.AccountId)
-                    .HasConstraintName("FK_Cart_AccountID");
-
                 entity.HasOne(d => d.Game)
                     .WithMany(p => p.Cart)
                     .HasForeignKey(d => d.GameId)
@@ -194,11 +154,6 @@ namespace HoneyBadgers._0.Models
             modelBuilder.Entity<DeviceCodes>(entity =>
             {
                 entity.HasKey(e => e.UserCode);
-
-                entity.HasIndex(e => e.DeviceCode)
-                    .IsUnique();
-
-                entity.HasIndex(e => e.Expiration);
 
                 entity.Property(e => e.UserCode).HasMaxLength(200);
 
@@ -234,11 +189,6 @@ namespace HoneyBadgers._0.Models
                 entity.Property(e => e.Location)
                     .HasColumnName("location")
                     .HasColumnType("text");
-
-                entity.HasOne(d => d.Account)
-                    .WithMany(p => p.Event)
-                    .HasForeignKey(d => d.AccountId)
-                    .HasConstraintName("FK_Event_accountID");
             });
 
             modelBuilder.Entity<FriendList>(entity =>
@@ -248,11 +198,6 @@ namespace HoneyBadgers._0.Models
                     .ValueGeneratedNever();
 
                 entity.Property(e => e.AccountId).HasColumnName("accountID");
-
-                entity.HasOne(d => d.Account)
-                    .WithMany(p => p.FriendList)
-                    .HasForeignKey(d => d.AccountId)
-                    .HasConstraintName("FK_FriendList_accountID");
             });
 
             modelBuilder.Entity<Game>(entity =>
@@ -290,6 +235,8 @@ namespace HoneyBadgers._0.Models
                     .HasMaxLength(20)
                     .IsUnicode(false);
 
+                entity.Property(e => e.Price).HasColumnName("price");
+
                 entity.Property(e => e.Publisher)
                     .HasColumnName("publisher")
                     .HasMaxLength(50)
@@ -315,10 +262,6 @@ namespace HoneyBadgers._0.Models
             {
                 entity.HasKey(e => e.Key);
 
-                entity.HasIndex(e => e.Expiration);
-
-                entity.HasIndex(e => new { e.SubjectId, e.ClientId, e.Type });
-
                 entity.Property(e => e.Key).HasMaxLength(200);
 
                 entity.Property(e => e.ClientId)
@@ -338,7 +281,18 @@ namespace HoneyBadgers._0.Models
             {
                 entity.Property(e => e.ProfileId)
                     .HasColumnName("profileID")
-                    .ValueGeneratedNever();
+                    .HasMaxLength(200)
+                    .IsUnicode(false);
+
+                entity.Property(e => e.ActualName)
+                    .HasColumnName("actualName")
+                    .HasMaxLength(200)
+                    .IsUnicode(false);
+
+                entity.Property(e => e.DisplayName)
+                    .HasColumnName("displayName")
+                    .HasMaxLength(200)
+                    .IsUnicode(false);
 
                 entity.Property(e => e.Dob)
                     .HasColumnName("DOB")
@@ -346,12 +300,12 @@ namespace HoneyBadgers._0.Models
 
                 entity.Property(e => e.Email)
                     .HasColumnName("email")
-                    .HasMaxLength(50)
+                    .HasMaxLength(200)
                     .IsUnicode(false);
 
                 entity.Property(e => e.Gender)
                     .HasColumnName("gender")
-                    .HasMaxLength(10)
+                    .HasMaxLength(200)
                     .IsUnicode(false);
 
                 entity.Property(e => e.ProfileImage)
@@ -365,40 +319,23 @@ namespace HoneyBadgers._0.Models
                     .HasColumnType("text");
             });
 
-            modelBuilder.Entity<Rating>(entity =>
-            {
-                entity.Property(e => e.RatingId)
-                    .HasColumnName("ratingID")
-                    .ValueGeneratedNever();
-
-                entity.Property(e => e.GameId).HasColumnName("gameID");
-
-                entity.Property(e => e.Rating1).HasColumnName("rating");
-
-                entity.HasOne(d => d.Game)
-                    .WithMany(p => p.Rating)
-                    .HasForeignKey(d => d.GameId)
-                    .HasConstraintName("FK_Rating_accountID");
-            });
-
             modelBuilder.Entity<Review>(entity =>
             {
-                entity.Property(e => e.ReviewId)
-                    .HasColumnName("reviewID")
-                    .ValueGeneratedNever();
+                entity.Property(e => e.ReviewId).HasColumnName("reviewID");
 
-                entity.Property(e => e.AccountId).HasColumnName("accountID");
+                entity.Property(e => e.AccountId)
+                    .HasColumnName("accountID")
+                    .HasMaxLength(200)
+                    .IsUnicode(false);
 
                 entity.Property(e => e.GameId).HasColumnName("gameID");
+
+                entity.Property(e => e.RatingValue).HasColumnName("ratingValue");
 
                 entity.Property(e => e.ReviewInfo)
                     .HasColumnName("reviewInfo")
-                    .HasColumnType("text");
-
-                entity.HasOne(d => d.Account)
-                    .WithMany(p => p.Review)
-                    .HasForeignKey(d => d.AccountId)
-                    .HasConstraintName("PK_Review_accountID");
+                    .HasMaxLength(300)
+                    .IsUnicode(false);
 
                 entity.HasOne(d => d.Game)
                     .WithMany(p => p.Review)
@@ -420,11 +357,6 @@ namespace HoneyBadgers._0.Models
                     .HasColumnName("timeOfSales")
                     .HasColumnType("datetime");
 
-                entity.HasOne(d => d.Account)
-                    .WithMany(p => p.Sales)
-                    .HasForeignKey(d => d.AccountId)
-                    .HasConstraintName("FK_Sales_accountID");
-
                 entity.HasOne(d => d.Game)
                     .WithMany(p => p.Sales)
                     .HasForeignKey(d => d.GameId)
@@ -433,13 +365,15 @@ namespace HoneyBadgers._0.Models
 
             modelBuilder.Entity<Wishlist>(entity =>
             {
+                entity.Property(e => e.WishlistId)
+                    .HasColumnName("wishlistID")
+                    .ValueGeneratedNever();
 
                 entity.Property(e => e.AccountId).HasColumnName("accountID");
 
-                entity.HasOne(d => d.Account)
-                    .WithMany(p => p.Wishlist)
-                    .HasForeignKey(d => d.AccountId)
-                    .HasConstraintName("FK_wishlist_accountID");
+                entity.Property(e => e.ItemInfo)
+                    .HasColumnName("itemInfo")
+                    .HasColumnType("text");
             });
 
             modelBuilder.Entity<Order>(entity =>
