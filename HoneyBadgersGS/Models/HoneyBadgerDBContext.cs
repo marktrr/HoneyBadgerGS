@@ -33,8 +33,6 @@ namespace HoneyBadgers._0.Models
         public virtual DbSet<Sales> Sales { get; set; }
         public virtual DbSet<Wishlist> Wishlist { get; set; }
 
-        public virtual DbSet<Order> Order { get; set; }
-
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
             if (!optionsBuilder.IsConfigured)
@@ -255,7 +253,7 @@ namespace HoneyBadgers._0.Models
                 entity.HasOne(d => d.Wishlist)
                     .WithMany(p => p.Game)
                     .HasForeignKey(d => d.WishlistId)
-                    .HasConstraintName("game_FK_wishlistID");
+                    .HasConstraintName("FK_Game_Wishlist");
             });
 
             modelBuilder.Entity<PersistedGrants>(entity =>
@@ -279,10 +277,7 @@ namespace HoneyBadgers._0.Models
 
             modelBuilder.Entity<Profile>(entity =>
             {
-                entity.Property(e => e.ProfileId)
-                    .HasColumnName("profileID")
-                    .HasMaxLength(200)
-                    .IsUnicode(false);
+                entity.Property(e => e.ProfileId).HasColumnName("profileID");
 
                 entity.Property(e => e.ActualName)
                     .HasColumnName("actualName")
@@ -296,16 +291,16 @@ namespace HoneyBadgers._0.Models
 
                 entity.Property(e => e.Dob)
                     .HasColumnName("DOB")
-                    .HasColumnType("datetime");
+                    .HasColumnType("date");
 
                 entity.Property(e => e.Email)
                     .HasColumnName("email")
-                    .HasMaxLength(200)
+                    .HasMaxLength(50)
                     .IsUnicode(false);
 
                 entity.Property(e => e.Gender)
                     .HasColumnName("gender")
-                    .HasMaxLength(200)
+                    .HasMaxLength(10)
                     .IsUnicode(false);
 
                 entity.Property(e => e.ProfileImage)
@@ -325,7 +320,7 @@ namespace HoneyBadgers._0.Models
 
                 entity.Property(e => e.AccountId)
                     .HasColumnName("accountID")
-                    .HasMaxLength(200)
+                    .HasMaxLength(300)
                     .IsUnicode(false);
 
                 entity.Property(e => e.GameId).HasColumnName("gameID");
@@ -366,23 +361,14 @@ namespace HoneyBadgers._0.Models
             modelBuilder.Entity<Wishlist>(entity =>
             {
                 entity.Property(e => e.WishlistId)
-                    .HasColumnName("wishlistID")
+                    .HasColumnName("wishlistId")
                     .ValueGeneratedNever();
 
-                entity.Property(e => e.AccountId).HasColumnName("accountID");
+                entity.Property(e => e.AccountId).HasColumnType("text");
 
                 entity.Property(e => e.ItemInfo)
                     .HasColumnName("itemInfo")
                     .HasColumnType("text");
-            });
-
-            modelBuilder.Entity<Order>(entity =>
-            {
-
-                entity.Property(e => e.orderID).HasColumnName("orderID");
-                entity.Property(e => e.customerInfo).HasColumnName("customerInfo").HasColumnType("text"); ;
-                entity.Property(e => e.itemInfo).HasColumnName("itemInfo").HasColumnType("text"); ;
-
             });
 
             OnModelCreatingPartial(modelBuilder);

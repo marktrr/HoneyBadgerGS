@@ -7,8 +7,8 @@ namespace HoneyBadgers._0.Models
 {
     public partial class Review
     {
-		[Required, Key, DatabaseGenerated(DatabaseGeneratedOption.Identity)]
-		public int ReviewId { get; set; }
+		[Key, Required, DatabaseGenerated(DatabaseGeneratedOption.Identity)]
+        public int ReviewId { get; set; }
         public string AccountId { get; set; }
         public int? GameId { get; set; }
         public string ReviewInfo { get; set; }

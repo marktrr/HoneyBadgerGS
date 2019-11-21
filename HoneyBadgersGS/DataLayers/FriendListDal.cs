@@ -6,9 +6,9 @@ namespace HoneyBadgers._0.DataLayers
 {
     public class FriendListDal : IFriendListDal
     {
-        private HoneyBadgerDBContext _db;
+        private HoneyBadgerContext _db;
 
-        public FriendListDal(HoneyBadgerDBContext db)
+        public FriendListDal(HoneyBadgerContext db)
         {
             _db = db;
         }

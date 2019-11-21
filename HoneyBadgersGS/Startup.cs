@@ -29,7 +29,7 @@ namespace HoneyBadgers._0
 				options.UseSqlServer(
 					Configuration.GetConnectionString("DefaultConnection")));
 			//add the context for the honeybadger database
-			services.AddDbContext<HoneyBadgerDBContext>(options =>
+			services.AddDbContext<HoneyBadgerContext>(options =>
 				options.UseSqlServer(
 					Configuration.GetConnectionString("HoneyBadgersDBConnection")));
 

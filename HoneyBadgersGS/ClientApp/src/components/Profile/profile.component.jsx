@@ -16,14 +16,12 @@ export class Profile extends Component {
             profile_dob: '',
             profile_loaded: false,
             checked_promo: true,
-            date: new Date()
         };
         //used to allow modification the form and to deal with form submissions
         this.handleSubmit = this.handleSubmit.bind(this);
         this.handleChange = this.handleChange.bind(this);
-        this.handleDob = this.handleDob.bind(this);
+       // this.handleDob = this.handleDob.bind(this);
     }
-
     //load data if it exists
     componentDidMount() {
         let profile = document.cookie.match(new RegExp('(^| )' + 'userId' + '=([^;]+)'));
@@ -35,13 +33,29 @@ export class Profile extends Component {
         this.setState({ profile_userName: profile[1] });
 
         //pulls in the data from the backend with the id
-        fetch("https://localhost:5001/api/profiles/getprofiles/" + profile[0])
-            .then(res => res.json())
-            .then(data => this.setState({ value: data })).then(res => console.log(res));
-        //if the value is not empty set the profile_loaded to true.
-        
+        let loaded = false;
+        fetch("https://localhost:5001/api/profiles/getprofiles/" + profile[0]).then(res => res.text()).then((res) => {
+            if (res.profileId === null) {
+                loaded = false;
+                console.log(res);
+                this.setState({ profile_loaded: false });
+            }
+            else {
+                loaded = true;
+                console.log(res);
+                this.setState({ profile_loaded: true });
+            }
+        })
+        console.log('Loaded :' + loaded);
+        if (loaded === false) {
+            fetch("https://localhost:5001/api/profiles/getprofiles/" + profile[0])
+                .then(response => response.json()).then(jsonData => modifyDate(jsonData))
+                .then(data => this.setState({ value: data }));        
+        }
+                //.then(data => this.setState({ value: data })).then(res => console.log(res));
+      
         if (this.state.value != null) {
-            this.setState({ profile_loaded: true });
+           // this.setState({ profile_loaded: true });
             //create the var hold the formatted date stored in the state : value.
             //store the formatted date inside date state.
             let birthDate = moment(this.state.value.dob).format('YYYY-MM-DD');
@@ -58,32 +72,22 @@ export class Profile extends Component {
         else {
             this.setState({ profile_loaded: false });
         }
-
     }
-     
     //allow modifying the data
     handleChange(event) {
         this.setState({ value: event.target.value, profile_userName: event.target.value });
     }
-
     //handles the changes made to the checkbox.
     handleCheck = (e) => {
         this.setState({ checked_promo: !this.state.checked_promo });
     }
-
-    //hnadles the changes made to the date input.
-    handleDob(event) {
-        this.setState({
-            date: event.target.value
-        });
-    }
-
     //click handler submit the update
     handleSubmit(event) {
         //prevents the default event from happening 
         event.preventDefault();
 
-       
+        console.log(this.state.value);
+
         //creates the profiel object.
         let profileObject = {
             //id, display name, actual name, gender, dob, email, promo
@@ -96,6 +100,7 @@ export class Profile extends Component {
             ActualName: this.actual_name.value,
             DisplayName: this.display_name.value,   
         };
+
         //if the object is null... it will create an empty object.
         if (profileObject === null) {
 
@@ -135,7 +140,7 @@ export class Profile extends Component {
                     <input type="text" name="Address" value={this.state.value.userAddress} ref={(user_Address) => this.user_Address = user_Address} onChange={this.handleChange} required></input>
 
                     <label for="birth date">Date of Birth:</label>
-                    <input type="date" name="birth date" value={this.state.date} onChange={this.handleDob} ref={(dob) => this.dob = dob} max="2019-11-17"></input>
+                    <input type="date" name="birth date" value={this.state.value.dob} onChange={this.handleChange} ref={(dob) => this.dob = dob} max="2019-11-17"></input>
 
                     <label for="email">Email:</label>
                     <input type="email" name="email" value={this.state.value.email} onChange={this.handleChange} ref={(email) => this.email = email} required></input>
@@ -155,7 +160,6 @@ export class Profile extends Component {
         );
     }
 }
-
 //used to add a new profile to the database(only used if an empty object is returned from the backend)
 export function createProfile(data) {
     const config = {
@@ -167,7 +171,7 @@ export function createProfile(data) {
         alert('Successfully added your profile');
     });
     //redirects the view to display the games
-    return window.location.replace('/');
+   // return window.location.replace('/');
 }
 //function is used to update a profile if it exists in the database.
 export  function updateProfile(data) {
@@ -181,9 +185,25 @@ export  function updateProfile(data) {
         alert('Successfully updated your profile');
     });
 
-  
-
-    return window.location.replace('/');
+   // return window.location.replace('/');
 }
+//this function is required to allow data coming from the api to be modified.
+//the c# adds a timestamp on all dates. It will appear in the input if left with the timestamp.
+export function modifyDate(json) {
 
-
+    //formats the date
+    var myDate = moment(json.dob).format('YYYY-MM-DD');
+    //sends back the json with the modifed date.
+    const data = {
+        actualName: json.actualName,
+        displayName: json.displayName,
+        dob: myDate,
+        email: json.email,
+        gender: json.gender,
+        profileId: json.profileId,
+        profileImage: json.profileImage,
+        promotion: json.promotion,
+        userAddress: json.userAddress
+    }
+    return data;
+}

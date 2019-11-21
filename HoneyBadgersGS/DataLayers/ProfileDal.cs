@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using HoneyBadgers._0.Models;
@@ -7,9 +8,9 @@ namespace HoneyBadgers._0.DataLayers
 {
     public class ProfileDal : IProfileDal
     {
-        private HoneyBadgerDBContext _db;
+        private HoneyBadgerContext _db;
 
-        public ProfileDal(HoneyBadgerDBContext db)
+        public ProfileDal(HoneyBadgerContext db)
         {
             _db = db;
         }
@@ -33,13 +34,14 @@ namespace HoneyBadgers._0.DataLayers
         public Profile GetData(string id)
         {
             Profile profile = _db.Profile.Find(id);
-
+	
 			//if the object is null, just return an empty object
-			if(profile == null)
+			if (profile == null)
 			{
 				profile = new Profile();
 			}
-            return profile;
+			
+			return profile;
         }
 
         public int Delete(string id)

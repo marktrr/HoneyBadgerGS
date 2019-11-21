@@ -7,9 +7,9 @@ namespace HoneyBadgers._0.DataLayers
 {
     public class OrderDal : IOrderDal
     {
-        private HoneyBadgerDBContext _db;
+        private HoneyBadgerContext _db;
 
-        public OrderDal(HoneyBadgerDBContext db)
+        public OrderDal(HoneyBadgerContext db)
         {
             _db = db;
         }

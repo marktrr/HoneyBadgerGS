@@ -11,9 +11,9 @@ namespace HoneyBadgers._0.Controllers
     [ApiController]
     public class FriendListsController : ControllerBase
     {
-        private readonly HoneyBadgerDBContext _context;
+        private readonly HoneyBadgerContext _context;
 
-        public FriendListsController(HoneyBadgerDBContext context)
+        public FriendListsController(HoneyBadgerContext context)
         {
             _context = context;
         }
