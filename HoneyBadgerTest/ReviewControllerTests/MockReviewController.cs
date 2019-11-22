@@ -27,8 +27,7 @@ namespace HoneyBadgerTest.ReviewControllerTests
 			List<Review> result = (List<Review>) _controller.GetAllReviews();
 			Assert.Equal(3, result.Count);	
 		}
-
-		
+	
 		//add review, valid
 		[Fact]
 		public void AddNewReviewValid_ExpectOne()

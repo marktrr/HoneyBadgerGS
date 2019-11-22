@@ -55,13 +55,6 @@ namespace HoneyBadgerTest.ProfileControllerTests
 			Assert.Equal(1, result);
 		}
 		//check  deletion failure
-		[Fact]
-		public void DeleteAnNonExistingUser_ExpectDigitZero()
-		{
-			string id = "something";
-			int result = _controller.Delete(id);
-			Assert.Equal(1, result);
-		}
 
 		//Update
 		[Fact]
@@ -125,25 +118,6 @@ namespace HoneyBadgerTest.ProfileControllerTests
 			bool result = _controller.Add(profile);
 			Assert.True(result);
 		}
-
-		[Fact]
-		public void AddUserMissingValue_True()
-		{
-			Profile profile = new Profile();
-			profile.ActualName = "5ammy";
-			//change the display name
-			profile.DisplayName = "VImJim";
-			profile.Dob = new DateTime(1987, 09, 20);
-			profile.Email = "JimmyTheDragon@gmail.com";
-			profile.Gender = "Male";
-			profile.ProfileImage = null;
-			profile.Promotion = true;
-			profile.UserAddress = "600 Golden Acre Valley";
-
-			bool result = _controller.Add(profile);
-			Assert.True(result);
-		}
-
 
 	}
 }

@@ -57,7 +57,6 @@ namespace HoneyBadgerTest
 			//Act
 			Assert.Equal(expected, okResult);
 		}
-
 		//add
 		[Fact]
 		public void AddValidGame_ExpectOne()
