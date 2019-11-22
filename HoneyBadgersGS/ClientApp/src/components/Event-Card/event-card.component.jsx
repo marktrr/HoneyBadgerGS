@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import './event-card.component.css';
 
 export const EventCard = props =>{

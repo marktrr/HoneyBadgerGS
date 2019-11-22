@@ -13,7 +13,7 @@ namespace HoneyBadgers._0.DataLayers
         {
             _db = db;
         }
-
+        
         public IEnumerable<AspNetUsers> GetAll()
         {
             return _db.AspNetUsers.ToList();
