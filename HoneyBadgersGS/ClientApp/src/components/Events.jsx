@@ -1,3 +1,4 @@
+/* eslint-disable no-undef */
 import React, { Component } from 'react';
 import './Events.css';
 import { EventList } from './Event-List/eventList.component';
