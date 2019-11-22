@@ -52,15 +52,7 @@ export class Profile extends Component {
                 .then(response => response.json()).then(jsonData => modifyDate(jsonData))
                 .then(data => this.setState({ value: data }));        
         }
-                //.then(data => this.setState({ value: data })).then(res => console.log(res));
-      
         if (this.state.value != null) {
-           // this.setState({ profile_loaded: true });
-            //create the var hold the formatted date stored in the state : value.
-            //store the formatted date inside date state.
-            let birthDate = moment(this.state.value.dob).format('YYYY-MM-DD');
-            this.setState({ date: birthDate });
-
             //set the state for the promo checkbox.
             if (this.state.value.Promotion === 1) {
                 this.setState({ checked_promo: true });
@@ -171,7 +163,7 @@ export function createProfile(data) {
         alert('Successfully added your profile');
     });
     //redirects the view to display the games
-   // return window.location.replace('/');
+    return window.location.reload();
 }
 //function is used to update a profile if it exists in the database.
 export  function updateProfile(data) {
@@ -185,7 +177,7 @@ export  function updateProfile(data) {
         alert('Successfully updated your profile');
     });
 
-   // return window.location.replace('/');
+    return window.location.reload();
 }
 //this function is required to allow data coming from the api to be modified.
 //the c# adds a timestamp on all dates. It will appear in the input if left with the timestamp.
