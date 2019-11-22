@@ -1,6 +1,7 @@
 /* eslint-disable no-undef */
 import React, { Component } from 'react';
 import './Events.css';
+import axios from 'axios';
 import { EventList } from './Event-List/eventList.component';
 
 export class Event extends Component {
