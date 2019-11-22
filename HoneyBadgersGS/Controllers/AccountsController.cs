@@ -2,19 +2,42 @@
 using HoneyBadgers._0.BusinessLogic;
 using HoneyBadgers._0.Models;
 using Microsoft.AspNetCore.Mvc;
-
 namespace HoneyBadgers._0.Controllers
 {
+    
     [Route("api/[controller]")]
     [ApiController]
     public class AccountsController : ControllerBase
     {
         private IAccountLogic _accountsLogic;
+        private HoneyBadgerDBContext _db;
+        private AspNetUsers aspNetUsers;
 
         public AccountsController(IAccountLogic accountsLogic)
         {
             _accountsLogic = accountsLogic;
         }
+    
+
+        // [HttpGet("getfriendList")]
+        // [Route("api/Accounts")]
+        // public AspNetUsers getfriendList()
+        // {
+        //      var friends = aspNetUsers 
+        //     .FromSql("SELECT a.id, a.UserName from Friendship f JOIN AspNetUsers a ON a.id = f.accountID1 WHERE f.accountID2 = '67aabfde-e0f2-4e0b-8aa8-9134191bbe40' UNION SELECT a.id, a.UserName from Friendship f JOIN AspNetUsers a ON a.id = f.accountID2 WHERE f.accountID1 = '67aabfde-e0f2-4e0b-8aa8-9134191bbe40' ")
+        //     .AsNoTracking().ToList();
+            
+        //         return friends;
+        // }
+
+
+
+        // public IActionResult Index()
+        // {
+        //     var Friends =   _db.Database.FromSql(
+        //     "SELECT a.id, a.UserName from Friendship f JOIN AspNetUsers a ON a.id = f.accountID1 WHERE f.accountID2 = '67aabfde-e0f2-4e0b-8aa8-9134191bbe40' UNION SELECT a.id, a.UserName from Friendship f JOIN AspNetUsers a ON a.id = f.accountID2 WHERE f.accountID1 = '67aabfde-e0f2-4e0b-8aa8-9134191bbe40'").ToList();
+        //     return Friends;
+        // }
 
         [HttpGet("getaccounts")]
         [Route("api/Accounts")]
