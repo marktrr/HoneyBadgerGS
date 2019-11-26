@@ -6,7 +6,7 @@ export const GameCard = props =>{
     return (
         <Link to={"/Details/" + props.games.gameId}>
             <div className="game-card">
-                <img className='card-img-top' alt='random images' src={props.games.gameArtUrl}></img>
+                <img className='card-img-top' alt='game images' src={props.games.gameArtUrl}></img>
                 <p>{props.games.gameName}</p>
             </div>
         </Link>

@@ -33,7 +33,6 @@ export class LoginMenu extends Component {
             userName: user && user.name,
             userId: user && user.sub
         });
-        console.log(user);
         if (user !== null) {
             var timer = new Date();
             timer.setTime(timer.getTime() * 1 * 3600 * 1000);
@@ -60,6 +59,9 @@ export class LoginMenu extends Component {
 
     authenticatedView(userName, profilePath, logoutPath) {
         return (<Fragment>
+            <NavItem>
+                <NavLink tag={Link} className="text-light" to={"/FriendList"}>FriendList</NavLink>
+            </NavItem>
             <NavItem>
                 <NavLink tag={Link} className="text-light" to={"/Profile"}>Profile</NavLink>
             </NavItem>

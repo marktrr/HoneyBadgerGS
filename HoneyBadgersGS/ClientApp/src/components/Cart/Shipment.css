@@ -1,0 +1,20 @@
+﻿.formShipment {
+    width: 50%;
+    display: inline-block;
+}
+
+.formShipment input {
+    display: inline-block;
+    margin: 0 5em 0 5em;
+}
+
+.btn-submit {
+    border: 0;
+    margin-top: 20px;
+    padding: 6px 25px;
+    background-color: #6b6;
+    color: #fff;
+    font-size: 25px;
+    border-radius: 3px;
+    margin-left: 21em;
+}

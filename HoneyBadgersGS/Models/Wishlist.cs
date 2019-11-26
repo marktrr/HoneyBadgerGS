@@ -11,9 +11,9 @@ namespace HoneyBadgers._0.Models
         }
 
         public int WishlistId { get; set; }
-        public string? AccountId { get; set; }
+        public string AccountId { get; set; }
+        public string ItemInfo { get; set; }
 
-        public virtual Account Account { get; set; }
         public virtual ICollection<Game> Game { get; set; }
     }
 }

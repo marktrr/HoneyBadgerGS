@@ -16,13 +16,15 @@ namespace HoneyBadgers._0.DataLayers
 
         public IEnumerable<Review> GetAll()
         {
+			List<Review> a = _db.Review.ToList();
+
             return _db.Review.ToList();
         }
 
         public int Add(Review review)
         {
             _db.Review.Add(review);
-            _db.SaveChangesAsync();
+            _db.SaveChangesAsync(true);
             return 1;
         }
 

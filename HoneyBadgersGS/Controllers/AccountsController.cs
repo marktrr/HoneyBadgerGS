@@ -1,117 +1,83 @@
 ﻿using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+using HoneyBadgers._0.BusinessLogic;
 using HoneyBadgers._0.Models;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.EntityFrameworkCore;
-
 namespace HoneyBadgers._0.Controllers
 {
+    
     [Route("api/[controller]")]
     [ApiController]
     public class AccountsController : ControllerBase
     {
-        private readonly HoneyBadgerDBContext _context;
+        private IAccountLogic _accountsLogic;
+        private HoneyBadgerDBContext _db;
+        private AspNetUsers aspNetUsers;
 
-        public AccountsController(HoneyBadgerDBContext context)
+        public AccountsController(IAccountLogic accountsLogic)
         {
-            _context = context;
+            _accountsLogic = accountsLogic;
+        }
+    
+
+        // [HttpGet("getfriendList")]
+        // [Route("api/Accounts")]
+        // public AspNetUsers getfriendList()
+        // {
+        //      var friends = aspNetUsers 
+        //     .FromSql("SELECT a.id, a.UserName from Friendship f JOIN AspNetUsers a ON a.id = f.accountID1 WHERE f.accountID2 = '67aabfde-e0f2-4e0b-8aa8-9134191bbe40' UNION SELECT a.id, a.UserName from Friendship f JOIN AspNetUsers a ON a.id = f.accountID2 WHERE f.accountID1 = '67aabfde-e0f2-4e0b-8aa8-9134191bbe40' ")
+        //     .AsNoTracking().ToList();
+            
+        //         return friends;
+        // }
+
+
+
+        // public IActionResult Index()
+        // {
+        //     var Friends =   _db.Database.FromSql(
+        //     "SELECT a.id, a.UserName from Friendship f JOIN AspNetUsers a ON a.id = f.accountID1 WHERE f.accountID2 = '67aabfde-e0f2-4e0b-8aa8-9134191bbe40' UNION SELECT a.id, a.UserName from Friendship f JOIN AspNetUsers a ON a.id = f.accountID2 WHERE f.accountID1 = '67aabfde-e0f2-4e0b-8aa8-9134191bbe40'").ToList();
+        //     return Friends;
+        // }
+
+        [HttpGet("getaccounts")]
+        [Route("api/Accounts")]
+        public IEnumerable<AspNetUsers> GetAllAccounts()
+        {
+            return _accountsLogic.GetAll();
         }
 
-        // GET: api/Accounts
-        [HttpGet]
-        public async Task<ActionResult<IEnumerable<Account>>> GetAccount()
-        {
-            return await _context.Account.ToListAsync();
-        }
+        //TODO: Convert everything below this comment and remove DB context.
 
-        // GET: api/Accounts/5
-        [HttpGet("{id}")]
-        public async Task<ActionResult<Account>> GetAccount(int id)
-        {
-            var account = await _context.Account.FindAsync(id);
-
-            if (account == null)
-            {
-                return NotFound();
-            }
-
-            return account;
-        }
-
-        // PUT: api/Accounts/5
-        [HttpPut("{id}")]
-        public async Task<IActionResult> PutAccount(string id, Account account)
-        {
-            if (id != account.AccountId)
-            {
-                return BadRequest();
-            }
-
-            _context.Entry(account).State = EntityState.Modified;
-
-            try
-            {
-                await _context.SaveChangesAsync();
-            }
-            catch (DbUpdateConcurrencyException)
-            {
-                if (!AccountExists(id))
-                {
-                    return NotFound();
-                }
-                else
-                {
-                    throw;
-                }
-            }
-
-            return NoContent();
-        }
-
-        // POST: api/Accounts
+        //Add Single Game to Record
         [HttpPost]
-        public async Task<ActionResult<Account>> PostAccount(Account account)
+        [Route("api/Accounts/Add")]
+        public int Add(AspNetUsers account)
         {
-            _context.Account.Add(account);
-            try
-            {
-                await _context.SaveChangesAsync();
-            }
-            catch (DbUpdateException)
-            {
-                if (AccountExists(account.AccountId))
-                {
-                    return Conflict();
-                }
-                else
-                {
-                    throw;
-                }
-            }
-
-            return CreatedAtAction("GetAccount", new { id = account.AccountId }, account);
+            return _accountsLogic.Add(account);
         }
 
-        // DELETE: api/Accounts/5
-        [HttpDelete("{id}")]
-        public async Task<ActionResult<Account>> DeleteAccount(int id)
+        //Updates Games in record
+        [HttpPut]
+        [Route("api/Accounts/Update")]
+        public int Update(AspNetUsers account)
         {
-            var account = await _context.Account.FindAsync(id);
-            if (account == null)
-            {
-                return NotFound();
-            }
-
-            _context.Account.Remove(account);
-            await _context.SaveChangesAsync();
-
-            return account;
+            return _accountsLogic.Update(account);
         }
 
-        private bool AccountExists(string id)
+        //Get Single Game Details
+        [HttpGet("getaccounts/{id}")]
+        [Route("api/Accounts/Details/{id}")]
+        public AspNetUsers Details(string id)
         {
-            return _context.Account.Any(e => e.AccountId == id);
+            return _accountsLogic.Details(id);
+        }
+
+        //Delete game from records
+        [HttpDelete]
+        [Route("api/Games/Delete")]
+        public int Delete(string id)
+        {
+            return _accountsLogic.Delete(id);
         }
     }
 }
