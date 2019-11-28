@@ -1,6 +1,8 @@
 ﻿import React, { Component } from 'react';
 import axios from 'axios';
 import './WishList.css';
+import { HoneyBadgerUrl } from '../../Constants';
+
 
 export default class ListDetail extends Component {
     constructor(props) {
@@ -47,7 +49,7 @@ function removeItem(gameId) {
 
 export function removeFromDB(id) {
     //remove from db
-    axios.delete("https://localhost:5001/api/Wishlists/" + id).then(res => {
+    axios.delete(HoneyBadgerUrl +"/api/Wishlists/" + id).then(res => {
         console.log(res);
         console.log(res.data);
     });

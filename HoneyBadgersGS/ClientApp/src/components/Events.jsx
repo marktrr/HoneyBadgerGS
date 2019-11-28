@@ -3,6 +3,8 @@ import React, { Component } from 'react';
 import './Events.css';
 import axios from 'axios';
 import { EventList } from './Event-List/eventList.component';
+import { HoneyBadgerUrl } from 'C:\dev\NUNUHoney\HoneyBadgerGS\HoneyBadgersGS\ClientApp\src\Constants.jsx';
+
 
 export class Event extends Component {
 	constructor() {
@@ -12,8 +14,8 @@ export class Event extends Component {
 		};
 	}
 	componentDidMount() {
-		axios
-			.get('https://localhost:5001/api/Events/getevents')
+        axios
+            .get(HoneyBadgerUrl + '/api/Events/getevents')
 			.then((res) => {
 				const events = res.data;
 				this.setState({ events });

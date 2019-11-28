@@ -1,6 +1,6 @@
 ﻿import React, { Component } from 'react';
 import axios from 'axios';
-
+import { HoneyBadgerUrl } from '../../Constants';
 import './friendList.component.css';
 
 export class friendList extends React.Component {
@@ -27,7 +27,7 @@ export class friendList extends React.Component {
         //splits the cookie to get the login id and the userName
         profile = profile[2].split(',');
 
-        fetch('https://localhost:5001/api/Accounts/getaccounts').then(res => res.json())
+        fetch(HoneyBadgerUrl +'/api/Accounts/getaccounts').then(res => res.json())
             .then(data => this.setState({ filteredAccounts: data.filter(item => item.AccountId1 === profile[0]) }));
 
 

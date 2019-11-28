@@ -4,6 +4,7 @@ import axios from 'axios';
 import moment from 'moment';
 import './profile.component.css';
 import { Alert } from 'reactstrap';
+import { HoneyBadgerUrl } from '../../Constants';
 
 
 export class Profile extends Component {
@@ -48,7 +49,7 @@ export class Profile extends Component {
         })
         console.log('Loaded :' + loaded);
         if (loaded === false) {
-            fetch("https://localhost:5001/api/profiles/getprofiles/" + profile[0])
+            fetch(HoneyBadgerUrl + "/api/profiles/getprofiles/" + profile[0])
                 .then(response => response.json()).then(jsonData => modifyDate(jsonData))
                 .then(data => this.setState({ value: data }));        
         }

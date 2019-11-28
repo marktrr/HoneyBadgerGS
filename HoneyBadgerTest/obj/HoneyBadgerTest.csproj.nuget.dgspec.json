@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Dev\\NuHoney\\HoneyBadgerGS\\HoneyBadgerTest\\HoneyBadgerTest.csproj": {}
+    "C:\\dev\\NUNUHoney\\HoneyBadgerGS\\HoneyBadgerTest\\HoneyBadgerTest.csproj": {}
   },
   "projects": {
-    "C:\\Dev\\NuHoney\\HoneyBadgerGS\\HoneyBadgersGS\\HoneyBadgersGS.csproj": {
+    "C:\\dev\\NUNUHoney\\HoneyBadgerGS\\HoneyBadgersGS\\HoneyBadgersGS.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Dev\\NuHoney\\HoneyBadgerGS\\HoneyBadgersGS\\HoneyBadgersGS.csproj",
+        "projectUniqueName": "C:\\dev\\NUNUHoney\\HoneyBadgerGS\\HoneyBadgersGS\\HoneyBadgersGS.csproj",
         "projectName": "HoneyBadgersGS",
-        "projectPath": "C:\\Dev\\NuHoney\\HoneyBadgerGS\\HoneyBadgersGS\\HoneyBadgersGS.csproj",
+        "projectPath": "C:\\dev\\NUNUHoney\\HoneyBadgerGS\\HoneyBadgersGS\\HoneyBadgersGS.csproj",
         "packagesPath": "C:\\Users\\Kevin\\.nuget\\packages\\",
-        "outputPath": "C:\\Dev\\NuHoney\\HoneyBadgerGS\\HoneyBadgersGS\\obj\\",
+        "outputPath": "C:\\dev\\NUNUHoney\\HoneyBadgerGS\\HoneyBadgersGS\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Microsoft\\Xamarin\\NuGet\\",
@@ -126,14 +126,14 @@
         }
       }
     },
-    "C:\\Dev\\NuHoney\\HoneyBadgerGS\\HoneyBadgerTest\\HoneyBadgerTest.csproj": {
+    "C:\\dev\\NUNUHoney\\HoneyBadgerGS\\HoneyBadgerTest\\HoneyBadgerTest.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Dev\\NuHoney\\HoneyBadgerGS\\HoneyBadgerTest\\HoneyBadgerTest.csproj",
+        "projectUniqueName": "C:\\dev\\NUNUHoney\\HoneyBadgerGS\\HoneyBadgerTest\\HoneyBadgerTest.csproj",
         "projectName": "HoneyBadgerTest",
-        "projectPath": "C:\\Dev\\NuHoney\\HoneyBadgerGS\\HoneyBadgerTest\\HoneyBadgerTest.csproj",
+        "projectPath": "C:\\dev\\NUNUHoney\\HoneyBadgerGS\\HoneyBadgerTest\\HoneyBadgerTest.csproj",
         "packagesPath": "C:\\Users\\Kevin\\.nuget\\packages\\",
-        "outputPath": "C:\\Dev\\NuHoney\\HoneyBadgerGS\\HoneyBadgerTest\\obj\\",
+        "outputPath": "C:\\dev\\NUNUHoney\\HoneyBadgerGS\\HoneyBadgerTest\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Microsoft\\Xamarin\\NuGet\\",
@@ -156,8 +156,8 @@
         "frameworks": {
           "netcoreapp3.0": {
             "projectReferences": {
-              "C:\\Dev\\NuHoney\\HoneyBadgerGS\\HoneyBadgersGS\\HoneyBadgersGS.csproj": {
-                "projectPath": "C:\\Dev\\NuHoney\\HoneyBadgerGS\\HoneyBadgersGS\\HoneyBadgersGS.csproj"
+              "C:\\dev\\NUNUHoney\\HoneyBadgerGS\\HoneyBadgersGS\\HoneyBadgersGS.csproj": {
+                "projectPath": "C:\\dev\\NUNUHoney\\HoneyBadgerGS\\HoneyBadgersGS\\HoneyBadgersGS.csproj"
               }
             }
           }

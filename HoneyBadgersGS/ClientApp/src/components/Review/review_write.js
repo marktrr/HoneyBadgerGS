@@ -2,6 +2,8 @@
 import axios from 'axios';
 import './reviewStyle.css';
 import { ReviewList } from './review-list.component';
+import { HoneyBadgerUrl } from '../../Constants';
+
 //import '../Game-Detail/gameDetail.css';
 
 export class ReviewForm extends Component {
@@ -24,8 +26,8 @@ export class ReviewForm extends Component {
 
     componentDidMount() {
         let gameId = window.location.href.split('/')[4];
-        
-        fetch("https://localhost:5001/api/Reviews/getreviews")
+
+        fetch(HoneyBadgerUrl + "/api/Reviews/getreviews")
             .then(response => response.json())
             .then(data => this.setState({
                 ReviewList: data.filter(item => item.gameId == gameId)
@@ -81,7 +83,7 @@ export class ReviewForm extends Component {
         };
 
         ////post request to the backend----
-        axios.post("https://localhost:5001/api/Reviews/", JSON.stringify(data), config).then(res => {
+        axios.post(HoneyBadgerUrl + "/api/Reviews/", JSON.stringify(data), config).then(res => {
         alert('Your review has successfully been added.');
         });
 

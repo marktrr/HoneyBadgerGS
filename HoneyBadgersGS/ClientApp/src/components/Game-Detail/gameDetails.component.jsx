@@ -2,6 +2,8 @@
 import axios from 'axios';
 import { ReviewForm } from '../Review/review_write';
 import './gameDetail.css';
+import { HoneyBadgerUrl } from '../../Constants';
+
 
 export class GameDetails extends Component{
 
@@ -20,7 +22,7 @@ export class GameDetails extends Component{
     componentDidMount() {
 
         let gameId = this.props.location.pathname.split('/').pop();
-        fetch("https://localhost:5001/api/games/getgames/" + gameId)
+        fetch(HoneyBadgerUrl + "/api/games/getgames/" + gameId)
             .then(response => response.json())
             .then(data => this.setState({ gameDetails: data }));
     }

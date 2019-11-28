@@ -1,5 +1,7 @@
 ﻿import React from 'react';
 import axios from 'axios';
+import { HoneyBadgerUrl } from '../../Constants';
+
 import { Link } from 'react-router-dom';
 import './Order.css';
 
@@ -139,7 +141,7 @@ class Payment extends React.Component {
 
 export function addToDB(data) {
     //add to db
-    axios.post("https://localhost:5001/api/Orders/add/", data).then(res => {
+    axios.post(HoneyBadgerUrl + "/api/Orders/add/", data).then(res => {
         console.log(res);
         console.log(res.data);
     });

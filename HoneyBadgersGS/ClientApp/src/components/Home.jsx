@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import axios from 'axios';
 import { GameList } from './Game-List/gameList.component';
 import './Home.css';
+import { HoneyBadgerUrl } from '../Constants';
 
 export class Home extends Component {
 	constructor() {
@@ -12,8 +13,8 @@ export class Home extends Component {
 	}
 
 	//talks to the api in order to get the games from the database.
-	componentDidMount() {
-		fetch('https://localhost:5001/api/games/getGames')
+    componentDidMount() {
+        fetch(HoneyBadgerUrl + '/api/games/getGames')
 			.then((response) => response.json())
 			.then((data) => this.setState({ games: data }));
 	}

@@ -1,3 +1,7 @@
+
+import { HoneyBadgerUrl } from 'src/Constants';
+
+
 const localStorageMock = {
   getItem: jest.fn(),
   setItem: jest.fn(),
@@ -11,11 +15,11 @@ window.fetch = () => {
   return Promise.resolve(
     {
       ok: true,
-      json: () => Promise.resolve({
-        "authority": "https://localhost:5001",
-        "client_id": "HoneyBadgers._0",
-        "redirect_uri": "https://localhost:5001/authentication/login-callback",
-        "post_logout_redirect_uri": "https://localhost:5001/authentication/logout-callback",
+          json: () => Promise.resolve({
+              "authority": HoneyBadgerUrl,
+              "client_id": "HoneyBadgers._0",
+              "redirect_uri": HoneyBadgerUrl + "/authentication/login-callback",
+              "post_logout_redirect_uri": HoneyBadgerUrl + "/authentication/logout-callback",
         "response_type": "id_token token",
         "scope": "HoneyBadgers._0API openid profile"
      })
