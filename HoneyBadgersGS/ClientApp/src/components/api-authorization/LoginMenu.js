@@ -66,6 +66,9 @@ export class LoginMenu extends Component {
                 <NavLink tag={Link} className="text-light" to={"/Profile"}>Profile</NavLink>
             </NavItem>
             <NavItem>
+                    <NavLink tag={Link} className="text-light" to='/FriendList'>Friends</NavLink> 
+            </NavItem>
+            <NavItem>
                 <NavLink tag={Link} className="text-light" to={profilePath}>Hello {userName}</NavLink>
             </NavItem>
             <NavItem>

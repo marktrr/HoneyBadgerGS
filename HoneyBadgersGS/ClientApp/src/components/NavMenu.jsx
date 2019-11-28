@@ -40,13 +40,7 @@ export class NavMenu extends Component {
                 </NavItem>
                 <NavItem>
                 <NavLink tag={Link} className="text-light" to='/Wishlist'>Wishlist</NavLink>
-                </NavItem>
-                <NavItem>
-                    <NavLink tag={Link} className="text-light" to='/Events'>Events</NavLink> 
-                </NavItem>          
-                <NavItem>
-                    <NavLink tag={Link} className="text-light" to='/FriendList'>Friends</NavLink> 
-                </NavItem>  
+                </NavItem>        
                 
                 <LoginMenu></LoginMenu>
                         </ul>
