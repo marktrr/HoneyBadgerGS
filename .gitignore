@@ -11,3 +11,9 @@ HoneyBadgerGS_3.0/
 /HBGSUnitTests/obj/Release/netcoreapp3.0
 /HBGSUnitTests/obj/Debug/netcoreapp3.0
 HBGSUnitTests/obj/Debug/netcoreapp3.0/HBGSUnitTests.assets.cache
+HoneyBadgerTest/obj/HoneyBadgerTest.csproj.nuget.cache
+HoneyBadgerTest/obj/HoneyBadgerTest.csproj.nuget.dgspec.json
+HoneyBadgerTest/obj/HoneyBadgerTest.csproj.nuget.g.props
+HoneyBadgerTest/obj/project.assets.json
+HoneyBadgerTest/obj/Debug/netcoreapp3.0/HoneyBadgerTest.assets.cache
+HoneyBadgerTest/obj/Debug/netcoreapp3.0/HoneyBadgerTest.csprojAssemblyReference.cache
