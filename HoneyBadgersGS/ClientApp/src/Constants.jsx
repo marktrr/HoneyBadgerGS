@@ -1,2 +1,3 @@
 ﻿
-export const HoneyBadgerUrl = "https://honeybadgergs.azurewebsites.net";
+export const HoneyBadgerUrl = "https://localhost:5001";
+//"https://honeybadgergs.azurewebsites.net";

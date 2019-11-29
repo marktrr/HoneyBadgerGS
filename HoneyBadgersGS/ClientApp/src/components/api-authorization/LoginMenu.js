@@ -60,9 +60,6 @@ export class LoginMenu extends Component {
     authenticatedView(userName, profilePath, logoutPath) {
         return (<Fragment>
             <NavItem>
-                <NavLink tag={Link} className="text-light" to={"/FriendList"}>FriendList</NavLink>
-            </NavItem>
-            <NavItem>
                 <NavLink tag={Link} className="text-light" to={"/Profile"}>Profile</NavLink>
             </NavItem>
             <NavItem>
