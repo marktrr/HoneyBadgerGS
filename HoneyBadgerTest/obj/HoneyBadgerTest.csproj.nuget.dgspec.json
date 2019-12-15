@@ -1,33 +1,29 @@
 {
   "format": 1,
   "restore": {
-    "C:\\dev\\NUNUHoney\\HoneyBadgerGS\\HoneyBadgerTest\\HoneyBadgerTest.csproj": {}
+    "C:\\Users\\Nathan\\CodeProjects\\HoneyBadgerGS\\HoneyBadgerTest\\HoneyBadgerTest.csproj": {}
   },
   "projects": {
-    "C:\\dev\\NUNUHoney\\HoneyBadgerGS\\HoneyBadgersGS\\HoneyBadgersGS.csproj": {
+    "C:\\Users\\Nathan\\CodeProjects\\HoneyBadgerGS\\HoneyBadgersGS\\HoneyBadgersGS.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\dev\\NUNUHoney\\HoneyBadgerGS\\HoneyBadgersGS\\HoneyBadgersGS.csproj",
+        "projectUniqueName": "C:\\Users\\Nathan\\CodeProjects\\HoneyBadgerGS\\HoneyBadgersGS\\HoneyBadgersGS.csproj",
         "projectName": "HoneyBadgersGS",
-        "projectPath": "C:\\dev\\NUNUHoney\\HoneyBadgerGS\\HoneyBadgersGS\\HoneyBadgersGS.csproj",
-        "packagesPath": "C:\\Users\\Kevin\\.nuget\\packages\\",
-        "outputPath": "C:\\dev\\NUNUHoney\\HoneyBadgerGS\\HoneyBadgersGS\\obj\\",
+        "projectPath": "C:\\Users\\Nathan\\CodeProjects\\HoneyBadgerGS\\HoneyBadgersGS\\HoneyBadgersGS.csproj",
+        "packagesPath": "C:\\Users\\Nathan\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\Nathan\\CodeProjects\\HoneyBadgerGS\\HoneyBadgersGS\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
-          "C:\\Microsoft\\Xamarin\\NuGet\\",
           "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
         ],
         "configFilePaths": [
-          "C:\\Users\\Kevin\\AppData\\Roaming\\NuGet\\NuGet.Config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\DevExpress 19.1.config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Xamarin.Offline.config"
+          "C:\\Users\\Nathan\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
           "netcoreapp3.0"
         ],
         "sources": {
-          "C:\\Program Files (x86)\\DevExpress 19.1\\Components\\System\\Components\\Packages": {},
           "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
           "https://api.nuget.org/v3/index.json": {}
         },
@@ -126,38 +122,34 @@
         }
       }
     },
-    "C:\\dev\\NUNUHoney\\HoneyBadgerGS\\HoneyBadgerTest\\HoneyBadgerTest.csproj": {
+    "C:\\Users\\Nathan\\CodeProjects\\HoneyBadgerGS\\HoneyBadgerTest\\HoneyBadgerTest.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\dev\\NUNUHoney\\HoneyBadgerGS\\HoneyBadgerTest\\HoneyBadgerTest.csproj",
+        "projectUniqueName": "C:\\Users\\Nathan\\CodeProjects\\HoneyBadgerGS\\HoneyBadgerTest\\HoneyBadgerTest.csproj",
         "projectName": "HoneyBadgerTest",
-        "projectPath": "C:\\dev\\NUNUHoney\\HoneyBadgerGS\\HoneyBadgerTest\\HoneyBadgerTest.csproj",
-        "packagesPath": "C:\\Users\\Kevin\\.nuget\\packages\\",
-        "outputPath": "C:\\dev\\NUNUHoney\\HoneyBadgerGS\\HoneyBadgerTest\\obj\\",
+        "projectPath": "C:\\Users\\Nathan\\CodeProjects\\HoneyBadgerGS\\HoneyBadgerTest\\HoneyBadgerTest.csproj",
+        "packagesPath": "C:\\Users\\Nathan\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\Nathan\\CodeProjects\\HoneyBadgerGS\\HoneyBadgerTest\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
-          "C:\\Microsoft\\Xamarin\\NuGet\\",
           "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
         ],
         "configFilePaths": [
-          "C:\\Users\\Kevin\\AppData\\Roaming\\NuGet\\NuGet.Config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\DevExpress 19.1.config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Xamarin.Offline.config"
+          "C:\\Users\\Nathan\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
           "netcoreapp3.0"
         ],
         "sources": {
-          "C:\\Program Files (x86)\\DevExpress 19.1\\Components\\System\\Components\\Packages": {},
           "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
           "netcoreapp3.0": {
             "projectReferences": {
-              "C:\\dev\\NUNUHoney\\HoneyBadgerGS\\HoneyBadgersGS\\HoneyBadgersGS.csproj": {
-                "projectPath": "C:\\dev\\NUNUHoney\\HoneyBadgerGS\\HoneyBadgersGS\\HoneyBadgersGS.csproj"
+              "C:\\Users\\Nathan\\CodeProjects\\HoneyBadgerGS\\HoneyBadgersGS\\HoneyBadgersGS.csproj": {
+                "projectPath": "C:\\Users\\Nathan\\CodeProjects\\HoneyBadgerGS\\HoneyBadgersGS\\HoneyBadgersGS.csproj"
               }
             }
           }
