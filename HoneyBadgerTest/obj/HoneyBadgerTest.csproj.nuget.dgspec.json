@@ -1,34 +1,34 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\Nathan\\CodeProjects\\HoneyBadgerGS\\HoneyBadgerTest\\HoneyBadgerTest.csproj": {}
+    "C:\\Users\\thm28\\Documents\\GitHub\\HoneyBadgerGS\\HoneyBadgerTest\\HoneyBadgerTest.csproj": {}
   },
   "projects": {
-    "C:\\Users\\Nathan\\CodeProjects\\HoneyBadgerGS\\HoneyBadgersGS\\HoneyBadgersGS.csproj": {
+    "C:\\Users\\thm28\\Documents\\GitHub\\HoneyBadgerGS\\HoneyBadgersGS\\HoneyBadgersGS.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Nathan\\CodeProjects\\HoneyBadgerGS\\HoneyBadgersGS\\HoneyBadgersGS.csproj",
+        "projectUniqueName": "C:\\Users\\thm28\\Documents\\GitHub\\HoneyBadgerGS\\HoneyBadgersGS\\HoneyBadgersGS.csproj",
         "projectName": "HoneyBadgersGS",
-        "projectPath": "C:\\Users\\Nathan\\CodeProjects\\HoneyBadgerGS\\HoneyBadgersGS\\HoneyBadgersGS.csproj",
-        "packagesPath": "C:\\Users\\Nathan\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Nathan\\CodeProjects\\HoneyBadgerGS\\HoneyBadgersGS\\obj\\",
+        "projectPath": "C:\\Users\\thm28\\Documents\\GitHub\\HoneyBadgerGS\\HoneyBadgersGS\\HoneyBadgersGS.csproj",
+        "packagesPath": "C:\\Users\\thm28\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\thm28\\Documents\\GitHub\\HoneyBadgerGS\\HoneyBadgersGS\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
         ],
         "configFilePaths": [
-          "C:\\Users\\Nathan\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\thm28\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
-          "netcoreapp3.0"
+          "netcoreapp3.1"
         ],
         "sources": {
           "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
-          "netcoreapp3.0": {
+          "netcoreapp3.1": {
             "projectReferences": {}
           }
         },
@@ -39,23 +39,23 @@
         }
       },
       "frameworks": {
-        "netcoreapp3.0": {
+        "netcoreapp3.1": {
           "dependencies": {
             "Microsoft.AspNetCore.ApiAuthorization.IdentityServer": {
               "target": "Package",
-              "version": "[3.0.0, )"
+              "version": "[3.1.0, )"
             },
             "Microsoft.AspNetCore.Diagnostics.EntityFrameworkCore": {
               "target": "Package",
-              "version": "[3.0.0, )"
+              "version": "[3.1.0, )"
             },
             "Microsoft.AspNetCore.Identity.EntityFrameworkCore": {
               "target": "Package",
-              "version": "[3.0.0, )"
+              "version": "[3.1.0, )"
             },
             "Microsoft.AspNetCore.Identity.UI": {
               "target": "Package",
-              "version": "[3.0.0, )"
+              "version": "[3.1.0, )"
             },
             "Microsoft.AspNetCore.Mvc.Cors": {
               "target": "Package",
@@ -63,23 +63,27 @@
             },
             "Microsoft.AspNetCore.SpaServices.Extensions": {
               "target": "Package",
-              "version": "[3.0.0, )"
+              "version": "[3.1.0, )"
+            },
+            "Microsoft.EntityFrameworkCore": {
+              "target": "Package",
+              "version": "[3.1.0, )"
             },
             "Microsoft.EntityFrameworkCore.Relational": {
               "target": "Package",
-              "version": "[3.0.0, )"
+              "version": "[3.1.0, )"
             },
             "Microsoft.EntityFrameworkCore.SqlServer": {
               "target": "Package",
-              "version": "[3.0.0, )"
+              "version": "[3.1.0, )"
             },
             "Microsoft.EntityFrameworkCore.Tools": {
               "target": "Package",
-              "version": "[3.0.0, )"
+              "version": "[3.1.0, )"
             },
             "Microsoft.Extensions.Logging.Debug": {
               "target": "Package",
-              "version": "[3.0.0, )"
+              "version": "[3.1.0, )"
             },
             "Microsoft.TypeScript.MSBuild": {
               "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
@@ -89,7 +93,7 @@
             },
             "Microsoft.VisualStudio.Web.CodeGeneration.Design": {
               "target": "Package",
-              "version": "[3.0.0, )"
+              "version": "[3.1.0, )"
             },
             "OpenCover": {
               "target": "Package",
@@ -118,24 +122,24 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.0.100\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.401\\RuntimeIdentifierGraph.json"
         }
       }
     },
-    "C:\\Users\\Nathan\\CodeProjects\\HoneyBadgerGS\\HoneyBadgerTest\\HoneyBadgerTest.csproj": {
+    "C:\\Users\\thm28\\Documents\\GitHub\\HoneyBadgerGS\\HoneyBadgerTest\\HoneyBadgerTest.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Nathan\\CodeProjects\\HoneyBadgerGS\\HoneyBadgerTest\\HoneyBadgerTest.csproj",
+        "projectUniqueName": "C:\\Users\\thm28\\Documents\\GitHub\\HoneyBadgerGS\\HoneyBadgerTest\\HoneyBadgerTest.csproj",
         "projectName": "HoneyBadgerTest",
-        "projectPath": "C:\\Users\\Nathan\\CodeProjects\\HoneyBadgerGS\\HoneyBadgerTest\\HoneyBadgerTest.csproj",
-        "packagesPath": "C:\\Users\\Nathan\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Nathan\\CodeProjects\\HoneyBadgerGS\\HoneyBadgerTest\\obj\\",
+        "projectPath": "C:\\Users\\thm28\\Documents\\GitHub\\HoneyBadgerGS\\HoneyBadgerTest\\HoneyBadgerTest.csproj",
+        "packagesPath": "C:\\Users\\thm28\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\thm28\\Documents\\GitHub\\HoneyBadgerGS\\HoneyBadgerTest\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
         ],
         "configFilePaths": [
-          "C:\\Users\\Nathan\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\thm28\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -148,8 +152,8 @@
         "frameworks": {
           "netcoreapp3.0": {
             "projectReferences": {
-              "C:\\Users\\Nathan\\CodeProjects\\HoneyBadgerGS\\HoneyBadgersGS\\HoneyBadgersGS.csproj": {
-                "projectPath": "C:\\Users\\Nathan\\CodeProjects\\HoneyBadgerGS\\HoneyBadgersGS\\HoneyBadgersGS.csproj"
+              "C:\\Users\\thm28\\Documents\\GitHub\\HoneyBadgerGS\\HoneyBadgersGS\\HoneyBadgersGS.csproj": {
+                "projectPath": "C:\\Users\\thm28\\Documents\\GitHub\\HoneyBadgerGS\\HoneyBadgersGS\\HoneyBadgersGS.csproj"
               }
             }
           }
@@ -210,15 +214,7 @@
           ],
           "assetTargetFallback": true,
           "warn": true,
-          "frameworkReferences": {
-            "Microsoft.AspNetCore.App": {
-              "privateAssets": "none"
-            },
-            "Microsoft.NETCore.App": {
-              "privateAssets": "all"
-            }
-          },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.0.100\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.401\\RuntimeIdentifierGraph.json"
         }
       }
     }
